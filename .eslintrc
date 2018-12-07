@@ -1,0 +1,12 @@
+{
+    "extends": ["standard", "standard-react"],
+    "globals": {
+      "__DEV__": false,
+      "requestAnimationFrame": true,
+      "fetch": true
+    },
+    "rules": {
+      "react/prop-types": 0,
+      "standard/no-callback-literal": 0
+    }
+  }

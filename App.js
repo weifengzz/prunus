@@ -8,13 +8,13 @@
 
 import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import { Icon } from './src/components'
 
 export default class App extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <Icon name='rocket' size={30} color='blue' />
+        <Icon name='p_video' size={30} color='blue' />
       </View>
     )
   }

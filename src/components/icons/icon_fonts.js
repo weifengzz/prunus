@@ -3,7 +3,73 @@
  * @author koohead
  * @description 自定义字体文件
  */
+import React, { Component } from 'react'
+import {
+  View
+} from 'react-native'
 import { createIconSet } from 'react-native-vector-icons'
+import AntDesign from 'react-native-vector-icons/AntDesign'
+import Entypo from 'react-native-vector-icons/Entypo'
+import EvilIcons from 'react-native-vector-icons/EvilIcons'
+import Feather from 'react-native-vector-icons/Feather'
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import FontAwesome5Free from 'react-native-vector-icons/FontAwesome5'
+import FontAwesome5Pro from 'react-native-vector-icons/FontAwesome5Pro'
+import Foundation from 'react-native-vector-icons/Foundation'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import Octicons from 'react-native-vector-icons/Octicons'
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
+import Zocial from 'react-native-vector-icons/Zocial'
+
 const glyphMap = require('./glyphmaps/icon_fonts.json')
-const iconSet = createIconSet(glyphMap, 'Iconfont', 'Iconfont.ttf')
-export default iconSet
+const IconSet = createIconSet(glyphMap, 'Iconfont', 'Iconfont.ttf')
+
+class Icon extends Component {
+  _renderContent () {
+    const { type, ...props } = this.props
+    switch (type) {
+      case 'ant_design':
+        return <AntDesign {...props} />
+      case 'entypo':
+        return <Entypo {...props} />
+      case 'evil_icon':
+        return <EvilIcons {...props} />
+      case 'feather':
+        return <Feather {...props} />
+      case 'font_awesome':
+        return <FontAwesome {...props} />
+      case 'font_awesome_5':
+        return <FontAwesome5Free {...props} />
+      case 'font_awesome_5_pro':
+        return <FontAwesome5Pro {...props} />
+      case 'foundation':
+        return <Foundation {...props} />
+      case 'material_community_icon':
+        return <MaterialCommunityIcons {...props} />
+      case 'material_icon':
+        return <MaterialIcons {...props} />
+      case 'octicons':
+        return <Octicons {...props} />
+      case 'simple_line_icon':
+        return <SimpleLineIcons {...props} />
+      case 'zocial':
+        return <Zocial {...props} />
+      case 'icon_font':
+        return <IconSet {...props} />
+      default:
+        console.warn('图表库没有此图标！')
+        return <View />
+    }
+  }
+
+  render () {
+    return (
+      <View>
+        { this._renderContent() }
+      </View>
+    )
+  }
+}
+
+export default Icon

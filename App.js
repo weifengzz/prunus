@@ -14,7 +14,7 @@ export default class App extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <Icon name='p_video' size={30} color='blue' />
+        <Icon type='icon_font' name='p_video' size={30} color='blue' />
       </View>
     )
   }

@@ -1,12 +1,18 @@
 /**
- * 自定义字体文件
+ * 字体图标文件
+ * 2018-12-10 11:59
  * @author koohead
  * @description 自定义字体文件
  */
+
 import React, { Component } from 'react'
 import {
   View
 } from 'react-native'
+
+/**
+ * 引入图标文件库
+ */
 import { createIconSet } from 'react-native-vector-icons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import Entypo from 'react-native-vector-icons/Entypo'
@@ -22,9 +28,22 @@ import Octicons from 'react-native-vector-icons/Octicons'
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
 import Zocial from 'react-native-vector-icons/Zocial'
 
+/**
+ * 自定义字体图标文件
+ */
 const glyphMap = require('./glyphmaps/icon_fonts.json')
 const IconSet = createIconSet(glyphMap, 'Iconfont', 'Iconfont.ttf')
 
+/**
+ * @class 字体图标文件
+ * @description 整合统一react-native-vector-icons字体图标文件
+ * 自定义图表库的使用方式
+ * 1、添加自定义图表库放入至node_modules/react-native-vector-icons/Fonts下
+ * 2、执行命令 react-native link react-native-vector-icons
+ * 3、在glyphmaps/icon_fonts.json，写入字体文件对照
+ * 4、官方文档：https://github.com/oblador/react-native-vector-icons
+ * 5、图标文件对照表：https://oblador.github.io/react-native-vector-icons/
+ */
 class Icon extends Component {
   _renderContent () {
     const { type, ...props } = this.props

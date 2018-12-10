@@ -5,9 +5,11 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "lint": "eslint ./"
+    "lint": "eslint ./src",
+    "precommit": "npm run lint"
   },
   "dependencies": {
+    "husky": "^1.2.0",
     "react": "16.6.1",
     "react-native": "0.57.7",
     "react-native-vector-icons": "^6.1.0",
@@ -15,7 +17,8 @@
     "react-timer-mixin": "^0.13.4",
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",

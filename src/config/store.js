@@ -8,25 +8,32 @@
 import {
   createReactNavigationReduxMiddleware
 } from 'react-navigation-redux-helpers'
-import Router from './router'
 import thunk from 'redux-thunk'
 import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
 import { NavigationActions } from 'react-navigation'
+import storage from 'redux-persist/lib/storage'
 import {
-  BackHandler
+  BackHandler,
+  AsyncStorage
 } from 'react-native'
-
 import {
   createStore,
   applyMiddleware,
   combineReducers,
   compose
 } from 'redux'
+import Router from './router'
 
-// 初始化router状态
+/**
+ * 初始化router状态
+ */
 const initialState = Router.router.getStateForAction(Router.router.getActionForPathAndParams('guide'))
 
+/**
+ * react-navigation reducer
+ * @param {any} state 状态
+ * @param {any} action action
+ */
 const navReducer = (state = initialState, action) => {
   let nextState = Router.router.getStateForAction(action, state)
   switch (action.type) {
@@ -46,6 +53,9 @@ const navReducer = (state = initialState, action) => {
   return nextState || state
 }
 
+/**
+ * 中间件
+ */
 const middleware = createReactNavigationReduxMiddleware(
   'guide',
   (state) => state.nav
@@ -73,6 +83,10 @@ const store = createStore(
     applyMiddleware(thunk)
   )
 )
-persistStore(store)
+
+/**
+ * 将持久化存储放入whitelist白名单之中
+ */
+persistStore(store, { storage: AsyncStorage, whitelist: [] })
 
 export default store

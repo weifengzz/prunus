@@ -38,7 +38,7 @@ const log = (...args) => {
 }
 
 // 输出警告
-const logWarm = (...args) => {
+const logWarn = (...args) => {
   add(args)
   if (__DEV__) {
     const info = args.concat()
@@ -64,6 +64,6 @@ export {
   getLogs,
   getLog,
   log,
-  logWarm,
+  logWarn,
   logErr
 }

@@ -11,7 +11,7 @@ import {
 } from 'react-navigation'
 
 /**
- * @description 在react-navigation 3.x之后，需要手动添加 “createAppContainer”
+ * 在react-navigation 3.x之后，需要手动添加 “createAppContainer”
  */
 import { createAppContainer } from '@react-navigation/native'
 

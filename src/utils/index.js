@@ -6,13 +6,13 @@
  */
 
 // 日志工具
-import { getLogs, getLog, log, logWarm, logErr } from './log'
+import { getLogs, getLog, log, logWarn, logErr } from './log'
 
 // 导出工具
 export {
   getLogs,
   getLog,
   log,
-  logWarm,
+  logWarn,
   logErr
 }

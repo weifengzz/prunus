@@ -1,13 +1,13 @@
 /**
  * 导出组件
- * 2018-12-11 12:11
+ * 2018-12-11 09:52
  * @author koohead
  */
 
 // 引导页
-import HomeScreen from './home_screen'
+import GuideScreen from './guide_screen'
 
 // 导出组件
 export {
-  HomeScreen
+  GuideScreen
 }

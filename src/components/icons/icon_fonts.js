@@ -35,9 +35,9 @@ const glyphMap = require('./glyphmaps/icon_fonts.json')
 const IconSet = createIconSet(glyphMap, 'Iconfont', 'Iconfont.ttf')
 
 /**
- * @class 字体图标文件
- * @description 整合统一react-native-vector-icons字体图标文件
- * 自定义图表库的使用方式
+ * @class
+ * @classdesc 整合统一react-native-vector-icons字体图标文件
+ * @description 自定义图表库的使用方式
  * 1、添加自定义图表库放入至node_modules/react-native-vector-icons/Fonts下
  * 2、执行命令 react-native link react-native-vector-icons
  * 3、在glyphmaps/icon_fonts.json，写入字体文件对照

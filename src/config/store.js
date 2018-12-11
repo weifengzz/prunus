@@ -13,8 +13,7 @@ import { persistStore, persistReducer } from 'redux-persist'
 import { NavigationActions } from 'react-navigation'
 import storage from 'redux-persist/lib/storage'
 import {
-  BackHandler,
-  AsyncStorage
+  BackHandler
 } from 'react-native'
 import {
   createStore,
@@ -69,6 +68,9 @@ const rootReducer = (state, action) => {
   return appReducer(state, action)
 }
 
+/**
+ * 将持久化存储放入whitelist白名单之中
+ */
 const persistConfig = {
   key: 'root',
   storage,
@@ -84,9 +86,6 @@ const store = createStore(
   )
 )
 
-/**
- * 将持久化存储放入whitelist白名单之中
- */
-persistStore(store, { storage: AsyncStorage, whitelist: [] })
+persistStore(store)
 
 export default store

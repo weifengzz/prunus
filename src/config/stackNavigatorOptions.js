@@ -7,12 +7,12 @@
 import React from 'react'
 import {
   View,
-  TouchableOpacity,
   Keyboard
 } from 'react-native'
 import commonStyles from '../styles'
 import {
-  Icon
+  Icon,
+  TouchableOpacity
 } from '../components'
 
 /**
@@ -24,7 +24,7 @@ const headerLeft = (navigation, color = '#ffffff') => {
   return (
     <TouchableOpacity
       onPress={() => goBackAction(navigation)}
-      style={{ paddingHorizontal: 15, height: 45, justifyContent: 'center', backgroundColor: 'blue' }}>
+      style={{ paddingHorizontal: 15, height: 45, justifyContent: 'center' }}>
       <Icon size={20} color={color} name='arrow-left' type='simple_line_icon' />
     </TouchableOpacity>
   )

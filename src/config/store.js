@@ -37,7 +37,7 @@ const navReducer = (state = initialState, action) => {
   let nextState = Router.router.getStateForAction(action, state)
   switch (action.type) {
     case 'ExitApp':
-      nextState = Router.router.getStateForAction(Router.router.getActionForPathAndParams('main'))
+      nextState = Router.router.getStateForAction(Router.router.getActionForPathAndParams('root'))
       BackHandler.exitApp()
       break
     case 'Navigation/NAVIGATE':

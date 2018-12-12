@@ -25,6 +25,7 @@ import { HomeScreen } from '../modules/home/screens'
 // 登录注册相关界面
 import { SigninScreen, ProfileScreen } from '../modules/profile/screens'
 
+// 主界面
 const mainNavigator = createStackNavigator({
   home: {
     screen: HomeScreen,
@@ -33,7 +34,7 @@ const mainNavigator = createStackNavigator({
 })
 
 /**
- * 抽屉功能组件
+ * 抽屉功能
  */
 const drawerNavigator = createDrawerNavigator({
   main: {
@@ -54,7 +55,7 @@ const drawerNavigator = createDrawerNavigator({
 })
 
 /**
- * 主界面
+ * 根界面
  */
 const rootNavigator = createStackNavigator({
   drawer: {

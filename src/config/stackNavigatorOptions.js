@@ -23,9 +23,10 @@ import {
 const headerLeft = (navigation, color = '#ffffff') => {
   return (
     <TouchableOpacity
-      onPress={() => goBackAction(navigation)}
-      style={{ paddingHorizontal: 15, height: 45, justifyContent: 'center' }}>
-      <Icon size={20} color={color} name='arrow-left' type='simple_line_icon' />
+      onPress={() => goBackAction(navigation)}>
+      <View style={{ paddingHorizontal: 15, height: 45, justifyContent: 'center' }}>
+        <Icon size={20} color={color} name='arrow-left' type='simple_line_icon' />
+      </View>
     </TouchableOpacity>
   )
 }

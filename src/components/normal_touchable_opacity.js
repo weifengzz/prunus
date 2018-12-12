@@ -7,9 +7,9 @@
 import React, { Component } from 'react'
 import {
   TouchableOpacity,
-  TouchableNativeFeedback
+  TouchableNativeFeedback,
+  Platform
 } from 'react-native'
-import Platform from 'Platform'
 
 /**
  * @class

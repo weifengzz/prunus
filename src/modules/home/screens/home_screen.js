@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
 })
 
 HomeScreen.navigationOptions = props => {
-  return setStackOptions(props.navigation, '首页', true, true)
+  return setStackOptions(props.navigation, '首页', false, false)
 }
 
 export default HomeScreen

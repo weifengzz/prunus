@@ -10,6 +10,9 @@ import {
   StyleSheet,
   Text
 } from 'react-native'
+import {
+  SplashScreen
+} from '../../../components'
 
 /**
  * @class
@@ -17,6 +20,9 @@ import {
  * @description 主界面
  */
 class HomeScreen extends Component {
+  componentDidMount () {
+    SplashScreen.hide()
+  }
   render () {
     return (
       <View style={styles.container}>

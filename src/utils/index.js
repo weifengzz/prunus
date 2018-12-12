@@ -7,6 +7,10 @@
 
 // 日志工具
 import { getLogs, getLog, log, logWarn, logErr } from './log'
+// 屏幕自适应适配
+import px from './px'
+// 本地存储
+import storage from './storage'
 
 // 导出工具
 export {
@@ -14,5 +18,7 @@ export {
   getLog,
   log,
   logWarn,
-  logErr
+  logErr,
+  px,
+  storage
 }

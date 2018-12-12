@@ -23,6 +23,7 @@ class HomeScreen extends Component {
   componentDidMount () {
     SplashScreen.hide()
   }
+
   render () {
     return (
       <View style={styles.container}>
@@ -43,5 +44,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 })
+
+HomeScreen.navigationOptions = props => {
+  return {
+    header: null
+  }
+}
 
 export default HomeScreen

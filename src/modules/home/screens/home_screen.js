@@ -13,6 +13,7 @@ import {
 import {
   SplashScreen
 } from '../../../components'
+import setStackOptions from '../../../config/stackNavigatorOptions'
 
 /**
  * @class
@@ -46,9 +47,7 @@ const styles = StyleSheet.create({
 })
 
 HomeScreen.navigationOptions = props => {
-  return {
-    header: null
-  }
+  return setStackOptions(props.navigation, '首页', true, true)
 }
 
 export default HomeScreen

@@ -30,17 +30,11 @@ import { SigninScreen } from '../modules/profile/screens'
 const mainNavigator = createStackNavigator({
   home: {
     screen: HomeScreen,
-    path: '/home',
-    navigationOptions: {
-      header: null
-    }
+    path: '/home'
   },
   signin: {
     screen: SigninScreen,
-    path: '/signin',
-    navigationOptions: {
-      header: null
-    }
+    path: '/signin'
   }
 })
 

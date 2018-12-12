@@ -8,7 +8,8 @@ import React, { Component } from 'react'
 import {
   View,
   StyleSheet,
-  Text
+  Text,
+  StatusBar
 } from 'react-native'
 import {
   SplashScreen
@@ -31,6 +32,7 @@ class GuideScreen extends Component {
             this.props.navigation.navigate('main')
           }}
         >引导页</Text>
+        <StatusBar hidden />
       </View>
     )
   }

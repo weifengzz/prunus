@@ -10,8 +10,10 @@ import store from './store'
 import { Provider } from 'react-redux'
 import AppNavigationControl from './appNavigationControl'
 import {
-  View
+  View,
+  StatusBar
 } from 'react-native'
+import commonStyles from '../styles'
 
 /**
  * @class
@@ -24,6 +26,7 @@ export default class App extends Component {
         <Provider store={store}>
           <AppNavigationControl />
         </Provider>
+        <StatusBar backgroundColor={commonStyles.primaryColor.color} barStyle={'light-content'} />
       </View>
     )
   }

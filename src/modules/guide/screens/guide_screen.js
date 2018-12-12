@@ -29,7 +29,7 @@ class GuideScreen extends Component {
       <View style={styles.container}>
         <Text
           onPress={() => {
-            this.props.navigation.navigate('main')
+            this.props.navigation.navigate('drawer')
           }}
         >引导页</Text>
         <StatusBar hidden />

@@ -11,6 +11,7 @@ import {
   StyleSheet,
   Text
 } from 'react-native'
+import setStackOptions from '../../../config/stackNavigatorOptions'
 
 /**
  * @class
@@ -38,5 +39,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 })
+
+SigninScreen.navigationOptions = props => {
+  return setStackOptions(props.navigation, '登录', true, true)
+}
 
 export default SigninScreen

@@ -13,7 +13,6 @@ import {
   View,
   StatusBar
 } from 'react-native'
-import commonStyles from '../styles'
 
 /**
  * @class
@@ -26,7 +25,7 @@ export default class App extends Component {
         <Provider store={store}>
           <AppNavigationControl />
         </Provider>
-        <StatusBar backgroundColor={commonStyles.primaryColor.color} barStyle={'light-content'} />
+        <StatusBar backgroundColor={'transparent'} barStyle={'light-content'} />
       </View>
     )
   }

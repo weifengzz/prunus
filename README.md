@@ -42,3 +42,20 @@
     </resources>
 
 ```
+
+### app注意事项
+
+```
+    1、由于react-navigation 使用了最新的 “React Native Gesture Handler”，在使用这个库后，android在MainActivity.class中需要写入如下代码：
+    
+        @Override
+        protected ReactActivityDelegate createReactActivityDelegate() {
+            return new ReactActivityDelegate(this, getMainComponentName()) {
+                @Override
+                protected ReactRootView createRootView() {
+                    return new RNGestureHandlerEnabledRootView(MainActivity.this);
+                }
+            };
+        }
+
+```

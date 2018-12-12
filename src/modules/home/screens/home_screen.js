@@ -30,7 +30,8 @@ class HomeScreen extends Component {
       <View style={styles.container}>
         <Text
           onPress={() => {
-            this.props.navigation.navigate('signin')
+            this.props.navigation.openDrawer()
+            // this.props.navigation.navigate('signin')
           }}
         >首页</Text>
       </View>

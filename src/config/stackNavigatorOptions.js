@@ -7,7 +7,9 @@
 import React from 'react'
 import {
   View,
-  Keyboard
+  Keyboard,
+  Platform,
+  StatusBar
 } from 'react-native'
 import commonStyles from '../styles'
 import {
@@ -44,7 +46,8 @@ const setStackOptions = (navigation, title, autoHeaderLeft, autoHeaderRight = tr
     headerStyle: {
       backgroundColor: commonStyles.primaryColor.color,
       borderBottomWidth: 0,
-      height: 45,
+      height: Platform.OS === 'ios' ? 45 : StatusBar.currentHeight + 45,
+      paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
       elevation: 0,
       shadowOpacity: 0
     },
@@ -56,6 +59,8 @@ const setStackOptions = (navigation, title, autoHeaderLeft, autoHeaderRight = tr
   }
   if (autoHeaderLeft) {
     option['headerLeft'] = headerLeft(navigation)
+  } else {
+    option['headerLeft'] = null
   }
   if (autoHeaderRight) {
     option['headerRight'] = <View />

@@ -12,7 +12,8 @@ import {
   BackHandler,
   Platform,
   ToastAndroid,
-  AppState
+  AppState,
+  StatusBar
 } from 'react-native'
 import { NavigationActions } from 'react-navigation'
 
@@ -53,7 +54,9 @@ class AppNavigationControl extends Component {
    */
   _handleAppStateChange (nextAppState) {
     // app为活跃状态
-    if (nextAppState === 'active') {}
+    if (nextAppState === 'active') {
+      StatusBar.setTranslucent(true)
+    }
   }
 
   /**

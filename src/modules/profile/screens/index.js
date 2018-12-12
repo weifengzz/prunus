@@ -6,7 +6,10 @@
 
 // 登录界面
 import SigninScreen from './signin_screen'
+// 个人中心界面
+import ProfileScreen from './profile_screen'
 
 export {
-  SigninScreen
+  SigninScreen,
+  ProfileScreen
 }

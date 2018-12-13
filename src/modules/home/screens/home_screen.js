@@ -7,15 +7,15 @@
 import React, { Component } from 'react'
 import {
   View,
-  StyleSheet,
-  Text
+  StyleSheet
 } from 'react-native'
 import {
   SplashScreen
 } from '../../../components'
 import {
   HeaderLeft,
-  HeaderRight
+  HeaderRight,
+  HomeSwipe
 } from '../component'
 import setStackOptions from '../../../config/stackNavigatorOptions'
 
@@ -50,11 +50,7 @@ class HomeScreen extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <Text
-          onPress={() => {
-            this.props.navigation.navigate('signin')
-          }}
-        >首页</Text>
+        <HomeSwipe />
       </View>
     )
   }

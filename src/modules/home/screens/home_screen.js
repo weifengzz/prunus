@@ -26,8 +26,14 @@ import setStackOptions from '../../../config/stackNavigatorOptions'
  */
 class HomeScreen extends Component {
   componentDidMount () {
-    SplashScreen.hide()
     this.openMenu()
+    this.timmer = setTimeout(() => {
+      SplashScreen.hide()
+    }, 50)
+  }
+
+  componentWillUnmount () {
+    this.timmer && clearTimeout(this.timmer)
   }
 
   /**

@@ -10,7 +10,8 @@ import {
   StyleSheet
 } from 'react-native'
 import {
-  SplashScreen
+  SplashScreen,
+  PulseLoader
 } from '../../../components'
 import {
   HeaderLeft,
@@ -18,6 +19,7 @@ import {
   HomeSwipe
 } from '../component'
 import setStackOptions from '../../../config/stackNavigatorOptions'
+import commonStyles from '../../../styles'
 
 /**
  * @class
@@ -25,10 +27,21 @@ import setStackOptions from '../../../config/stackNavigatorOptions'
  * @description 主界面
  */
 class HomeScreen extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      loading: true
+    }
+  }
   componentDidMount () {
     this.openMenu()
     this.timmer = setTimeout(() => {
       SplashScreen.hide()
+      setTimeout(() => {
+        this.setState({
+          loading: false
+        })
+      }, 8000)
     }, 50)
   }
 
@@ -48,6 +61,14 @@ class HomeScreen extends Component {
   }
 
   render () {
+    if (this.state.loading) {
+      return (
+        <PulseLoader
+          borderColor={commonStyles.primaryColor.color}
+          avatar={require('../../../assets/images/header.jpg')}
+        />
+      )
+    }
     return (
       <View style={styles.container}>
         <HomeSwipe />

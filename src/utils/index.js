@@ -11,6 +11,8 @@ import { getLogs, getLog, log, logWarn, logErr } from './log'
 import px from './px'
 // 本地存储
 import storage from './storage'
+// 取值
+import clamp from './clamp'
 
 // 导出工具
 export {
@@ -20,5 +22,6 @@ export {
   logWarn,
   logErr,
   px,
-  storage
+  storage,
+  clamp
 }

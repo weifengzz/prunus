@@ -11,7 +11,7 @@ import {
   // Dimensions
 } from 'react-native'
 
-import clamp from 'clamp'
+import { clamp } from '../../../utils'
 
 import Defaults from './defaults.js'
 

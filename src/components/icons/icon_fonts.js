@@ -32,7 +32,7 @@ import Zocial from 'react-native-vector-icons/Zocial'
  * 自定义字体图标文件
  */
 const glyphMap = require('./glyphmaps/icon_fonts.json')
-const IconSet = createIconSet(glyphMap, 'Iconfont', 'Iconfont.ttf')
+const IconSet = createIconSet(glyphMap, 'iconfont', 'iconfont.ttf')
 
 /**
  * @class

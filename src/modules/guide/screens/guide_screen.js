@@ -22,8 +22,15 @@ import {
  */
 class GuideScreen extends Component {
   componentDidMount () {
-    SplashScreen.hide()
+    this.timmer = setTimeout(() => {
+      SplashScreen.hide()
+    }, 50)
   }
+
+  componentWillUnmount () {
+    this.timmer && clearTimeout(this.timmer)
+  }
+
   render () {
     return (
       <View style={styles.container}>

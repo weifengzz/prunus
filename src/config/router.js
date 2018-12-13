@@ -4,12 +4,15 @@
  * @author koohead
  * @description app导航管理
  */
+import React from 'react'
 
 import {
   createStackNavigator,
   createSwitchNavigator,
   createDrawerNavigator
 } from 'react-navigation'
+
+// import commonStyles from '../styles'
 
 /**
  * 在react-navigation 3.x之后，需要手动添加 “createAppContainer”
@@ -24,6 +27,9 @@ import { HomeScreen } from '../modules/home/screens'
 
 // 登录注册相关界面
 import { SigninScreen, ProfileScreen } from '../modules/profile/screens'
+
+// 自定义抽屉
+import { DrawerContent } from '../modules/drawer'
 
 // 主界面
 const mainNavigator = createStackNavigator({
@@ -49,9 +55,9 @@ const drawerNavigator = createDrawerNavigator({
   initialRouteName: 'main',
   swipeEnabled: true,
   animationEnabled: true,
-  lazy: false,
-  tabBarPosition: 'bottom',
-  drawerType: 'slide'
+  lazy: true,
+  drawerType: 'slide',
+  contentComponent: ({ navigation }) => <DrawerContent navigation={navigation} />
 })
 
 /**

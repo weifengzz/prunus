@@ -55,7 +55,7 @@ class AppNavigationControl extends Component {
   _handleAppStateChange (nextAppState) {
     // app为活跃状态
     if (nextAppState === 'active') {
-      StatusBar.setTranslucent(true)
+      Platform.OS === 'android' && StatusBar.setTranslucent(true)
     }
   }
 

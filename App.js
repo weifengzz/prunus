@@ -1,20 +1,42 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, { Component } from 'react'
-import { StyleSheet, View } from 'react-native'
-import { Icon } from './src/components'
+import {
+  StyleSheet,
+  View,
+  Animated,
+  Easing
+} from 'react-native'
+// import { Icon } from './src/components'
+// {/* <Icon type='icon_font' name='p_video' size={30} color='blue' /> */}
 
 export default class App extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      fade: new Animated.Value(10)
+    }
+  }
+
+  componentDidMount () {
+    Animated.timing(
+      this.state.fade,
+      {
+        toValue: 300,
+        easing: Easing.inOut(Easing.back()),
+        duration: 2000
+      }
+    ).start()
+  }
+
   render () {
     return (
       <View style={styles.container}>
-        <Icon type='icon_font' name='p_video' size={30} color='blue' />
+        <Animated.View style={{
+          position: 'absolute',
+          height: 30,
+          width: 30,
+          left: this.state.fade,
+          backgroundColor: 'blue'
+        }} />
       </View>
     )
   }
@@ -23,18 +45,7 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF'
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5
+    justifyContent: 'center'
   }
 })

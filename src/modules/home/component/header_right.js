@@ -7,17 +7,38 @@
 
 import React from 'react'
 import {
-  View
+  StyleSheet
 } from 'react-native'
+import commonStyles from '../../../styles'
+import {
+  TouchableOpacity,
+  Icon
+} from '../../../components'
 
 /**
- * 头部右边按钮
+ * 头部左边按钮
  * @param {*} navigation
  */
-const HeaderLeft = (navigation) => {
+const HeaderRight = (props) => {
+  const { navigation } = props
   return (
-    <View />
+    <TouchableOpacity
+      onPress={() => {
+        navigation.state.params && navigation.state.params.openMenu()
+      }}
+      style={styles.container}>
+      <Icon type='ant_design' name='hearto' size={21} color='white' />
+    </TouchableOpacity>
   )
 }
 
-export default HeaderLeft
+const styles = StyleSheet.create({
+  container: {
+    height: commonStyles.headerHeight.height,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 15
+  }
+})
+
+export default HeaderRight

@@ -32,5 +32,8 @@ export default {
   },
   modalBackgroundColor: { // modal背景
     color: '#3f1214'
+  },
+  headerHeight: {
+    height: 45
   }
 }

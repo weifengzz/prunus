@@ -26,7 +26,7 @@ const headerLeft = (navigation, color = '#ffffff') => {
   return (
     <TouchableOpacity
       onPress={() => goBackAction(navigation)}>
-      <View style={{ paddingHorizontal: 15, height: 45, justifyContent: 'center' }}>
+      <View style={{ paddingHorizontal: 15, height: commonStyles.headerHeight.height, justifyContent: 'center' }}>
         <Icon size={20} color={color} name='arrow-left' type='simple_line_icon' />
       </View>
     </TouchableOpacity>
@@ -35,18 +35,21 @@ const headerLeft = (navigation, color = '#ffffff') => {
 
 /**
  * 设置配置
- * @param {any} navigation react-navigation
- * @param {string} title 标题
- * @param {any} autoHeaderLeft 自动填充导航左边组件
- * @param {any} autoHeaderRight 自动填充导航右边组件
  */
-const setStackOptions = (navigation, title, autoHeaderLeft, autoHeaderRight = true) => {
+const setStackOptions = ({
+  navigation, // react-navigation
+  title, // 标题
+  autoHeaderLeft, // 自动填充导航左边组件
+  autoHeaderRight, // 自动填充导航右边组件
+  headerLeftComponent, // 左边组件
+  headerRightComponent // 右边组件
+}) => {
   let option = {
     title,
     headerStyle: {
       backgroundColor: commonStyles.primaryColor.color,
       borderBottomWidth: 0,
-      height: Platform.OS === 'ios' ? 45 : StatusBar.currentHeight + 45,
+      height: Platform.OS === 'ios' ? commonStyles.headerHeight.height : StatusBar.currentHeight + commonStyles.headerHeight.height,
       paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
       elevation: 0,
       shadowOpacity: 0
@@ -60,10 +63,18 @@ const setStackOptions = (navigation, title, autoHeaderLeft, autoHeaderRight = tr
   if (autoHeaderLeft) {
     option['headerLeft'] = headerLeft(navigation)
   } else {
-    option['headerLeft'] = null
+    if (headerLeftComponent) {
+      option['headerLeft'] = headerLeftComponent()
+    } else {
+      option['headerLeft'] = null
+    }
   }
   if (autoHeaderRight) {
     option['headerRight'] = <View />
+  } else {
+    if (headerRightComponent) {
+      option['headerRight'] = headerRightComponent()
+    }
   }
   return option
 }

@@ -13,6 +13,10 @@ import {
 import {
   SplashScreen
 } from '../../../components'
+import {
+  HeaderLeft,
+  HeaderRight
+} from '../component'
 import setStackOptions from '../../../config/stackNavigatorOptions'
 
 /**
@@ -23,6 +27,18 @@ import setStackOptions from '../../../config/stackNavigatorOptions'
 class HomeScreen extends Component {
   componentDidMount () {
     SplashScreen.hide()
+    this.openMenu()
+  }
+
+  /**
+   * 打开deawermenu
+   */
+  openMenu () {
+    this.props.navigation.setParams({
+      openMenu: () => {
+        this.props.navigation.openDrawer()
+      }
+    })
   }
 
   render () {
@@ -30,8 +46,7 @@ class HomeScreen extends Component {
       <View style={styles.container}>
         <Text
           onPress={() => {
-            this.props.navigation.openDrawer()
-            // this.props.navigation.navigate('signin')
+            this.props.navigation.navigate('signin')
           }}
         >首页</Text>
       </View>
@@ -48,7 +63,13 @@ const styles = StyleSheet.create({
 })
 
 HomeScreen.navigationOptions = props => {
-  return setStackOptions(props.navigation, '首页', false, false)
+  const { navigation } = props
+  return setStackOptions({
+    navigation: navigation,
+    title: '首页',
+    headerLeftComponent: () => <HeaderLeft navigation={navigation} />,
+    headerRightComponent: () => <HeaderRight navigation={navigation} />
+  })
 }
 
 export default HomeScreen

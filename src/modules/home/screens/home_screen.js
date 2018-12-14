@@ -41,7 +41,7 @@ class HomeScreen extends Component {
         this.setState({
           loading: false
         })
-      }, 8000)
+      }, 1000)
     }, 50)
   }
 
@@ -79,9 +79,7 @@ class HomeScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    flex: 1
   }
 })
 

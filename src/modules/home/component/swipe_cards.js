@@ -7,13 +7,16 @@ import {
   View,
   Animated,
   PanResponder,
-  Alert
-  // Dimensions
+  Alert,
+  Dimensions
 } from 'react-native'
 
 import { clamp } from '../../../utils'
 
 import Defaults from './defaults.js'
+
+const { height } = Dimensions.get('window')
+const CONTENT_HEIGHT = height * 0.65
 
 // const viewport = Dimensions.get('window')
 const SWIPE_THRESHOLD = 120
@@ -445,13 +448,26 @@ class SwipeCards extends Component {
     return null
   }
 
+  _renderBottomView () {
+    const { bottomView } = this.props
+    return (
+      <View style={styles.bottomView}>
+        <View style={styles.contentView} />
+        { bottomView() }
+      </View>
+    )
+  }
+
   render () {
     return (
       <View style={styles.container}>
-        {this.props.stack ? this.renderStack() : this.renderCard()}
-        {this.renderNope()}
-        {this.renderMaybe()}
-        {this.renderYup()}
+        { this._renderBottomView() }
+        <View style={styles.contentView}>
+          {this.props.stack ? this.renderStack() : this.renderCard()}
+        </View>
+        {/* {this.renderNope()} */}
+        {/* {this.renderMaybe()}
+        {this.renderYup()} */}
       </View>
     )
   }
@@ -459,8 +475,11 @@ class SwipeCards extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
+    flex: 1
+  },
+  contentView: {
+    height: CONTENT_HEIGHT,
+    justifyContent: 'flex-end',
     alignItems: 'center',
     backgroundColor: 'transparent'
   },
@@ -502,6 +521,13 @@ const styles = StyleSheet.create({
   nopeText: {
     fontSize: 16,
     color: 'red'
+  },
+  bottomView: {
+    height: '100%',
+    width: '100%',
+    position: 'absolute',
+    left: 0,
+    top: 0
   }
 })
 
@@ -532,7 +558,8 @@ SwipeCards.defaultProps = {
   renderCard: (card) => null,
   style: styles.container,
   dragY: true,
-  smoothTransition: false
+  smoothTransition: false,
+  bottomView: () => null
 }
 
 export default SwipeCards

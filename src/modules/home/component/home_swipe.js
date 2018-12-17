@@ -191,6 +191,7 @@ class HomeSwipe extends Component {
     )
   }
   render () {
+    const { cardHeight } = this.props
     return (
       <View style={styles.container}>
         <View style={styles.cardContentView}
@@ -199,10 +200,13 @@ class HomeSwipe extends Component {
           }}>
           <SwipeCards
             cards={CARDS}
-            renderCard={(cardData) => <Card {...cardData} />}
+            cardHeight={this.props.cardHeight}
+            renderCard={(cardData) => <Card {...cardData} cardHeight={cardHeight} stackDepth={3} stackOffsetY={15} />}
             renderNoMoreCards={() => <Text>没有更多卡片</Text>}
-            // loop
+            loop
             stack
+            stackDepth={3}
+            stackOffsetY={15}
             handleYup={(card) => this.handleYup(card)}
             handleNope={(card) => this.handleNope(card)}
             handleMaybe={(card) => this.handleMaybe(card)}
@@ -215,6 +219,10 @@ class HomeSwipe extends Component {
       </View>
     )
   }
+}
+
+HomeSwipe.defaultProps = {
+  cardHeight: 0
 }
 
 const styles = StyleSheet.create({

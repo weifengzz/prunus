@@ -8,12 +8,19 @@
 import React, { Component } from 'react'
 import {
   View,
-  StyleSheet
+  StyleSheet,
+  Dimensions
 } from 'react-native'
 import {
   Icon,
   TouchableOpacity
 } from '../../../components'
+import { px } from '../../../utils'
+
+const { width } = Dimensions.get('window')
+const LARGE_IMG_WIDTH = (width - 40) * 0.2315 - px(10)
+const SMALL_IMG_WIDTH = (width - 40) * 0.179 - px(10)
+
 /**
  * @class
  * @classdesc home底部按钮界面
@@ -57,7 +64,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     flexDirection: 'row',
-    paddingHorizontal: 20
+    paddingHorizontal: px(20)
   },
   itemSmallView: {
     flex: 2,
@@ -70,20 +77,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   itemSmallBtnView: {
-    height: 50,
-    width: 50,
+    height: SMALL_IMG_WIDTH,
+    width: SMALL_IMG_WIDTH,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 25,
+    borderRadius: SMALL_IMG_WIDTH / 2,
     borderWidth: 6,
     borderColor: '#f2f2f2'
   },
   itemLargeBtnView: {
-    height: 60,
-    width: 60,
+    height: LARGE_IMG_WIDTH,
+    width: LARGE_IMG_WIDTH,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 30,
+    borderRadius: LARGE_IMG_WIDTH / 2,
     borderWidth: 6,
     borderColor: '#f2f2f2'
   }

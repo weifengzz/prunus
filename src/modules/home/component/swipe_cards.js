@@ -15,8 +15,7 @@ import { clamp } from '../../../utils'
 
 import Defaults from './defaults.js'
 
-const { height, width } = Dimensions.get('window')
-const CONTENT_HEIGHT = height * 0.65
+const { width } = Dimensions.get('window')
 
 // const viewport = Dimensions.get('window')
 const SWIPE_THRESHOLD = 120
@@ -449,20 +448,21 @@ class SwipeCards extends Component {
   }
 
   _renderBottomView () {
-    const { bottomView } = this.props
+    const { bottomView, cardHeight } = this.props
     return (
       <View style={styles.bottomView}>
-        <View style={styles.contentView} />
+        <View style={[styles.contentView, { height: cardHeight }]} />
         { bottomView() }
       </View>
     )
   }
 
   render () {
+    const { cardHeight, stackDepth, stackOffsetY } = this.props
     return (
       <View style={styles.container}>
         { this._renderBottomView() }
-        <View style={styles.contentView}>
+        <View style={[styles.contentView, { height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }]}>
           {this.props.stack ? this.renderStack() : this.renderCard()}
         </View>
         {/* {this.renderNope()} */}
@@ -478,7 +478,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
   contentView: {
-    height: CONTENT_HEIGHT,
     justifyContent: 'flex-end',
     alignItems: 'center',
     backgroundColor: 'transparent'
@@ -559,7 +558,8 @@ SwipeCards.defaultProps = {
   style: styles.container,
   dragY: true,
   smoothTransition: false,
-  bottomView: () => null
+  bottomView: () => null,
+  cardHeight: 0
 }
 
 export default SwipeCards

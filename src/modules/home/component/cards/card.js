@@ -18,9 +18,8 @@ import {
   TouchableOpacity
 } from '../../../../components'
 
-const { width, height } = Dimensions.get('window')
+const { width } = Dimensions.get('window')
 const CARD_WIDTH = width * 0.94
-const CARD_HEIGHT = height * 0.6
 
 /**
  * @class
@@ -51,14 +50,16 @@ class Card extends Component {
       </View>
     )
   }
+
   render () {
+    const { cardHeight, stackOffsetY, stackDepth } = this.props
     return (
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => {
           Alert.alert('点击了小卡片')
         }}>
-        <View style={[styles.card, { backgroundColor: this.props.backgroundColor }]}>
+        <View style={[styles.card, { backgroundColor: this.props.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }]}>
           {
             this._renderContent()
           }
@@ -68,10 +69,15 @@ class Card extends Component {
   }
 }
 
+Card.defaultProps = {
+  cardHeight: 0,
+  stackOffsetY: 15,
+  stackDepth: 3
+}
+
 const styles = StyleSheet.create({
   card: {
     width: CARD_WIDTH,
-    height: CARD_HEIGHT,
     borderRadius: 10
   }
 })

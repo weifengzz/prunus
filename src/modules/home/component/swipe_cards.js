@@ -7,7 +7,6 @@ import {
   View,
   Animated,
   PanResponder,
-  Alert,
   Dimensions
 } from 'react-native'
 
@@ -518,7 +517,7 @@ SwipeCards.defaultProps = {
   nopeText: 'Nope!',
   maybeText: 'Maybe!',
   yupText: 'Yup!',
-  onClickHandler: () => { Alert.alert('tap') },
+  onClickHandler: () => {},
   onDragStart: () => {},
   onDragRelease: () => {},
   cardRemoved: (ix) => null,

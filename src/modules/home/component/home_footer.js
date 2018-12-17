@@ -31,27 +31,27 @@ class HomeFooter extends Component {
       <View style={styles.bottomBottomView}>
         <View style={styles.itemSmallView}>
           <TouchableOpacity style={styles.itemSmallBtnView}>
-            <Icon size={15} color={'green'} name='home' type='simple_line_icon' />
+            <Icon size={SMALL_IMG_WIDTH / 2.2} color={'orange'} name='reload1' type='ant_design' />
           </TouchableOpacity>
         </View>
         <View style={styles.itemLargeView}>
           <View style={styles.itemLargeBtnView}>
-            <Icon size={20} color={'red'} name='home' type='simple_line_icon' />
+            <Icon size={LARGE_IMG_WIDTH / 2.2} color={'#bdbdbd'} name='close' type='ant_design' />
           </View>
         </View>
         <View style={styles.itemSmallView}>
           <View style={styles.itemSmallBtnView}>
-            <Icon size={15} color={'orange'} name='home' type='simple_line_icon' />
+            <Icon size={SMALL_IMG_WIDTH / 2.2} color={'purple'} name='smileo' type='ant_design' />
           </View>
         </View>
         <View style={styles.itemLargeView}>
           <View style={styles.itemLargeBtnView}>
-            <Icon size={20} color={'purple'} name='home' type='simple_line_icon' />
+            <Icon size={LARGE_IMG_WIDTH / 2.4} color={'red'} name='heart' type='ant_design' />
           </View>
         </View>
         <View style={styles.itemSmallView}>
           <View style={styles.itemSmallBtnView}>
-            <Icon size={15} color={'blue'} name='home' type='simple_line_icon' />
+            <Icon size={SMALL_IMG_WIDTH / 2.2} color={'#2b7fd7'} name='staro' type='ant_design' />
           </View>
         </View>
       </View>

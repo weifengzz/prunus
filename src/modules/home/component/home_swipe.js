@@ -185,23 +185,38 @@ class HomeSwipe extends Component {
   handleMaybe (card) {
     console.log(`Maybe for ${card.text}`)
   }
-  _renderBottomView () {
+  /**
+   * 加载底部组件
+   */
+  renderFooter () {
     return (
-      <HomeFooter />
+      <HomeFooter ref={(homeFooter) => { this.homeFooter = homeFooter }} />
+    )
+  }
+
+  /**
+   * 加载
+   */
+  _renderCards (cardData) {
+    const { cardHeight } = this.props
+    return (
+      <Card
+        {...cardData}
+        cardHeight={cardHeight}
+        stackDepth={3}
+        stackOffsetY={15}
+        ref={(card) => { this.card = card }}
+      />
     )
   }
   render () {
-    const { cardHeight } = this.props
     return (
       <View style={styles.container}>
-        <View style={styles.cardContentView}
-          onStartShouldSetResponder={() => {
-            return true
-          }}>
+        <View style={styles.cardContentView}>
           <SwipeCards
             cards={CARDS}
             cardHeight={this.props.cardHeight}
-            renderCard={(cardData) => <Card {...cardData} cardHeight={cardHeight} stackDepth={3} stackOffsetY={15} />}
+            renderCard={(cardData) => { return this._renderCards(cardData) }}
             renderNoMoreCards={() => <Text>没有更多卡片</Text>}
             loop
             stack
@@ -212,7 +227,9 @@ class HomeSwipe extends Component {
             handleMaybe={(card) => this.handleMaybe(card)}
             hasMaybeAction
             bottomView={() => {
-              return this._renderBottomView()
+              return this.renderFooter()
+            }}
+            onDragStart={() => {
             }}
           />
         </View>

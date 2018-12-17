@@ -18,45 +18,13 @@ import Defaults from './defaults.js'
 const { width } = Dimensions.get('window')
 
 // const viewport = Dimensions.get('window')
-const SWIPE_THRESHOLD = 120
+const SWIPE_THRESHOLD = 100
 
 // Components could be unloaded and loaded and we will loose the users currentIndex, we can persist it here.
 let currentIndex = {}
 let guid = 0
 
 class SwipeCards extends Component {
-  // static propTypes = {
-  //   cards: PropTypes.array,
-  //   cardKey: PropTypes.string,
-  //   hasMaybeAction: PropTypes.bool,
-  //   loop: PropTypes.bool,
-  //   onLoop: PropTypes.func,
-  //   allowGestureTermination: PropTypes.bool,
-  //   stack: PropTypes.bool,
-  //   stackGuid: PropTypes.string,
-  //   stackDepth: PropTypes.number,
-  //   stackOffsetX: PropTypes.number,
-  //   stackOffsetY: PropTypes.number,
-  //   renderNoMoreCards: PropTypes.func,
-  //   showYup: PropTypes.bool,
-  //   showMaybe: PropTypes.bool,
-  //   showNope: PropTypes.bool,
-  //   handleYup: PropTypes.func,
-  //   handleMaybe: PropTypes.func,
-  //   handleNope: PropTypes.func,
-  //   yupText: PropTypes.string,
-  //   yupView: PropTypes.element,
-  //   maybeText: PropTypes.string,
-  //   maybeView: PropTypes.element,
-  //   nopeText: PropTypes.string,
-  //   noView: PropTypes.element,
-  //   onClickHandler: PropTypes.func,
-  //   renderCard: PropTypes.func,
-  //   cardRemoved: PropTypes.func,
-  //   dragY: PropTypes.bool,
-  //   smoothTransition: PropTypes.bool
-  // };
-
   constructor (props) {
     super(props)
 

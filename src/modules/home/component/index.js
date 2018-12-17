@@ -13,10 +13,16 @@ import HeaderRight from './header_right'
 import SwipeCards from './swipe_cards'
 // 首页卡片切换组件
 import HomeSwipe from './home_swipe'
+// 首页底部按钮组件
+import HomeFooter from './home_footer'
+// 卡片组件
+import { Card } from './cards'
 
 export {
   HeaderLeft,
   HeaderRight,
   SwipeCards,
-  HomeSwipe
+  HomeSwipe,
+  HomeFooter,
+  Card
 }

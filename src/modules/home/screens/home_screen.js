@@ -41,7 +41,7 @@ class HomeScreen extends Component {
         this.setState({
           loading: false
         })
-      }, 1000)
+      }, 4000)
     }, 50)
   }
 

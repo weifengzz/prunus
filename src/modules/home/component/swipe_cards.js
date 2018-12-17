@@ -15,7 +15,7 @@ import { clamp } from '../../../utils'
 
 import Defaults from './defaults.js'
 
-const { height } = Dimensions.get('window')
+const { height, width } = Dimensions.get('window')
 const CONTENT_HEIGHT = height * 0.65
 
 // const viewport = Dimensions.get('window')
@@ -315,13 +315,13 @@ class SwipeCards extends Component {
       let opacity = 0.25 + (0.75 / cards.length) * (i + 1)
       let lastOpacity = 0.25 + (0.75 / cards.length) * i
 
-      let scale = 0.85 + (0.15 / cards.length) * (i + 1)
-      let lastScale = 0.85 + (0.15 / cards.length) * i
+      let scale = 0.9 + (0.1 / cards.length) * (i + 1)
+      let lastScale = 0.9 + (0.1 / cards.length) * i
 
       let style = {
         position: 'absolute',
         top: this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOffsetY, offsetY] }),
-        left: this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOffsetX, offsetX] }),
+        left: width * 0.06 / 2 || this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOffsetX, offsetX] }),
         opacity: this.props.smoothTransition ? 1 : this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOpacity, opacity] }),
         transform: [{ scale: this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastScale, scale] }) }],
         elevation: i * 10
@@ -539,9 +539,9 @@ SwipeCards.defaultProps = {
   onLoop: () => null,
   allowGestureTermination: true,
   stack: false,
-  stackDepth: 5,
-  stackOffsetX: 25,
-  stackOffsetY: 0,
+  stackDepth: 3,
+  stackOffsetX: 0,
+  stackOffsetY: 15,
   showYup: true,
   showMaybe: true,
   showNope: true,

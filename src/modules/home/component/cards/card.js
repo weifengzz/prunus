@@ -14,9 +14,9 @@ import {
   View,
   Image
 } from 'react-native'
-// import {
-//   TouchableOpacity
-// } from '../../../../components'
+import {
+  TouchableOpacity
+} from '../../../../components'
 
 const { width } = Dimensions.get('window')
 const CARD_WIDTH = width * 0.94
@@ -54,7 +54,7 @@ class Card extends Component {
   render () {
     const { cardHeight, stackOffsetY, stackDepth } = this.props
     return (
-      <View
+      <TouchableOpacity
         activeOpacity={1}
         onPress={() => {
           Alert.alert('点击了小卡片')
@@ -64,7 +64,7 @@ class Card extends Component {
             this._renderContent()
           }
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
 }

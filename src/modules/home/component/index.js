@@ -9,20 +9,20 @@
 import HeaderLeft from './header_left'
 // 头部右边按钮
 import HeaderRight from './header_right'
-// 卡片切换组件
-import SwipeCards from './swipe_cards'
 // 首页卡片切换组件
 import HomeSwipe from './home_swipe'
 // 首页底部按钮组件
 import HomeFooter from './home_footer'
 // 卡片组件
 import { Card } from './cards'
+// 卡片切换组件
+import SwipeCards from './swipe_cards'
 
 export {
   HeaderLeft,
   HeaderRight,
-  SwipeCards,
   HomeSwipe,
   HomeFooter,
-  Card
+  Card,
+  SwipeCards
 }

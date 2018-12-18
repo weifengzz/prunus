@@ -7,17 +7,20 @@ import {
   View,
   Animated,
   PanResponder,
-  Dimensions
+  Dimensions,
+  Alert
 } from 'react-native'
 
-import { clamp } from '../../../utils'
+import { clamp } from '../../../../utils'
+import { getVX, getDeceleration } from './util'
 
 import Defaults from './defaults.js'
 
-const { width } = Dimensions.get('window')
+const { width: G_WIDTH, height: G_HEIGHT } = Dimensions.get('window')
+console.log('G_WIDTH', G_WIDTH)
 
 // const viewport = Dimensions.get('window')
-const SWIPE_THRESHOLD = 100
+const SWIPE_THRESHOLD = G_WIDTH / 3
 
 // Components could be unloaded and loaded and we will loose the users currentIndex, we can persist it here.
 let currentIndex = {}
@@ -110,9 +113,11 @@ class SwipeCards extends Component {
           if (this.props.smoothTransition) {
             this._advanceState()
           } else {
+            let vex = hasMovedUp && this.props.hasMaybeAction ? velocity * getVX(1.82) : velocity * getVX(1.35)
+            let de = hasMovedUp && this.props.hasMaybeAction ? getDeceleration(0.987) : getDeceleration(0.9855)
             this.cardAnimation = Animated.decay(this.state.pan, {
-              velocity: { x: velocity, y: vy },
-              deceleration: 0.98
+              velocity: { x: vex, y: vy },
+              deceleration: de
             })
             this.cardAnimation.start(status => {
               if (status.finished) this._advanceState()
@@ -131,7 +136,7 @@ class SwipeCards extends Component {
 
   _forceLeftSwipe () {
     this.cardAnimation = Animated.timing(this.state.pan, {
-      toValue: { x: -500, y: 0 }
+      toValue: { x: -G_WIDTH, y: 0 }
     }).start(status => {
       if (status.finished) this._advanceState()
       else this._resetState()
@@ -144,7 +149,7 @@ class SwipeCards extends Component {
 
   _forceUpSwipe () {
     this.cardAnimation = Animated.timing(this.state.pan, {
-      toValue: { x: 0, y: 500 }
+      toValue: { x: 0, y: G_HEIGHT }
     }).start(status => {
       if (status.finished) this._advanceState()
       else this._resetState()
@@ -157,7 +162,7 @@ class SwipeCards extends Component {
 
   _forceRightSwipe () {
     this.cardAnimation = Animated.timing(this.state.pan, {
-      toValue: { x: 500, y: 0 }
+      toValue: { x: G_WIDTH, y: 0 }
     }).start(status => {
       if (status.finished) this._advanceState()
       else this._resetState()
@@ -287,7 +292,7 @@ class SwipeCards extends Component {
       let style = {
         position: 'absolute',
         top: this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOffsetY, offsetY] }),
-        left: width * 0.06 / 2 || this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOffsetX, offsetX] }),
+        left: G_WIDTH * 0.06 / 2 || this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOffsetX, offsetX] }),
         opacity: this.props.smoothTransition ? 1 : this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOpacity, opacity] }),
         transform: [{ scale: this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastScale, scale] }) }],
         elevation: i * 10
@@ -298,7 +303,7 @@ class SwipeCards extends Component {
         let { pan } = this.state
         let [translateX, translateY] = [pan.x, pan.y]
 
-        let rotate = pan.x.interpolate({ inputRange: [-200, 0, 200], outputRange: ['-30deg', '0deg', '30deg'] })
+        let rotate = pan.x.interpolate({ inputRange: [-200, 0, 200], outputRange: ['-20deg', '0deg', '20deg'] })
         // let opacity = this.props.smoothTransition ? 1 : pan.x.interpolate({ inputRange: [-200, 0, 200], outputRange: [0.5, 1, 0.5] })
 
         let animatedCardStyles = {
@@ -517,7 +522,7 @@ SwipeCards.defaultProps = {
   nopeText: 'Nope!',
   maybeText: 'Maybe!',
   yupText: 'Yup!',
-  onClickHandler: () => {},
+  onClickHandler: () => { Alert.alert('onClickHandler') },
   onDragStart: () => {},
   onDragRelease: () => {},
   cardRemoved: (ix) => null,

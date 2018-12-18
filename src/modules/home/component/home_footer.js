@@ -27,11 +27,15 @@ const SMALL_IMG_WIDTH = (width - 40) * 0.179 - px(10)
  */
 class HomeFooter extends Component {
   render () {
-    const { onUnLikePress, onLikePress, onCollectionPress } = this.props
+    const { onUnLikePress, onLikePress, onCollectionPress, onPrevPress, onRecommendPress } = this.props
     return (
       <View style={styles.bottomBottomView}>
         <View style={styles.itemSmallView}>
-          <TouchableOpacity style={styles.itemSmallBtnView}>
+          <TouchableOpacity
+            onPress={() => {
+              onPrevPress()
+            }}
+            style={styles.itemSmallBtnView}>
             <Icon size={SMALL_IMG_WIDTH / 2.2} color={'orange'} name='reload1' type='ant_design' />
           </TouchableOpacity>
         </View>
@@ -45,9 +49,13 @@ class HomeFooter extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.itemSmallView}>
-          <View style={styles.itemSmallBtnView}>
+          <TouchableOpacity
+            onPress={() => {
+              onRecommendPress()
+            }}
+            style={styles.itemSmallBtnView}>
             <Icon size={SMALL_IMG_WIDTH / 2.2} color={'purple'} name='smileo' type='ant_design' />
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={styles.itemLargeView}>
           <TouchableOpacity
@@ -75,7 +83,9 @@ class HomeFooter extends Component {
 HomeFooter.defaultProps = {
   onLikePress: () => {},
   onUnLikePress: () => {},
-  onCollectionPress: () => {}
+  onCollectionPress: () => {},
+  onPrevPress: () => {},
+  onRecommendPress: () => {}
 }
 
 const styles = StyleSheet.create({

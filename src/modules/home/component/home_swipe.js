@@ -8,7 +8,8 @@ import React, { Component } from 'react'
 import {
   View,
   StyleSheet,
-  Text
+  Text,
+  Alert
 } from 'react-native'
 import {
 } from '../../../components'
@@ -199,7 +200,35 @@ class HomeSwipe extends Component {
           this.swipecards._forceRightSwipe()
         }}
         onCollectionPress={() => {
-          this.swipecards._forceUpSwipe()
+          Alert.alert('收藏成功！')
+        }}
+        onPrevPress={() => {
+          Alert.alert(
+            '反悔',
+            '反悔要看一段广告哦',
+            [
+              { text: '取消' },
+              { text: '反悔',
+                onPress: () => {
+                  this.swipecards._goToPrevCard()
+                } }
+            ],
+            { cancelable: false }
+          )
+        }}
+        onRecommendPress={() => {
+          Alert.alert(
+            '推荐',
+            '为我推荐此类内容',
+            [
+              { text: '取消' },
+              { text: '推荐',
+                onPress: () => {
+                  this.swipecards._forceUpSwipe()
+                } }
+            ],
+            { cancelable: false }
+          )
         }}
       />
     )

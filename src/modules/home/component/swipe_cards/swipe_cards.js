@@ -11,8 +11,14 @@ import {
   Alert
 } from 'react-native'
 
-import { clamp } from '../../../../utils'
-import { getVX, getDeceleration } from './util'
+/**
+ * 衰减系数动画注释
+ */
+// import { clamp } from '../../../../utils'
+/**
+ * 衰减系数动画注释
+ */
+// import { getVX, getDeceleration } from './util'
 
 import Defaults from './defaults.js'
 
@@ -68,19 +74,26 @@ class SwipeCards extends Component {
       onPanResponderRelease: (e, { vx, vy, dx, dy }) => {
         this.props.onDragRelease()
         this.state.pan.flattenOffset()
-        let velocity
+
+        /**
+         * 衰减系数动画注释
+         */
+        // let velocity
         // meaning the gesture did not cover any distance
         if (Math.abs(dx) <= 5 && Math.abs(dy) <= 5) {
           this.props.onClickHandler(this.state.card)
         }
 
-        if (vx > 0) {
-          velocity = clamp(vx, 3, 5)
-        } else if (vx < 0) {
-          velocity = clamp(vx * -1, 3, 5) * -1
-        } else {
-          velocity = dx < 0 ? -3 : 3
-        }
+        /**
+         * 衰减系数动画注释
+         */
+        // if (vx > 0) {
+        //   velocity = clamp(vx, 3, 5)
+        // } else if (vx < 0) {
+        //   velocity = clamp(vx * -1, 3, 5) * -1
+        // } else {
+        //   velocity = dx < 0 ? -3 : 3
+        // }
 
         const hasSwipedHorizontally = Math.abs(this.state.pan.x._value) > SWIPE_THRESHOLD
         const hasSwipedVertically = Math.abs(this.state.pan.y._value) > SWIPE_THRESHOLD
@@ -112,12 +125,28 @@ class SwipeCards extends Component {
           if (this.props.smoothTransition) {
             this._advanceState()
           } else {
-            let vex = hasMovedUp && this.props.hasMaybeAction ? velocity * getVX(1.82) : velocity * getVX(1.35)
-            let de = hasMovedUp && this.props.hasMaybeAction ? getDeceleration(0.987) : getDeceleration(0.9855)
-            this.cardAnimation = Animated.decay(this.state.pan, {
-              velocity: { x: vex, y: vy },
-              deceleration: de
-            })
+            if (hasMovedRight) {
+              this.cardAnimation = Animated.timing(this.state.pan, {
+                toValue: { x: G_WIDTH + G_WIDTH / 3, y: 0 }
+              })
+            } else if (hasMovedLeft) {
+              this.cardAnimation = Animated.timing(this.state.pan, {
+                toValue: { x: -G_WIDTH - G_WIDTH / 3, y: 0 }
+              })
+            } else {
+              this.cardAnimation = Animated.timing(this.state.pan, {
+                toValue: { x: 0, y: -G_HEIGHT + G_HEIGHT / 5 }
+              })
+            }
+            /**
+             * 衰减系数动画
+             */
+            // let vex = hasMovedUp && this.props.hasMaybeAction ? velocity * getVX(1.82) : velocity * getVX(1.35)
+            // let de = hasMovedUp && this.props.hasMaybeAction ? getDeceleration(0.987) : getDeceleration(0.9855)
+            // this.cardAnimation = Animated.decay(this.state.pan, {
+            //   velocity: { x: vex, y: vy },
+            //   deceleration: de
+            // })
             this.cardAnimation.start(status => {
               if (status.finished) this._advanceState()
               else this._resetState()
@@ -135,7 +164,7 @@ class SwipeCards extends Component {
 
   _forceLeftSwipe () {
     this.cardAnimation = Animated.timing(this.state.pan, {
-      toValue: { x: -G_WIDTH - G_WIDTH / 2, y: 0 }
+      toValue: { x: -G_WIDTH - G_WIDTH / 3, y: 0 }
     }).start(status => {
       if (status.finished) this._advanceState()
       else this._resetState()
@@ -148,7 +177,7 @@ class SwipeCards extends Component {
 
   _forceUpSwipe () {
     this.cardAnimation = Animated.timing(this.state.pan, {
-      toValue: { x: 0, y: -G_HEIGHT }
+      toValue: { x: 0, y: -G_HEIGHT + G_HEIGHT / 5 }
     }).start(status => {
       if (status.finished) this._advanceState()
       else this._resetState()
@@ -161,7 +190,7 @@ class SwipeCards extends Component {
 
   _forceRightSwipe () {
     this.cardAnimation = Animated.timing(this.state.pan, {
-      toValue: { x: G_WIDTH + G_WIDTH / 2, y: 0 }
+      toValue: { x: G_WIDTH + G_WIDTH / 3, y: 0 }
     }).start(status => {
       if (status.finished) this._advanceState()
       else this._resetState()

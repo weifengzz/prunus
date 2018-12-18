@@ -27,6 +27,7 @@ const SMALL_IMG_WIDTH = (width - 40) * 0.179 - px(10)
  */
 class HomeFooter extends Component {
   render () {
+    const { onUnLikePress, onLikePress, onCollectionPress } = this.props
     return (
       <View style={styles.bottomBottomView}>
         <View style={styles.itemSmallView}>
@@ -35,9 +36,13 @@ class HomeFooter extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.itemLargeView}>
-          <View style={styles.itemLargeBtnView}>
+          <TouchableOpacity
+            onPress={() => {
+              onUnLikePress()
+            }}
+            style={styles.itemLargeBtnView}>
             <Icon size={LARGE_IMG_WIDTH / 2.2} color={'#bdbdbd'} name='close' type='ant_design' />
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={styles.itemSmallView}>
           <View style={styles.itemSmallBtnView}>
@@ -45,18 +50,32 @@ class HomeFooter extends Component {
           </View>
         </View>
         <View style={styles.itemLargeView}>
-          <View style={styles.itemLargeBtnView}>
+          <TouchableOpacity
+            onPress={() => {
+              onLikePress()
+            }}
+            style={styles.itemLargeBtnView}>
             <Icon size={LARGE_IMG_WIDTH / 2.4} color={'red'} name='heart' type='ant_design' />
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={styles.itemSmallView}>
-          <View style={styles.itemSmallBtnView}>
+          <TouchableOpacity
+            onPress={() => {
+              onCollectionPress()
+            }}
+            style={styles.itemSmallBtnView}>
             <Icon size={SMALL_IMG_WIDTH / 2.2} color={'#2b7fd7'} name='staro' type='ant_design' />
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
     )
   }
+}
+
+HomeFooter.defaultProps = {
+  onLikePress: () => {},
+  onUnLikePress: () => {},
+  onCollectionPress: () => {}
 }
 
 const styles = StyleSheet.create({

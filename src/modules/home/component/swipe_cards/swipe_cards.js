@@ -135,7 +135,7 @@ class SwipeCards extends Component {
 
   _forceLeftSwipe () {
     this.cardAnimation = Animated.timing(this.state.pan, {
-      toValue: { x: -G_WIDTH, y: 0 }
+      toValue: { x: -G_WIDTH - G_WIDTH / 2, y: 0 }
     }).start(status => {
       if (status.finished) this._advanceState()
       else this._resetState()
@@ -148,7 +148,7 @@ class SwipeCards extends Component {
 
   _forceUpSwipe () {
     this.cardAnimation = Animated.timing(this.state.pan, {
-      toValue: { x: 0, y: G_HEIGHT }
+      toValue: { x: 0, y: -G_HEIGHT }
     }).start(status => {
       if (status.finished) this._advanceState()
       else this._resetState()
@@ -161,7 +161,7 @@ class SwipeCards extends Component {
 
   _forceRightSwipe () {
     this.cardAnimation = Animated.timing(this.state.pan, {
-      toValue: { x: G_WIDTH, y: 0 }
+      toValue: { x: G_WIDTH + G_WIDTH / 2, y: 0 }
     }).start(status => {
       if (status.finished) this._advanceState()
       else this._resetState()

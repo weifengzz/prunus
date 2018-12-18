@@ -190,7 +190,18 @@ class HomeSwipe extends Component {
    */
   renderFooter () {
     return (
-      <HomeFooter ref={(homeFooter) => { this.homeFooter = homeFooter }} />
+      <HomeFooter
+        ref={(homeFooter) => { this.homeFooter = homeFooter }}
+        onUnLikePress={() => {
+          this.swipecards._forceLeftSwipe()
+        }}
+        onLikePress={() => {
+          this.swipecards._forceRightSwipe()
+        }}
+        onCollectionPress={() => {
+          this.swipecards._forceUpSwipe()
+        }}
+      />
     )
   }
 
@@ -214,6 +225,7 @@ class HomeSwipe extends Component {
       <View style={styles.container}>
         <View style={styles.cardContentView}>
           <SwipeCards
+            ref={(swipecards) => { this.swipecards = swipecards }}
             cards={CARDS}
             cardHeight={this.props.cardHeight}
             renderCard={(cardData) => { return this._renderCards(cardData) }}

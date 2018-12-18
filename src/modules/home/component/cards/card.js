@@ -52,12 +52,12 @@ class Card extends Component {
   }
 
   render () {
-    const { cardHeight, stackOffsetY, stackDepth } = this.props
+    const { cardHeight, stackOffsetY, stackDepth, text } = this.props
     return (
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => {
-          Alert.alert('点击了小卡片')
+          Alert.alert('点击了小卡片' + text)
         }}>
         <View style={[styles.card, { backgroundColor: this.props.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }]}>
           {

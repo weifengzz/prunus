@@ -17,7 +17,6 @@ import { getVX, getDeceleration } from './util'
 import Defaults from './defaults.js'
 
 const { width: G_WIDTH, height: G_HEIGHT } = Dimensions.get('window')
-console.log('G_WIDTH', G_WIDTH)
 
 // const viewport = Dimensions.get('window')
 const SWIPE_THRESHOLD = G_WIDTH / 3

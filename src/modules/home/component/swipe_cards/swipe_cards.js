@@ -179,6 +179,7 @@ class SwipeCards extends Component {
     this.cardAnimation = Animated.timing(this.state.pan, {
       toValue: { x: -G_WIDTH - G_WIDTH / 3, y: 0 }
     }).start(status => {
+      this.props.handleNope(this.state.card)
       if (status.finished) this._advanceState()
       else this._resetState()
 
@@ -192,6 +193,7 @@ class SwipeCards extends Component {
     this.cardAnimation = Animated.timing(this.state.pan, {
       toValue: { x: 0, y: -G_HEIGHT + G_HEIGHT / 5 }
     }).start(status => {
+      this.props.handleMaybe(this.state.card)
       if (status.finished) this._advanceState()
       else this._resetState()
 
@@ -205,6 +207,7 @@ class SwipeCards extends Component {
     this.cardAnimation = Animated.timing(this.state.pan, {
       toValue: { x: G_WIDTH + G_WIDTH / 3, y: 0 }
     }).start(status => {
+      this.props.handleYup(this.state.card)
       if (status.finished) this._advanceState()
       else this._resetState()
 

@@ -7,7 +7,6 @@
 
 import React, { Component } from 'react'
 import {
-  Alert,
   Text,
   StyleSheet,
   Dimensions,
@@ -17,6 +16,7 @@ import {
 import {
   TouchableOpacity
 } from '../../../../components'
+import { withNavigation } from 'react-navigation'
 
 const { width } = Dimensions.get('window')
 const CARD_WIDTH = width * 0.94
@@ -52,12 +52,12 @@ class Card extends Component {
   }
 
   render () {
-    const { cardHeight, stackOffsetY, stackDepth, text } = this.props
+    const { cardHeight, stackOffsetY, stackDepth, navigation } = this.props
     return (
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => {
-          Alert.alert('点击了小卡片' + text)
+          navigation.navigate('card_detail')
         }}>
         <View style={[styles.card, { backgroundColor: this.props.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }]}>
           {
@@ -82,4 +82,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Card
+export default withNavigation(Card)

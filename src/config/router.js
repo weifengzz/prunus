@@ -23,7 +23,7 @@ import { createAppContainer } from '@react-navigation/native'
 import { GuideScreen } from '../modules/guide/screens'
 
 // 主页面
-import { HomeScreen } from '../modules/home/screens'
+import { HomeScreen, CardDetailScreen } from '../modules/home/screens'
 
 // 登录注册相关界面
 import { SigninScreen, ProfileScreen } from '../modules/profile/screens'
@@ -31,12 +31,21 @@ import { SigninScreen, ProfileScreen } from '../modules/profile/screens'
 // 自定义抽屉
 import { DrawerContent } from '../modules/drawer'
 
-// 主界面
+/**
+ * 主界面
+ */
 const mainNavigator = createStackNavigator({
   home: {
     screen: HomeScreen,
     path: '/drawer/main/home'
+  },
+  card_detail: {
+    screen: CardDetailScreen,
+    path: '/drawer/main/card_detail'
   }
+},
+{
+  mode: 'card'
 })
 
 /**

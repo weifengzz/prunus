@@ -6,7 +6,7 @@
  */
 import Dimensions from 'Dimensions'
 
-const { width: G_WIDTH } = Dimensions.get('window')
+const { width: G_WIDTH, height: G_HEIGHT } = Dimensions.get('window')
 
 // iphone-se的宽度
 const IPHONE_SE_WIDTH = 320
@@ -33,7 +33,31 @@ const getDeceleration = (coefficient) => {
   return r < 1 ? r : 0.99
 }
 
+/**
+ * 图片消失x轴速度
+ * @param {*} vx 速度
+ */
+const getSpeedVX = (vx) => {
+  let v = G_WIDTH * 0.8
+  let s = 1 / vx * v
+  let k = G_WIDTH / 6
+  return s > v ? v : (s < k ? k : s)
+}
+
+/**
+ * 图片消失y轴速度
+ * @param {*} vx 速度
+ */
+const getSpeedVY = (vy) => {
+  let v = G_HEIGHT * 0.6
+  let s = 1 / vy * v
+  let k = G_HEIGHT / 8
+  return s > v ? v : (s < k ? k : s)
+}
+
 export {
   getVX,
-  getDeceleration
+  getDeceleration,
+  getSpeedVX,
+  getSpeedVY
 }

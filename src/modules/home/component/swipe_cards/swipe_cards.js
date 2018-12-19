@@ -19,17 +19,23 @@ import {
  * 衰减系数动画注释
  */
 // import { getVX, getDeceleration } from './util'
+import { getSpeedVX, getSpeedVY } from './util'
 
 import Defaults from './defaults.js'
 
 const { width: G_WIDTH, height: G_HEIGHT } = Dimensions.get('window')
 
 // const viewport = Dimensions.get('window')
-const SWIPE_THRESHOLD = G_WIDTH / 3
+const SWIPE_THRESHOLD = G_WIDTH / 2.5
 
 // Components could be unloaded and loaded and we will loose the users currentIndex, we can persist it here.
 let currentIndex = {}
 let guid = 0
+
+// 开始时间戳
+this.startTimestamp = 0
+// 结束时间戳
+this.endTimestamp = 0
 
 class SwipeCards extends Component {
   constructor (props) {
@@ -63,6 +69,8 @@ class SwipeCards extends Component {
       onPanResponderGrant: (e, gestureState) => {
         this.state.pan.setOffset({ x: this.state.pan.x._value, y: this.state.pan.y._value })
         this.state.pan.setValue({ x: 0, y: 0 })
+        // 滑动开始，记录时间戳
+        this.startTimestamp = e.nativeEvent.timestamp
       },
 
       onPanResponderTerminationRequest: (evt, gestureState) => this.props.allowGestureTermination,
@@ -74,6 +82,8 @@ class SwipeCards extends Component {
       onPanResponderRelease: (e, { vx, vy, dx, dy }) => {
         this.props.onDragRelease()
         this.state.pan.flattenOffset()
+        // 滑动结束时间戳
+        this.endTimestamp = e.nativeEvent.timestamp
 
         /**
          * 衰减系数动画注释
@@ -95,14 +105,14 @@ class SwipeCards extends Component {
         //   velocity = dx < 0 ? -3 : 3
         // }
 
-        const hasSwipedHorizontally = Math.abs(this.state.pan.x._value) > SWIPE_THRESHOLD
-        const hasSwipedVertically = Math.abs(this.state.pan.y._value) > SWIPE_THRESHOLD
+        const hasSwipedHorizontally = (Math.abs(this.state.pan.x._value) > SWIPE_THRESHOLD) || (this.endTimestamp - this.startTimestamp < 300 && Math.abs(dx) > 20)
+        const hasSwipedVertically = (Math.abs(this.state.pan.y._value) > SWIPE_THRESHOLD) || (this.endTimestamp - this.startTimestamp < 300 && Math.abs(dy) > 20)
         if (hasSwipedHorizontally || (hasSwipedVertically && this.props.hasMaybeAction)) {
           let cancelled = false
 
-          const hasMovedRight = hasSwipedHorizontally && this.state.pan.x._value > 0
-          const hasMovedLeft = hasSwipedHorizontally && this.state.pan.x._value < 0
-          const hasMovedUp = hasSwipedVertically && this.state.pan.y._value < 0
+          const hasMovedRight = hasSwipedHorizontally && this.state.pan.x._value > 0 && Math.abs(this.state.pan.x._value) > Math.abs(this.state.pan.y._value)
+          const hasMovedLeft = hasSwipedHorizontally && this.state.pan.x._value < 0 && Math.abs(this.state.pan.x._value) > Math.abs(this.state.pan.y._value)
+          const hasMovedUp = hasSwipedVertically && this.state.pan.y._value < 0 && Math.abs(this.state.pan.x._value) < Math.abs(this.state.pan.y._value)
 
           if (hasMovedRight) {
             cancelled = this.props.handleYup(this.state.card)
@@ -127,15 +137,18 @@ class SwipeCards extends Component {
           } else {
             if (hasMovedRight) {
               this.cardAnimation = Animated.timing(this.state.pan, {
-                toValue: { x: G_WIDTH + G_WIDTH / 3, y: 0 }
+                toValue: { x: G_WIDTH + G_WIDTH / 3, y: 0 },
+                duration: getSpeedVX(Math.abs(vx))
               })
             } else if (hasMovedLeft) {
               this.cardAnimation = Animated.timing(this.state.pan, {
-                toValue: { x: -G_WIDTH - G_WIDTH / 3, y: 0 }
+                toValue: { x: -G_WIDTH - G_WIDTH / 3, y: 0 },
+                duration: getSpeedVX(Math.abs(vx))
               })
             } else {
               this.cardAnimation = Animated.timing(this.state.pan, {
-                toValue: { x: 0, y: -G_HEIGHT + G_HEIGHT / 5 }
+                toValue: { x: 0, y: -G_HEIGHT + G_HEIGHT / 5 },
+                duration: getSpeedVY(Math.abs(vy))
               })
             }
             /**

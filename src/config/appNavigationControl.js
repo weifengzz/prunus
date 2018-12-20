@@ -72,7 +72,7 @@ class AppNavigationControl extends Component {
     } else if (index === 0) {
       // 在引导界面直接退出app
       return BackHandler.exitApp()
-    } else if (index === 1 && routes[1].index === 0 && routes[1].routes[0].index === 0) {
+    } else if (index === 1 && routes[1].index === 0 && routes[1].routes[0].index === 0 && routes[1].routes[0].routes[0].index === 0 && !routes[1].routes[0].isDrawerOpen) {
       // 在主界面监听返回事件
       this.lastBackPressed = Date.now()
       ToastAndroid.show('再按一次退出应用', ToastAndroid.SHORT)

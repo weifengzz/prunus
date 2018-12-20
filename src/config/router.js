@@ -35,6 +35,9 @@ import { SigninScreen, ProfileScreen } from '../modules/profile/screens'
 // 自定义抽屉
 import { DrawerContent } from '../modules/drawer'
 
+// 收藏界面
+import { CollectionScreen } from '../modules/collection/screens'
+
 const { width } = Dimensions.get('window')
 
 /**
@@ -54,11 +57,15 @@ const mainNavigator = createStackNavigator({
         horizontal: width
       }
     })
+  },
+  collection: {
+    screen: CollectionScreen,
+    path: '/drawer/main/collection'
   }
 },
 {
   transitionConfig: () => ({
-    screenInterpolator: CardStackStyleInterpolator.forHorizontal
+    screenInterpolator: CardStackStyleInterpolator.forFade
   }),
   headerMode: 'screen'
 })

@@ -24,7 +24,7 @@ const HeaderRight = (props) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation.state.params && navigation.state.params.openMenu()
+        navigation.navigate('collection')
       }}
       style={styles.container}>
       <Icon type='ant_design' name='hearto' size={21} color='white' />

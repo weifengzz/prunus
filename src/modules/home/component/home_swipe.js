@@ -280,7 +280,8 @@ class HomeSwipe extends Component {
 }
 
 HomeSwipe.defaultProps = {
-  cardHeight: 0
+  cardHeight: 0,
+  navigation: () => {}
 }
 
 const styles = StyleSheet.create({

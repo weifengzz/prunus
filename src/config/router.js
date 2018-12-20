@@ -11,8 +11,12 @@ import {
   createSwitchNavigator,
   createDrawerNavigator
 } from 'react-navigation'
+import {
+  Dimensions
+} from 'react-native'
 
 // import commonStyles from '../styles'
+import CardStackStyleInterpolator from 'react-navigation-stack/src/views/StackView/StackViewStyleInterpolator'
 
 /**
  * 在react-navigation 3.x之后，需要手动添加 “createAppContainer”
@@ -31,6 +35,8 @@ import { SigninScreen, ProfileScreen } from '../modules/profile/screens'
 // 自定义抽屉
 import { DrawerContent } from '../modules/drawer'
 
+const { width } = Dimensions.get('window')
+
 /**
  * 主界面
  */
@@ -41,11 +47,20 @@ const mainNavigator = createStackNavigator({
   },
   card_detail: {
     screen: CardDetailScreen,
-    path: '/drawer/main/card_detail'
+    path: '/drawer/main/card_detail',
+    navigationOptions: () => ({
+      gesturesEnabled: true, // 设置手势返回
+      gestureResponseDistance: {
+        horizontal: width
+      }
+    })
   }
 },
 {
-  mode: 'card'
+  transitionConfig: () => ({
+    screenInterpolator: CardStackStyleInterpolator.forHorizontal
+  }),
+  headerMode: 'screen'
 })
 
 /**

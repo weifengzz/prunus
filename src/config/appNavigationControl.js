@@ -53,10 +53,11 @@ class AppNavigationControl extends Component {
    * @param {string} nextAppState app状态
    */
   _handleAppStateChange (nextAppState) {
+    console.log('nextAppState', nextAppState)
     // app为活跃状态
     if (nextAppState === 'active') {
       Platform.OS === 'android' && StatusBar.setTranslucent(true)
-    }
+    } else {}
   }
 
   /**

@@ -13,7 +13,7 @@ import {
   Dimensions
 } from 'react-native'
 import {
-  SplashScreen,
+  // SplashScreen,
   PulseLoader
 } from '../../../components'
 import {
@@ -49,7 +49,7 @@ class HomeScreen extends Component {
   componentDidMount () {
     this.openMenu()
     this.timmer = setTimeout(() => {
-      SplashScreen.hide()
+      // SplashScreen.hide()
       setTimeout(() => {
         this.setState({
           loading: false

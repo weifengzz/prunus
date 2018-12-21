@@ -9,9 +9,11 @@ import React, { Component } from 'react'
 import {
   View,
   StyleSheet,
-  Text
+  Text,
+  StatusBar
 } from 'react-native'
 import setStackOptions from '../../../config/stackNavigatorOptions'
+import commonStyles from '../../../styles'
 
 /**
  * @class
@@ -27,6 +29,7 @@ class SigninScreen extends Component {
             this.props.navigation.goBack(null)
           }}
         >登录界面</Text>
+        <StatusBar barStyle={'dark-content'} />
       </View>
     )
   }
@@ -41,7 +44,20 @@ const styles = StyleSheet.create({
 })
 
 SigninScreen.navigationOptions = props => {
-  return setStackOptions(props.navigation, '登录', true, true)
+  const { navigation } = props
+  return setStackOptions({
+    navigation: navigation,
+    title: '登录',
+    autoHeaderLeft: true,
+    autoHeaderRight: true,
+    backgroundColor: 'white',
+    titleColor: commonStyles.textDarkColor.color,
+    headerLeftColor: commonStyles.textDarkColor.color,
+    borderBottomWidth: 0.5,
+    leftIconName: 'close',
+    leftIconType: 'evil_icon',
+    leftIconSize: 26
+  })
 }
 
 export default SigninScreen

@@ -54,6 +54,7 @@ class Footer extends Component {
           <TouchableOpacity
             style={{ flex: 3 }}
             onPress={() => {
+              navigation.navigate('signin')
             }}>
             <View style={[styles.btnSigniniView, { backgroundColor: '#28b11a' }]}>
               <Text style={styles.signinText}>登录</Text>

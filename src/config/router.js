@@ -106,6 +106,12 @@ const rootNavigator = createStackNavigator({
     screen: SigninScreen,
     path: '/signin'
   }
+},
+{
+  transitionConfig: () => ({
+    screenInterpolator: CardStackStyleInterpolator.forVertical
+  }),
+  headerMode: 'screen'
 })
 
 /**

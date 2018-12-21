@@ -13,7 +13,7 @@ import {
   Dimensions
 } from 'react-native'
 import {
-  // SplashScreen,
+  SplashScreen,
   PulseLoader
 } from '../../../components'
 import {
@@ -23,6 +23,10 @@ import {
 } from '../component'
 import setStackOptions from '../../../config/stackNavigatorOptions'
 import commonStyles from '../../../styles'
+import moment from 'moment'
+import { storage } from '../../../utils'
+import { LAST_INACTIVE_TIME } from '../../../data'
+
 // 判断为iOS设备
 const IS_IOS = Platform.OS === 'ios'
 // 当前屏幕高度
@@ -46,10 +50,19 @@ class HomeScreen extends Component {
       cardHeight: 0
     }
   }
-  componentDidMount () {
+
+  async componentDidMount () {
+    // 获取上一次活跃状态时间
+    let lastInactiveTime = await storage.getItem(LAST_INACTIVE_TIME)
+    // 时间差
+    let timeDiff = moment(moment()).diff(moment(lastInactiveTime), 'seconds')
+    if (timeDiff > 5) {
+      storage.removeItem(LAST_INACTIVE_TIME)
+      return this.props.navigation.navigate('open_screen')
+    }
     this.openMenu()
     this.timmer = setTimeout(() => {
-      // SplashScreen.hide()
+      SplashScreen.hide()
       setTimeout(() => {
         this.setState({
           loading: false

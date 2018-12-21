@@ -16,6 +16,9 @@ import {
   StatusBar
 } from 'react-native'
 import { NavigationActions } from 'react-navigation'
+import { storage } from '../utils'
+import { LAST_INACTIVE_TIME } from '../data'
+import moment from 'moment'
 
 /**
  * @class
@@ -53,11 +56,12 @@ class AppNavigationControl extends Component {
    * @param {string} nextAppState app状态
    */
   _handleAppStateChange (nextAppState) {
-    console.log('nextAppState', nextAppState)
     // app为活跃状态
     if (nextAppState === 'active') {
       Platform.OS === 'android' && StatusBar.setTranslucent(true)
-    } else {}
+    } else if (nextAppState === 'background') {
+      storage.setItem(LAST_INACTIVE_TIME, moment().format())
+    }
   }
 
   /**

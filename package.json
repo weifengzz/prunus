@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "husky": "^1.2.0",
+    "moment": "^2.23.0",
     "react": "16.6.1",
     "react-native": "0.57.7",
     "react-native-gesture-handler": "^1.0.10",

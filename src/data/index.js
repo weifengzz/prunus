@@ -15,6 +15,9 @@ const FIRST_LOAD_APP = 'first_load_app'
  */
 const OPEN_SCREEN_AD_SCREEN = 'open_screen_ad_screen'
 
+/**
+ * 上次活跃状态时间
+ */
 const LAST_INACTIVE_TIME = 'last_inactive_time'
 
 export {

@@ -9,11 +9,12 @@ import React, { Component } from 'react'
 import {
   View,
   Image,
-  StyleSheet
+  StyleSheet,
+  Text
 } from 'react-native'
-import { SplashScreen } from '../../../components'
+import { SplashScreen, TouchableOpacity } from '../../../components'
 
-import { OPEN_SCREEN_AD_SCREEN } from '../../../data'
+import { OPEN_SCREEN_AD_SCREEN, LAST_INACTIVE_TIME } from '../../../data'
 import { storage } from '../../../utils'
 
 const DATA = {
@@ -53,6 +54,14 @@ class OpenScreenAdScreen extends Component {
     return (
       <View style={styles.contentView}>
         <Image source={{ uri: this.state.data.url }} style={styles.image} />
+        <TouchableOpacity
+          onPress={async () => {
+            await storage.removeItem(LAST_INACTIVE_TIME)
+            this.props.navigation.navigate('main')
+          }}
+          style={styles.jumpView}>
+          <Text>跳过</Text>
+        </TouchableOpacity>
       </View>
     )
   }
@@ -77,6 +86,16 @@ const styles = StyleSheet.create({
   },
   contentView: {
     flex: 1
+  },
+  jumpView: {
+    position: 'absolute',
+    right: 20,
+    top: 40,
+    width: 60,
+    height: 50,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 })
 

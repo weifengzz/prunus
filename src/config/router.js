@@ -108,13 +108,6 @@ const rootNavigator = createStackNavigator({
   signin: {
     screen: SigninScreen,
     path: '/signin'
-  },
-  open_screen_ad: {
-    screen: OpenScreenAdScreen,
-    path: '/open_screen_ad',
-    navigationOptions: {
-      header: null
-    }
   }
 },
 {
@@ -138,11 +131,25 @@ const guideNavigator = createStackNavigator({
 })
 
 /**
+ * 开屏幕广告
+ */
+const openScreenNavigator = createStackNavigator({
+  open_screen_ad: {
+    screen: OpenScreenAdScreen,
+    path: '/open_screen_ad',
+    navigationOptions: {
+      header: null
+    }
+  }
+})
+
+/**
  * 路由配置
  */
 const Router = createSwitchNavigator({
   guide: guideNavigator,
-  root: rootNavigator
+  root: rootNavigator,
+  open_screen: openScreenNavigator
 }, {
   initialRouteName: 'guide'
 })

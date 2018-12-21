@@ -24,13 +24,12 @@ import { FIRST_LOAD_APP } from '../../../data'
 /**
  * @class
  * @classdesc 引导页
- * @description 引导页
  */
 class GuideScreen extends Component {
   componentDidMount () {
     this.timmer = setTimeout(async () => {
       if (await storage.getItem(FIRST_LOAD_APP)) {
-        this.props.navigation.navigate('open_screen_ad')
+        this.props.navigation.navigate('open_screen')
       } else {
         storage.setItem(FIRST_LOAD_APP, 'load')
         SplashScreen.hide()

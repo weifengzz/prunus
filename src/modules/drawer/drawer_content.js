@@ -23,24 +23,38 @@ import {
   TouchableOpacity
 } from '../../components'
 
+import { withNavigation } from 'react-navigation'
+
 /**
  * @class
  * @classdesc 自定义抽屉栏
  */
 class DrawerContent extends Component {
   renderHeaderView () {
+    const { navigation } = this.props
     return (
-      <View style={styles.headerView}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('signin')
+          // 300毫秒后关闭菜单栏
+          setTimeout(() => {
+            navigation.closeDrawer()
+          }, 300)
+        }}
+        style={styles.headerView}>
         <Image style={styles.headerImage} source={require('../../assets/images/header.jpg')} />
         <Text style={styles.headerNameText}>阿飞</Text>
-      </View>
+      </TouchableOpacity>
     )
   }
 
   _renderItem () {
+    // const { navigation } = this.props
     return (
       <TouchableOpacity
         useFeedBack
+        onPress={() => {
+        }}
       >
         <View style={styles.itemView} >
           <Icon size={20} type='icon_font' name='p_home' color='white' />
@@ -137,4 +151,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { })(DrawerContent)
+export default connect(mapStateToProps, { })(withNavigation(DrawerContent))

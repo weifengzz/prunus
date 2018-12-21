@@ -8,12 +8,16 @@ import React, { Component } from 'react'
 import {
   View,
   StyleSheet,
-  Text,
-  StatusBar
+  StatusBar,
+  Image
 } from 'react-native'
 import {
-  SplashScreen
+  SplashScreen,
+  RNSwiper
 } from '../../../components'
+import {
+  Footer
+} from '../component'
 
 /**
  * @class
@@ -34,11 +38,19 @@ class GuideScreen extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <Text
-          onPress={() => {
-            this.props.navigation.navigate('drawer')
+        <RNSwiper
+          autoplay
+          showsPagination={false}
+          style={styles.wrapper}
+          onIndexChanged={(index) => {
+            this.footer && this.footer.chageIndex(index)
           }}
-        >引导页</Text>
+        >
+          <Image source={require('../../../assets/images/intro_top_1.png')} style={styles.image} />
+          <Image source={require('../../../assets/images/intro_top_2.png')} style={styles.image} />
+          <Image source={require('../../../assets/images/intro_top_3.png')} style={styles.image} />
+        </RNSwiper>
+        <Footer onRef={(footer) => { this.footer = footer }} />
         <StatusBar hidden />
       </View>
     )
@@ -47,9 +59,32 @@ class GuideScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1
+  },
+  image: {
+    height: '100%',
+    width: '100%',
+    resizeMode: 'stretch'
+  },
+  wrapper: {
+  },
+  loginView: {
+    height: 50,
+    flexDirection: 'row'
+  },
+  btnRegisterView: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: 'blue'
+  },
+  btnSigniniView: {
+    flex: 3,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'red'
+  },
+  saView: {
   }
 })
 

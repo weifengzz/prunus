@@ -13,7 +13,8 @@ import {
   Text,
   SafeAreaView,
   Platform,
-  BackHandler
+  BackHandler,
+  StatusBar
 } from 'react-native'
 import { SplashScreen, TouchableOpacity } from '../../../components'
 import { OPEN_SCREEN_AD_SCREEN, LAST_INACTIVE_TIME } from '../../../data'
@@ -153,6 +154,7 @@ class OpenScreenAdScreen extends Component {
     return (
       <View style={styles.container}>
         { this.state.data ? this._renderContent() : null }
+        <StatusBar hidden />
       </View>
     )
   }
@@ -176,7 +178,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     opacity: 0.6,
     borderRadius: 10,
-    marginTop: Platform.OS === 'android' ? 30 : 10
+    marginTop: Platform.OS === 'android' ? 10 + StatusBar.currentHeight : 30
   },
   contentPView: {
     position: 'absolute',

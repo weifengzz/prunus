@@ -11,7 +11,9 @@ import {
   StyleSheet,
   StatusBar,
   WebView,
-  NetInfo
+  NetInfo,
+  Platform,
+  BackHandler
 } from 'react-native'
 import {
   TouchableOpacity,
@@ -22,11 +24,40 @@ import setStackOptions from '../../../config/stackNavigatorOptions'
 import commonStyles from '../../../styles'
 import { px } from '../../../utils'
 
+const IS_ANDROID = Platform.OS === 'android'
+
 /**
  * @class
  * @classdesc 开屏广告详情界面
  */
 class OpenScreenDetailScreen extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {}
+    this.onBackButtonPressAndroid = this._onBackButtonPressAndroid.bind(this)
+  }
+
+  componentDidMount () {
+    // 返回按钮事件监听
+    if (IS_ANDROID) {
+      BackHandler.addEventListener('onAdDetailBackPress', this.onBackButtonPressAndroid)
+    }
+  }
+
+  componentWillUnmount () {
+    if (IS_ANDROID) {
+      BackHandler.removeEventListener('onAdDetailBackPress',
+        this.onBackButtonPressAndroid)
+    }
+  }
+
+  /**
+   * android 返回按钮监听事件
+   */
+  async _onBackButtonPressAndroid () {
+    this.props.navigation.navigate('main')
+  }
+
   render () {
     return (
       <View style={styles.container}>

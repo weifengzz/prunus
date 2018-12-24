@@ -145,6 +145,12 @@ const openScreenNavigator = createStackNavigator({
     screen: OpenScreenDetailScreen,
     path: '/open_screen_ad/open_screen_detail'
   }
+},
+{
+  transitionConfig: () => ({
+    screenInterpolator: CardStackStyleInterpolator.forHorizontal
+  }),
+  headerMode: 'screen'
 })
 
 /**

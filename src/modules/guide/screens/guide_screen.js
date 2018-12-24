@@ -19,7 +19,7 @@ import {
   Footer
 } from '../component'
 import { storage } from '../../../utils'
-import { FIRST_LOAD_APP } from '../../../data'
+import { FIRST_LOAD_APP, OPEN_SCREEN_AD_SCREEN } from '../../../data'
 
 /**
  * @class
@@ -29,7 +29,11 @@ class GuideScreen extends Component {
   componentDidMount () {
     this.timer = setTimeout(async () => {
       if (await storage.getItem(FIRST_LOAD_APP)) {
-        this.props.navigation.navigate('open_screen')
+        if (await storage.getItem(OPEN_SCREEN_AD_SCREEN)) {
+          this.props.navigation.navigate('open_screen')
+        } else {
+          this.props.navigation.navigate('main')
+        }
       } else {
         storage.setItem(FIRST_LOAD_APP, 'load')
         SplashScreen.hide()

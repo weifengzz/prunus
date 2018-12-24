@@ -23,12 +23,6 @@ import { OPEN_SCREEN_REAMINI_TIME } from '../../../config/config'
 
 const IS_ANDROID = Platform.OS === 'android'
 
-const DATA = {
-  title: '开屏广告',
-  content: '开屏广告内容',
-  url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545645009567&di=0ca0c1a2901e968a74a286e8ae980bda&imgtype=0&src=http%3A%2F%2Fwww.desktx.com%2Fd%2Ffile%2Fphone%2Fmeinv%2F20180420%2F782b5f69008fb9d3a3946451121379bc.jpg'
-}
-
 /**
  * @class
  * @classdesc 开屏广告
@@ -55,9 +49,6 @@ class OpenScreenAdScreen extends Component {
     } else {
       this.props.navigation.navigate('main')
     }
-    // 存储广告信息
-    storage.setItem(OPEN_SCREEN_AD_SCREEN, DATA)
-
     // 返回按钮事件监听
     if (IS_ANDROID) {
       BackHandler.addEventListener('onAdBackPress', this.onBackButtonPressAndroid)

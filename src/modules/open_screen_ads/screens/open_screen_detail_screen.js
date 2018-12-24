@@ -83,7 +83,7 @@ class OpenScreenDetailScreen extends Component {
             uri: 'https://www.baidu.com/'
           }}
         />
-        <StatusBar barStyle={'dark-content'} />
+        <StatusBar hidden={false} barStyle={'dark-content'} />
       </View>
     )
   }

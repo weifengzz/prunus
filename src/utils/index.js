@@ -13,6 +13,8 @@ import px from './px'
 import storage from './storage'
 // 取值
 import clamp from './clamp'
+// 随机数
+import randomNumber from './random_number'
 
 // 导出工具
 export {
@@ -23,5 +25,6 @@ export {
   logErr,
   px,
   storage,
-  clamp
+  clamp,
+  randomNumber
 }

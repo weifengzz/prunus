@@ -25,8 +25,8 @@ import {
 import setStackOptions from '../../../config/stackNavigatorOptions'
 import commonStyles from '../../../styles'
 import moment from 'moment'
-import { storage } from '../../../utils'
-import { LAST_INACTIVE_TIME } from '../../../data'
+import { storage, randomNumber } from '../../../utils'
+import { LAST_INACTIVE_TIME, OPEN_SCREEN_AD_SCREEN } from '../../../data'
 import { OPEN_SCREEN_TIME_DIFF } from '../../../config/config'
 
 // 判断为iOS设备
@@ -37,6 +37,19 @@ const { width: C_WIDTH } = Dimensions.get('window')
 const CARD_HEIGHT_RATIO = 0.2
 // footer高度
 const FOOTER_HEIGHT = C_WIDTH / 3.5
+
+const DATA = [
+  {
+    title: '开屏广告',
+    content: '开屏广告内容',
+    url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545645009567&di=0ca0c1a2901e968a74a286e8ae980bda&imgtype=0&src=http%3A%2F%2Fwww.desktx.com%2Fd%2Ffile%2Fphone%2Fmeinv%2F20180420%2F782b5f69008fb9d3a3946451121379bc.jpg'
+  },
+  {
+    title: '开屏广告',
+    content: '开屏广告内容',
+    url: 'http://pic1.win4000.com/mobile/2017-11-20/5a1283e93a10d.jpg'
+  }
+]
 
 /**
  * @class
@@ -68,6 +81,8 @@ class HomeScreen extends Component {
         }, 3000)
       }, 50)
     }
+    // 存储广告信息
+    storage.setItem(OPEN_SCREEN_AD_SCREEN, DATA[randomNumber(0, 1)])
   }
 
   /**

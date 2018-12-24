@@ -68,7 +68,10 @@ const mainNavigator = createStackNavigator({
 },
 {
   transitionConfig: () => ({
-    screenInterpolator: CardStackStyleInterpolator.forFade
+    screenInterpolator: CardStackStyleInterpolator.forFade,
+    transitionSpec: {
+      duration: 300
+    }
   }),
   headerMode: 'screen'
 })
@@ -112,7 +115,10 @@ const rootNavigator = createStackNavigator({
 },
 {
   transitionConfig: () => ({
-    screenInterpolator: CardStackStyleInterpolator.forVertical
+    screenInterpolator: CardStackStyleInterpolator.forVertical,
+    transitionSpec: {
+      duration: 300
+    }
   }),
   headerMode: 'screen'
 })
@@ -148,7 +154,10 @@ const openScreenNavigator = createStackNavigator({
 },
 {
   transitionConfig: () => ({
-    screenInterpolator: CardStackStyleInterpolator.forHorizontal
+    screenInterpolator: CardStackStyleInterpolator.forHorizontal,
+    transitionSpec: {
+      duration: 500
+    }
   }),
   headerMode: 'screen'
 })

@@ -10,7 +10,8 @@ import {
   StyleSheet,
   SafeAreaView,
   Platform,
-  Dimensions
+  Dimensions,
+  AppState
 } from 'react-native'
 import {
   SplashScreen,
@@ -49,30 +50,58 @@ class HomeScreen extends Component {
       showView: false,
       cardHeight: 0
     }
+    this.handleAppStateChange = this._handleAppStateChange.bind(this)
   }
 
   async componentDidMount () {
+    if (!await this.isActiveScreen()) {
+      this.openMenu()
+      // 添加屏幕活跃状态监听
+      AppState.addEventListener('change', this.handleAppStateChange)
+      this.timmer = setTimeout(() => {
+        SplashScreen.hide()
+        setTimeout(() => {
+          this.setState({
+            loading: false
+          })
+        }, 1000)
+      }, 50)
+    }
+  }
+
+  /**
+   * 判断是否开启开屏广告
+   */
+  async isActiveScreen () {
     // 获取上一次活跃状态时间
     let lastInactiveTime = await storage.getItem(LAST_INACTIVE_TIME)
     // 时间差
     let timeDiff = moment(moment()).diff(moment(lastInactiveTime), 'seconds')
     if (timeDiff > 5) {
       storage.removeItem(LAST_INACTIVE_TIME)
-      return this.props.navigation.navigate('open_screen')
+      this.props.navigation.navigate('open_screen')
+      return true
     }
-    this.openMenu()
-    this.timmer = setTimeout(() => {
-      SplashScreen.hide()
-      setTimeout(() => {
-        this.setState({
-          loading: false
-        })
-      }, 1000)
-    }, 50)
+    return false
+  }
+
+  /**
+   * 添加屏幕活跃状态监听
+   * @param {string} nextAppState app状态
+   */
+  _handleAppStateChange (nextAppState) {
+    // app为活跃状态
+    if (nextAppState === 'active') {
+      this.isActiveScreen()
+    } else if (nextAppState === 'background') {
+      storage.setItem(LAST_INACTIVE_TIME, moment().format())
+    }
   }
 
   componentWillUnmount () {
     this.timmer && clearTimeout(this.timmer)
+    // 卸载状态监听
+    AppState.removeEventListener('change', this.handleAppStateChange)
   }
 
   /**

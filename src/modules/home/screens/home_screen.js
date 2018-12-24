@@ -27,6 +27,7 @@ import commonStyles from '../../../styles'
 import moment from 'moment'
 import { storage } from '../../../utils'
 import { LAST_INACTIVE_TIME } from '../../../data'
+import { OPEN_SCREEN_TIME_DIFF } from '../../../config/config'
 
 // 判断为iOS设备
 const IS_IOS = Platform.OS === 'ios'
@@ -58,13 +59,13 @@ class HomeScreen extends Component {
       this.openMenu()
       // 添加屏幕活跃状态监听
       AppState.addEventListener('change', this.handleAppStateChange)
-      this.timmer = setTimeout(() => {
+      this.timer = setTimeout(() => {
         SplashScreen.hide()
-        setTimeout(() => {
+        this.timer1 = setTimeout(() => {
           this.setState({
             loading: false
           })
-        }, 1000)
+        }, 3000)
       }, 50)
     }
   }
@@ -77,7 +78,7 @@ class HomeScreen extends Component {
     let lastInactiveTime = await storage.getItem(LAST_INACTIVE_TIME)
     // 时间差
     let timeDiff = moment(moment()).diff(moment(lastInactiveTime), 'seconds')
-    if (timeDiff > 5) {
+    if (timeDiff > OPEN_SCREEN_TIME_DIFF) {
       storage.removeItem(LAST_INACTIVE_TIME)
       this.props.navigation.navigate('open_screen')
       return true
@@ -99,7 +100,8 @@ class HomeScreen extends Component {
   }
 
   componentWillUnmount () {
-    this.timmer && clearTimeout(this.timmer)
+    this.timer && clearTimeout(this.timer)
+    this.timer1 && clearTimeout(this.timer1)
     // 卸载状态监听
     AppState.removeEventListener('change', this.handleAppStateChange)
   }

@@ -27,7 +27,7 @@ import { FIRST_LOAD_APP } from '../../../data'
  */
 class GuideScreen extends Component {
   componentDidMount () {
-    this.timmer = setTimeout(async () => {
+    this.timer = setTimeout(async () => {
       if (await storage.getItem(FIRST_LOAD_APP)) {
         this.props.navigation.navigate('open_screen')
       } else {
@@ -38,7 +38,7 @@ class GuideScreen extends Component {
   }
 
   componentWillUnmount () {
-    this.timmer && clearTimeout(this.timmer)
+    this.timer && clearTimeout(this.timer)
   }
 
   render () {

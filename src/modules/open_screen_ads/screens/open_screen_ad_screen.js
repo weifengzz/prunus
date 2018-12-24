@@ -11,7 +11,8 @@ import {
   Image,
   StyleSheet,
   Text,
-  SafeAreaView
+  SafeAreaView,
+  Platform
 } from 'react-native'
 import { SplashScreen, TouchableOpacity } from '../../../components'
 import { OPEN_SCREEN_AD_SCREEN, LAST_INACTIVE_TIME } from '../../../data'
@@ -78,14 +79,16 @@ class OpenScreenAdScreen extends Component {
    */
   _renderTimeView () {
     return (
-      <TouchableOpacity
-        onPress={async () => {
-          await storage.removeItem(LAST_INACTIVE_TIME)
-          this.props.navigation.navigate('main')
-        }}
-        style={styles.jumpView}>
-        <Text style={styles.btnText}>{`跳过广告 ${this.state.remainingTime}s`}</Text>
-      </TouchableOpacity>
+      <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
+        <TouchableOpacity
+          onPress={async () => {
+            await storage.removeItem(LAST_INACTIVE_TIME)
+            this.props.navigation.navigate('main')
+          }}
+          style={styles.jumpView}>
+          <Text style={styles.btnText}>{`跳过广告 ${this.state.remainingTime}s`}</Text>
+        </TouchableOpacity>
+      </View>
     )
   }
 
@@ -95,8 +98,10 @@ class OpenScreenAdScreen extends Component {
   _renderPContent () {
     return (
       <TouchableOpacity
-        onPress={() => {
-          this.props.navigation.navigate('main')
+        onPress={async () => {
+          this.interval && clearInterval(this.interval)
+          await storage.removeItem(LAST_INACTIVE_TIME)
+          this.props.navigation.navigate('open_screen_detail')
         }}
         style={{ flex: 1 }} />
     )
@@ -145,14 +150,12 @@ const styles = StyleSheet.create({
     flex: 1
   },
   jumpView: {
-    position: 'absolute',
-    right: 10,
-    top: 30,
     paddingVertical: 10,
     paddingHorizontal: 20,
     backgroundColor: 'black',
     opacity: 0.6,
-    borderRadius: 8
+    borderRadius: 8,
+    marginTop: Platform.OS === 'android' ? 30 : 10
   },
   contentPView: {
     position: 'absolute',

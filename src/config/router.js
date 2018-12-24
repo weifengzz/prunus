@@ -39,7 +39,7 @@ import { DrawerContent } from '../modules/drawer'
 import { CollectionScreen } from '../modules/collection/screens'
 
 // 开屏广告界面
-import { OpenScreenAdScreen } from '../modules/open_screen_ads/screens'
+import { OpenScreenAdScreen, OpenScreenDetailScreen } from '../modules/open_screen_ads/screens'
 
 const { width } = Dimensions.get('window')
 
@@ -140,6 +140,10 @@ const openScreenNavigator = createStackNavigator({
     navigationOptions: {
       header: null
     }
+  },
+  open_screen_detail: {
+    screen: OpenScreenDetailScreen,
+    path: '/open_screen_ad/open_screen_detail'
   }
 })
 

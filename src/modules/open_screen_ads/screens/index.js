@@ -7,7 +7,10 @@
 
 // 开屏界面
 import OpenScreenAdScreen from './open_screen_ad_screen'
+// 开屏广告详情界面
+import OpenScreenDetailScreen from './open_screen_detail_screen'
 
 export {
-  OpenScreenAdScreen
+  OpenScreenAdScreen,
+  OpenScreenDetailScreen
 }

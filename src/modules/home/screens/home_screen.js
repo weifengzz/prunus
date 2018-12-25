@@ -63,13 +63,16 @@ class HomeScreen extends Component {
   }
 
   async componentDidMount () {
-    this.openMenu()
-    SplashScreen.hide()
-    this.timer1 = setTimeout(() => {
-      this.setState({
-        loading: false
-      })
-    }, 3000)
+    // 添加定时器，防止动画加载页面跳转卡顿
+    this.timer = setTimeout(() => {
+      this.openMenu()
+      SplashScreen.hide()
+      this.timer1 = setTimeout(() => {
+        this.setState({
+          loading: false
+        })
+      }, 3000)
+    }, 50)
     // 存储广告信息
     storage.setItem(OPEN_SCREEN_AD_SCREEN, DATA[randomNumber(0, 1)])
   }

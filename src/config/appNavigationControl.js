@@ -17,7 +17,7 @@ import {
 } from 'react-native'
 import { NavigationActions } from 'react-navigation'
 import { storage } from '../utils'
-import { LAST_INACTIVE_TIME } from '../data'
+import { LAST_INACTIVE_TIME, OPEN_SCREEN_AD_SCREEN } from '../data'
 import moment from 'moment'
 import { OPEN_SCREEN_TIME_DIFF } from './config'
 
@@ -64,6 +64,7 @@ class AppNavigationControl extends Component {
     // app为活跃状态
     if (nextAppState === 'active') {
       Platform.OS === 'android' && StatusBar.setTranslucent(true)
+      // 判断开启开屏广告
       this.isActiveScreen()
     } else if (nextAppState === 'background') {
       storage.setItem(LAST_INACTIVE_TIME, moment().format())
@@ -76,7 +77,8 @@ class AppNavigationControl extends Component {
   async isActiveScreen () {
     // 获取上一次活跃状态时间
     let lastInactiveTime = await storage.getItem(LAST_INACTIVE_TIME)
-    if (lastInactiveTime) {
+    let openAdData = await storage.getItem(OPEN_SCREEN_AD_SCREEN)
+    if (lastInactiveTime && openAdData) {
       // 时间差
       let timeDiff = moment(moment()).diff(moment(lastInactiveTime), 'seconds')
       if (timeDiff > OPEN_SCREEN_TIME_DIFF) {
@@ -85,10 +87,8 @@ class AppNavigationControl extends Component {
           routeName: 'open_screen'
         })
         this.props.dispatch(navigateAction)
-        return true
       }
     }
-    return false
   }
 
   /**

@@ -156,7 +156,7 @@ const openScreenNavigator = createStackNavigator({
   transitionConfig: () => ({
     screenInterpolator: CardStackStyleInterpolator.forHorizontal,
     transitionSpec: {
-      duration: 500
+      duration: 400
     }
   }),
   headerMode: 'screen'

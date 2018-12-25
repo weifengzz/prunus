@@ -10,8 +10,7 @@ import {
   StyleSheet,
   SafeAreaView,
   Platform,
-  Dimensions,
-  AppState
+  Dimensions
 } from 'react-native'
 import {
   SplashScreen,
@@ -24,10 +23,8 @@ import {
 } from '../component'
 import setStackOptions from '../../../config/stackNavigatorOptions'
 import commonStyles from '../../../styles'
-import moment from 'moment'
 import { storage, randomNumber } from '../../../utils'
-import { LAST_INACTIVE_TIME, OPEN_SCREEN_AD_SCREEN } from '../../../data'
-import { OPEN_SCREEN_TIME_DIFF } from '../../../config/config'
+import { OPEN_SCREEN_AD_SCREEN } from '../../../data'
 
 // 判断为iOS设备
 const IS_IOS = Platform.OS === 'ios'
@@ -61,64 +58,25 @@ class HomeScreen extends Component {
     super(props)
     this.state = {
       loading: true,
-      showView: false,
       cardHeight: 0
     }
-    this.handleAppStateChange = this._handleAppStateChange.bind(this)
   }
 
   async componentDidMount () {
-    if (!await this.isActiveScreen()) {
-      this.openMenu()
-      // 添加屏幕活跃状态监听
-      AppState.addEventListener('change', this.handleAppStateChange)
-      this.timer = setTimeout(() => {
-        SplashScreen.hide()
-        this.timer1 = setTimeout(() => {
-          this.setState({
-            loading: false
-          })
-        }, 3000)
-      }, 50)
-    }
+    this.openMenu()
+    SplashScreen.hide()
+    this.timer1 = setTimeout(() => {
+      this.setState({
+        loading: false
+      })
+    }, 3000)
     // 存储广告信息
     storage.setItem(OPEN_SCREEN_AD_SCREEN, DATA[randomNumber(0, 1)])
-  }
-
-  /**
-   * 判断是否开启开屏广告
-   */
-  async isActiveScreen () {
-    // 获取上一次活跃状态时间
-    let lastInactiveTime = await storage.getItem(LAST_INACTIVE_TIME)
-    // 时间差
-    let timeDiff = moment(moment()).diff(moment(lastInactiveTime), 'seconds')
-    if (timeDiff > OPEN_SCREEN_TIME_DIFF) {
-      storage.removeItem(LAST_INACTIVE_TIME)
-      this.props.navigation.navigate('open_screen')
-      return true
-    }
-    return false
-  }
-
-  /**
-   * 添加屏幕活跃状态监听
-   * @param {string} nextAppState app状态
-   */
-  _handleAppStateChange (nextAppState) {
-    // app为活跃状态
-    if (nextAppState === 'active') {
-      this.isActiveScreen()
-    } else if (nextAppState === 'background') {
-      storage.setItem(LAST_INACTIVE_TIME, moment().format())
-    }
   }
 
   componentWillUnmount () {
     this.timer && clearTimeout(this.timer)
     this.timer1 && clearTimeout(this.timer1)
-    // 卸载状态监听
-    AppState.removeEventListener('change', this.handleAppStateChange)
   }
 
   /**

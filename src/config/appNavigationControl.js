@@ -19,12 +19,17 @@ import { NavigationActions } from 'react-navigation'
 import { storage } from '../utils'
 import { LAST_INACTIVE_TIME } from '../data'
 import moment from 'moment'
+import { OPEN_SCREEN_TIME_DIFF } from './config'
 
 /**
  * @class
  * @classdesc 返回状态管理
  */
 class AppNavigationControl extends Component {
+  constructor (props) {
+    super(props)
+    this.handleAppStateChange = this._handleAppStateChange.bind(this)
+  }
   /**
    * 添加返回事件监听
    */
@@ -36,7 +41,7 @@ class AppNavigationControl extends Component {
 
   componentDidMount () {
     // app状态监听
-    AppState.addEventListener('change', this._handleAppStateChange)
+    AppState.addEventListener('change', this.handleAppStateChange)
   }
 
   /**
@@ -59,9 +64,31 @@ class AppNavigationControl extends Component {
     // app为活跃状态
     if (nextAppState === 'active') {
       Platform.OS === 'android' && StatusBar.setTranslucent(true)
+      this.isActiveScreen()
     } else if (nextAppState === 'background') {
       storage.setItem(LAST_INACTIVE_TIME, moment().format())
     }
+  }
+
+  /**
+   * 判断是否开启开屏广告
+   */
+  async isActiveScreen () {
+    // 获取上一次活跃状态时间
+    let lastInactiveTime = await storage.getItem(LAST_INACTIVE_TIME)
+    if (lastInactiveTime) {
+      // 时间差
+      let timeDiff = moment(moment()).diff(moment(lastInactiveTime), 'seconds')
+      if (timeDiff > OPEN_SCREEN_TIME_DIFF) {
+        storage.removeItem(LAST_INACTIVE_TIME)
+        const navigateAction = NavigationActions.navigate({
+          routeName: 'open_screen'
+        })
+        this.props.dispatch(navigateAction)
+        return true
+      }
+    }
+    return false
   }
 
   /**

@@ -15,14 +15,42 @@ import {
   Icon,
   TouchableOpacity
 } from '../../../../components'
-import { px } from '../../../../utils'
+import { px, phoneAvailable } from '../../../../utils'
 import CommonTextInput from './common_textinput'
 /**
  * @class
  * @classdesc 登录卡片
  */
 class SigninCard extends Component {
-  _renderText () {
+  constructor (props) {
+    super(props)
+    this.userName = ''
+    this.password = ''
+  }
+
+  /**
+   * 验证手机号密码
+   */
+  phoneAvailable () {
+    const { onJiggle } = this.props
+    if (!this.userName) {
+      return onJiggle()
+    }
+    if (!this.password) {
+      return onJiggle()
+    }
+    if (!phoneAvailable(this.userName)) {
+      return onJiggle()
+    }
+    if (this.password.length < 6) {
+      return onJiggle()
+    }
+  }
+
+  /**
+   * 渲染输入框
+   */
+  _renderTextInput () {
     return (
       <View>
         <View style={{ height: 50 }}>
@@ -37,6 +65,9 @@ class SigninCard extends Component {
             useNativeDriver
             keyboardType={'numeric'}
             iconSize={25}
+            onChange={(e) => {
+              this.userName = e.nativeEvent.text
+            }}
           />
         </View>
         <View style={{ height: 20 }} />
@@ -52,12 +83,18 @@ class SigninCard extends Component {
             inputStyle={{ color: 'white' }}
             useNativeDriver
             iconSize={25}
+            onChange={(e) => {
+              this.password = e.nativeEvent.text
+            }}
           />
         </View>
       </View>
     )
   }
 
+  /**
+   * 渲染标题
+   */
   _renderTopView () {
     return (
       <View style={[styles.topView]}>
@@ -66,11 +103,18 @@ class SigninCard extends Component {
     )
   }
 
+  /**
+   *  渲染界面底部
+   */
   _renderFooterView () {
     const { onFlipPress } = this.props
     return (
       <View style={{ flex: 5 }}>
-        <TouchableOpacity style={styles.signinBtn}>
+        <TouchableOpacity
+          onPress={() => {
+            this.phoneAvailable()
+          }}
+          style={styles.signinBtn}>
           <Text style={styles.signinBtnText}>登录</Text>
         </TouchableOpacity>
         <View style={styles.footerBottomView}>
@@ -107,7 +151,7 @@ class SigninCard extends Component {
     return (
       <View style={[styles.container, { height, width }]}>
         { this._renderTopView() }
-        { this._renderText() }
+        { this._renderTextInput() }
         { this._renderFooterView() }
       </View>
     )
@@ -117,7 +161,8 @@ class SigninCard extends Component {
 SigninCard.defaultProps = {
   height: 300,
   wdith: 200,
-  onFlipPress: () => {}
+  onFlipPress: () => {},
+  onJiggle: () => {}
 }
 
 const styles = StyleSheet.create({

@@ -15,6 +15,8 @@ import storage from './storage'
 import clamp from './clamp'
 // 随机数
 import randomNumber from './random_number'
+// 手机号码验证
+import phoneAvailable from './phone_available'
 
 // 导出工具
 export {
@@ -26,5 +28,6 @@ export {
   px,
   storage,
   clamp,
-  randomNumber
+  randomNumber,
+  phoneAvailable
 }

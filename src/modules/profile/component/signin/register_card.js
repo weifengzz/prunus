@@ -18,7 +18,7 @@ import CommonTextInput from './common_textinput'
  * @classdesc 注册卡片
  */
 class RegisterCard extends Component {
-  _renderText () {
+  _renderTextInput () {
     return (
       <View>
         <View style={{ height: 50 }}>
@@ -32,6 +32,9 @@ class RegisterCard extends Component {
             inputStyle={{ color: 'white' }}
             useNativeDriver
             iconSize={25}
+            onChange={(e) => {
+              console.log(e)
+            }}
           />
         </View>
         <View style={{ height: 20 }} />
@@ -106,7 +109,7 @@ class RegisterCard extends Component {
     return (
       <View style={[styles.container, { height, width }]}>
         { this._renderTopView() }
-        { this._renderText() }
+        { this._renderTextInput() }
         { this._renderFooterView() }
       </View>
     )

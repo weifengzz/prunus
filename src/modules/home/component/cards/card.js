@@ -29,7 +29,7 @@ class Card extends Component {
   _renderContent () {
     const { type } = this.props
     if (type === 1) {
-      return this._renderText()
+      return this._renderTextInput()
     } else {
       return this._renderImage()
     }
@@ -42,7 +42,7 @@ class Card extends Component {
       </View>
     )
   }
-  _renderText () {
+  _renderTextInput () {
     const { text } = this.props
     return (
       <View style={{ flex: 1, padding: 20 }}>

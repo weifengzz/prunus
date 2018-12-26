@@ -10,6 +10,10 @@ import PulseLoader from './pulse_loader'
 import RNSwiper from './react_native_swiper'
 // 网页失败界面
 import WebViewError from './web_view_error'
+// 旋转卡片
+import CardFlip from './card_flip'
+// 自定义文字输入组件，解决键盘弹出问题
+import TextInputScrollView from './text_input_scrollview'
 
 export {
   Icon,
@@ -17,5 +21,7 @@ export {
   NormalTouchableOpacity as TouchableOpacity,
   PulseLoader,
   RNSwiper,
-  WebViewError
+  WebViewError,
+  CardFlip,
+  TextInputScrollView
 }

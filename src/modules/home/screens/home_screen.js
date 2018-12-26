@@ -10,7 +10,8 @@ import {
   StyleSheet,
   SafeAreaView,
   Platform,
-  Dimensions
+  Dimensions,
+  StatusBar
 } from 'react-native'
 import {
   SplashScreen,
@@ -29,7 +30,7 @@ import { OPEN_SCREEN_AD_SCREEN } from '../../../data'
 // 判断为iOS设备
 const IS_IOS = Platform.OS === 'ios'
 // 当前屏幕高度
-const { width: C_WIDTH } = Dimensions.get('window')
+const { width: C_WIDTH, height: G_HEIGHT } = Dimensions.get('window')
 // footer高度比例
 const CARD_HEIGHT_RATIO = 0.2
 // footer高度
@@ -112,26 +113,31 @@ class HomeScreen extends Component {
    */
   setContentHeight (nativeEvent) {
     let height = nativeEvent.layout.height
-    let footerHeight = height * CARD_HEIGHT_RATIO
-    if (footerHeight < FOOTER_HEIGHT) {
-      footerHeight = FOOTER_HEIGHT
-    }
-    // 获取卡片高度
-    let cardHeight = height - footerHeight
-    /**
-     * iOS设备需要判断safeview高度
-     */
-    if (IS_IOS) {
-      if (!this.state.cardHeight || this.state.cardHeight !== nativeEvent.layout.height) {
-        this.setState({
-          cardHeight
-        })
+    // 在android中键盘遮挡问题会使android的整体布局向上推
+    // 这样会导致本界面整体布局上推，从而使布局错乱
+    // 判断android布局与屏幕高度相差太多（值现在设为30高度），则不再响应重定义布局
+    if (Platform.OS === 'ios' || (Platform.OS === 'android' && height >= G_HEIGHT - (Platform.OS === 'ios' ? 0 : StatusBar.currentHeight) - commonStyles.headerHeight.height - 30)) {
+      let footerHeight = height * CARD_HEIGHT_RATIO
+      if (footerHeight < FOOTER_HEIGHT) {
+        footerHeight = FOOTER_HEIGHT
       }
-    } else {
-      if (!this.state.cardHeight) {
-        this.setState({
-          cardHeight
-        })
+      // 获取卡片高度
+      let cardHeight = height - footerHeight
+      /**
+       * iOS设备需要判断safeview高度
+       */
+      if (IS_IOS) {
+        if (!this.state.cardHeight || this.state.cardHeight !== nativeEvent.layout.height) {
+          this.setState({
+            cardHeight
+          })
+        }
+      } else {
+        if (!this.state.cardHeight) {
+          this.setState({
+            cardHeight
+          })
+        }
       }
     }
   }

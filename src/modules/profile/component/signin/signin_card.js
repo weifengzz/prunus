@@ -41,9 +41,9 @@ class SigninCard extends Component {
             selectionColor={'white'}
             label={'密    码'}
             iconType={'ant_design'}
+            secureTextEntry
             iconName={'key'}
             iconColor={'#bdbdbd'}
-            keyboardType={'email-address'}
             labelStyle={{ color: '#bdbdbd' }}
             inputStyle={{ color: 'white' }}
             useNativeDriver
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   signinBtn: {
     marginTop: 20,
     height: 50,
-    backgroundColor: '#138dd1',
+    backgroundColor: '#3682ff',
     borderRadius: 25,
     alignItems: 'center',
     justifyContent: 'center'

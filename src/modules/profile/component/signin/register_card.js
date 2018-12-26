@@ -24,7 +24,7 @@ class RegisterCard extends Component {
         <View style={{ height: 50 }}>
           <CommonTextInput
             selectionColor={'white'}
-            label={'用户名'}
+            label={'手机号'}
             iconType={'ant_design'}
             iconName={'user'}
             iconColor={'#bdbdbd'}
@@ -40,6 +40,7 @@ class RegisterCard extends Component {
             selectionColor={'white'}
             label={'密    码'}
             iconType={'ant_design'}
+            secureTextEntry
             iconName={'key'}
             iconColor={'#bdbdbd'}
             labelStyle={{ color: '#bdbdbd' }}
@@ -49,18 +50,23 @@ class RegisterCard extends Component {
           />
         </View>
         <View style={{ height: 20 }} />
-        <View style={{ height: 50 }}>
-          <CommonTextInput
-            selectionColor={'white'}
-            label={'验证码'}
-            iconType={'ant_design'}
-            iconName={'key'}
-            iconColor={'#bdbdbd'}
-            labelStyle={{ color: '#bdbdbd' }}
-            inputStyle={{ color: 'white' }}
-            useNativeDriver
-            iconSize={25}
-          />
+        <View style={{ height: 50, flexDirection: 'row' }}>
+          <View style={{ flex: 3 }}>
+            <CommonTextInput
+              selectionColor={'white'}
+              label={'验证码'}
+              iconType={'ant_design'}
+              iconName={'Safety'}
+              iconColor={'#bdbdbd'}
+              labelStyle={{ color: '#bdbdbd' }}
+              inputStyle={{ color: 'white' }}
+              useNativeDriver
+              iconSize={25}
+            />
+          </View>
+          <View style={[styles.verificationCodeView, { backgroundColor: '#3682ff' }]}>
+            <Text style={styles.verificationCodeText}>获取</Text>
+          </View>
         </View>
       </View>
     )
@@ -133,7 +139,7 @@ const styles = StyleSheet.create({
   signinBtn: {
     marginTop: 20,
     height: 50,
-    backgroundColor: '#138dd1',
+    backgroundColor: '#3682ff',
     borderRadius: 25,
     alignItems: 'center',
     justifyContent: 'center'
@@ -151,6 +157,18 @@ const styles = StyleSheet.create({
   smallText: {
     color: '#bdbdbd',
     fontSize: 14
+  },
+  verificationCodeView: {
+    flex: 2,
+    marginLeft: 10,
+    borderRadius: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+    opacity: 0.8
+  },
+  verificationCodeText: {
+    fontSize: 16,
+    color: 'white'
   }
 })
 

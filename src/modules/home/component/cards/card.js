@@ -38,7 +38,7 @@ class Card extends Component {
     const { img } = this.props
     return (
       <View style={{ width: '100%', height: '80%' }}>
-        <Image source={{ uri: img }} style={{ width: '100%', height: '80%', resizeMode: 'stretch', borderRadius: 10 }} />
+        <Image source={{ uri: img }} style={{ width: '100%', height: '80%', borderTopLeftRadius: 10, borderTopRightRadius: 10, overlayColor: 'white' }} />
       </View>
     )
   }

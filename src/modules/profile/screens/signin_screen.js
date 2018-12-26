@@ -29,7 +29,7 @@ import {
 // import commonStyles from '../../../styles'
 // import { px } from '../../../utils'
 
-const { width: G_WIDTH, height: G_HEIGHT } = Dimensions.get('window')
+const { width: G_WIDTH } = Dimensions.get('window')
 
 /**
  * @class
@@ -44,7 +44,7 @@ class SigninScreen extends Component {
     return (
       <SigninCard
         width={G_WIDTH - 40}
-        height={G_WIDTH}
+        height={G_WIDTH * 1.2}
         onFlipPress={() => {
           this.cardFlip.flip()
         }}
@@ -57,7 +57,7 @@ class SigninScreen extends Component {
     return (
       <RegisterCard
         width={G_WIDTH - 40}
-        height={G_WIDTH}
+        height={G_WIDTH * 1.2}
         onFlipPress={() => {
           this.cardFlip.flip()
         }}
@@ -84,16 +84,16 @@ class SigninScreen extends Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Image blurRadius={10} source={require('../../../assets/images/signin_bg4.jpg')} style={styles.bgImage} />
-        <View style={styles.bgView} />
-        <TextInputScrollView>
-          <SafeAreaView style={{ height: G_HEIGHT }}>
+      <TextInputScrollView>
+        <View style={styles.container}>
+          <Image blurRadius={10} source={require('../../../assets/images/signin_bg4.jpg')} style={styles.bgImage} />
+          <View style={styles.bgView} />
+          <SafeAreaView style={{ felx: 1 }}>
             { this._renderBackView() }
             <View style={styles.cardView}>
               <CardFlip
                 ref={(cf) => { this.cardFlip = cf }}
-                style={{ height: G_WIDTH, width: G_WIDTH - 40 }}
+                style={{ height: G_WIDTH * 1.2, width: G_WIDTH - 40 }}
               >
                 { this._renderSigninCard() }
                 { this._renderRegisterCard() }
@@ -101,19 +101,19 @@ class SigninScreen extends Component {
             </View>
             <View style={styles.bottomView} />
           </SafeAreaView>
-        </TextInputScrollView>
-        <StatusBar barStyle={'dark-content'} />
-      </View>
+          <StatusBar barStyle={'dark-content'} />
+        </View>
+      </TextInputScrollView>
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    height: '100%'
   },
   cardView: {
-    flex: 3,
+    height: G_WIDTH * 1.4,
     alignItems: 'center',
     justifyContent: 'center'
   },

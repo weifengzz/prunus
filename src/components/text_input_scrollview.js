@@ -37,7 +37,7 @@ class TextInputScrollView extends Component {
 }
 
 TextInputScrollView.defaultProps = {
-  bounces: true,
+  bounces: false,
   contentContainerStyle: {
     flex: 1
   },

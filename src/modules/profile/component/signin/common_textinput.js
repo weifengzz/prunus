@@ -11,6 +11,7 @@ import {
 import {
   Icon
 } from '../../../../components'
+import { px } from '../.../../../../../utils'
 
 import BaseInput from './base_input'
 
@@ -106,8 +107,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: 'transparent',
     overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: 'white',
+    borderWidth: px(2),
+    borderColor: '#bdbdbd',
     borderRadius: 28
   },
   label: {

@@ -13,7 +13,8 @@ import {
   Image,
   SafeAreaView,
   Platform,
-  Dimensions
+  Dimensions,
+  Text
 } from 'react-native'
 import {
   CardFlip,
@@ -26,7 +27,7 @@ import {
   RegisterCard
 } from '../component/signin'
 // import setStackOptions from '../../../config/stackNavigatorOptions'
-// import commonStyles from '../../../styles'
+import commonStyles from '../../../styles'
 // import { px } from '../../../utils'
 
 const { width: G_WIDTH } = Dimensions.get('window')
@@ -82,13 +83,27 @@ class SigninScreen extends Component {
     )
   }
 
+  _renderFooterView () {
+    return (
+      <View style={styles.bottomView}>
+        <Text style={styles.footerText}>
+          登录即代表您已同意
+          <Text style={{ textDecorationLine: 'underline' }}>“服务条款”</Text>
+          和
+          <Text style={{ textDecorationLine: 'underline' }}>“隐私策略”</Text>
+        </Text>
+      </View>
+    )
+  }
+
   render () {
     return (
       <TextInputScrollView>
         <View style={styles.container}>
-          <Image blurRadius={10} source={require('../../../assets/images/signin_bg4.jpg')} style={styles.bgImage} />
+          <Image source={require('../../../assets/images/signin_bg.gif')} style={styles.bgImage} />
+          {/* <Image blurRadius={10} source={require('../../../assets/images/signin_bg4.jpg')} style={styles.bgImage} /> */}
           <View style={styles.bgView} />
-          <SafeAreaView style={{ felx: 1 }}>
+          <SafeAreaView style={{ flex: 1 }}>
             { this._renderBackView() }
             <View style={styles.cardView}>
               <CardFlip
@@ -99,7 +114,7 @@ class SigninScreen extends Component {
                 { this._renderRegisterCard() }
               </CardFlip>
             </View>
-            <View style={styles.bottomView} />
+            { this._renderFooterView() }
           </SafeAreaView>
           <StatusBar barStyle={'dark-content'} />
         </View>
@@ -141,7 +156,14 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === 'android' ? 10 + StatusBar.currentHeight : 10
   },
   bottomView: {
-    flex: 1
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    paddingBottom: 30
+  },
+  footerText: {
+    fontSize: 12,
+    color: commonStyles.textLightColor.color
   }
 })
 

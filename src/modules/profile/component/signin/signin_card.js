@@ -11,6 +11,10 @@ import {
   StyleSheet,
   Text
 } from 'react-native'
+import {
+  Icon,
+  TouchableOpacity
+} from '../../../../components'
 import { px } from '../../../../utils'
 import CommonTextInput from './common_textinput'
 /**
@@ -65,10 +69,10 @@ class SigninCard extends Component {
   _renderFooterView () {
     const { onFlipPress } = this.props
     return (
-      <View style={{ flex: 3 }}>
-        <View style={styles.signinBtn}>
+      <View style={{ flex: 5 }}>
+        <TouchableOpacity style={styles.signinBtn}>
           <Text style={styles.signinBtnText}>登录</Text>
-        </View>
+        </TouchableOpacity>
         <View style={styles.footerBottomView}>
           <Text
             style={styles.smallText}
@@ -78,6 +82,20 @@ class SigninCard extends Component {
           >我要注册</Text>
           <Text style={[styles.smallText]}>    |    </Text>
           <Text style={styles.smallText}>忘记密码？</Text>
+        </View>
+        <View style={styles.anotherSigninView}>
+          <View style={styles.aSigninTopView}>
+            <View style={{ flex: 1, height: px(2), backgroundColor: '#bdbdbd' }} />
+            <Text style={{ fontSize: 14, color: '#bdbdbd', marginHorizontal: 10 }}>第三方登录</Text>
+            <View style={{ flex: 1, height: px(2), backgroundColor: '#bdbdbd' }} />
+          </View>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <TouchableOpacity
+              style={{ height: 40, width: 40, borderRadius: 25, backgroundColor: '#22bf0a', alignItems: 'center', justifyContent: 'center' }}
+            >
+              <Icon size={25} color={'#bdbdbd'} name={'wechat'} type={'ant_design'} />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     )
@@ -122,7 +140,7 @@ const styles = StyleSheet.create({
   signinBtn: {
     marginTop: 20,
     height: 50,
-    backgroundColor: '#3682ff',
+    backgroundColor: '#51a9e7',
     borderRadius: 25,
     alignItems: 'center',
     justifyContent: 'center'
@@ -132,7 +150,6 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   footerBottomView: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     paddingTop: 20
@@ -140,6 +157,16 @@ const styles = StyleSheet.create({
   smallText: {
     color: '#bdbdbd',
     fontSize: 14
+  },
+  anotherSigninView: {
+    flex: 1,
+    paddingTop: 20,
+    paddingHorizontal: 30,
+    alignItems: 'center'
+  },
+  aSigninTopView: {
+    flexDirection: 'row',
+    alignItems: 'center'
   }
 })
 

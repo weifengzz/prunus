@@ -64,7 +64,7 @@ class RegisterCard extends Component {
               iconSize={25}
             />
           </View>
-          <View style={[styles.verificationCodeView, { backgroundColor: '#3682ff' }]}>
+          <View style={[styles.verificationCodeView, { backgroundColor: '#51a9e7' }]}>
             <Text style={styles.verificationCodeText}>获取</Text>
           </View>
         </View>
@@ -75,7 +75,7 @@ class RegisterCard extends Component {
   _renderTopView () {
     return (
       <View style={[styles.topView]}>
-        <Text style={styles.signinText}>用户注册</Text>
+        <Text style={styles.signinText}>手机号注册</Text>
       </View>
     )
   }
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
   signinBtn: {
     marginTop: 20,
     height: 50,
-    backgroundColor: '#3682ff',
+    backgroundColor: '#51a9e7',
     borderRadius: 25,
     alignItems: 'center',
     justifyContent: 'center'

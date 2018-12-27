@@ -13,7 +13,8 @@ import {
 } from 'react-native'
 import {
   Icon,
-  TouchableOpacity
+  TouchableOpacity,
+  Toast
 } from '../../../../components'
 import { px, phoneAvailable } from '../../../../utils'
 import CommonTextInput from './common_textinput'
@@ -34,6 +35,9 @@ class SigninCard extends Component {
   phoneAvailable () {
     const { onJiggle } = this.props
     if (!this.userName) {
+      Toast.show('请输入用户名！', {
+        position: Toast.positions.CENTER
+      })
       return onJiggle()
     }
     if (!this.password) {

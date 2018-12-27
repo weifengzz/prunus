@@ -12,7 +12,7 @@ import {
 } from 'react-native'
 import {
   TouchableOpacity
-} from './'
+} from './normal_touchable_opacity'
 import commonStyles from '../styles'
 
 /**

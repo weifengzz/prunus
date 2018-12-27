@@ -14,10 +14,8 @@ import {
 import {
 } from '../../../components'
 import SwipeCards from './swipe_cards'
-import {
-  HomeFooter,
-  Card
-} from '../component'
+import HomeFooter from './home_footer'
+import { Card } from './cards'
 
 const CARDS = [
   {

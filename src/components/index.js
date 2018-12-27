@@ -14,6 +14,8 @@ import WebViewError from './web_view_error'
 import CardFlip from './card_flip'
 // 自定义文字输入组件，解决键盘弹出问题
 import TextInputScrollView from './text_input_scrollview'
+// toast
+import Toast from './toast'
 
 export {
   Icon,
@@ -23,5 +25,6 @@ export {
   RNSwiper,
   WebViewError,
   CardFlip,
-  TextInputScrollView
+  TextInputScrollView,
+  Toast
 }

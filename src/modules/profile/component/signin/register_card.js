@@ -11,17 +11,82 @@ import {
   StyleSheet,
   Text
 } from 'react-native'
-import { px } from '../../../../utils'
-import CommonTextInput from './common_textinput'
 import {
-  TouchableOpacity
+  TouchableOpacity,
+  Toast
 } from '../../../../components'
+import { px, phoneAvailable } from '../../../../utils'
+import CommonTextInput from './common_textinput'
+import { withNavigation } from 'react-navigation'
 
 /**
  * @class
  * @classdesc 注册卡片
  */
 class RegisterCard extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      registerLoading: false,
+      registerSuccess: false
+    }
+    this.userName = ''
+    this.password = ''
+    this.verificationCode = ''
+  }
+
+  /**
+   * 登录验证
+   */
+  registerAvailable () {
+    const { onJiggle } = this.props
+    if (!this.userName) {
+      Toast.show('请输入手机号！', {
+        position: Toast.positions.CENTER
+      })
+      return onJiggle()
+    }
+    if (!this.password) {
+      Toast.show('请输入密码！', {
+        position: Toast.positions.CENTER
+      })
+      return onJiggle()
+    }
+    if (!this.verificationCode) {
+      Toast.show('请输入验证码！', {
+        position: Toast.positions.CENTER
+      })
+      return onJiggle()
+    }
+    if (!phoneAvailable(this.userName)) {
+      Toast.show('手机号格式不正确！', {
+        position: Toast.positions.CENTER
+      })
+      return onJiggle()
+    }
+    if (this.password.length < 6) {
+      Toast.show('密码不能小于6位！', {
+        position: Toast.positions.CENTER
+      })
+      return onJiggle()
+    }
+    this.setState({
+      registerLoading: true
+    })
+    setTimeout(() => {
+      this.setState({
+        registerLoading: false,
+        registerSuccess: true
+      })
+      setTimeout(() => {
+        this.props.navigation.goBack(null)
+      }, 500)
+    }, 2000)
+  }
+
+  /**
+   * 输入框界面
+   */
   _renderTextInput () {
     return (
       <View>
@@ -37,7 +102,7 @@ class RegisterCard extends Component {
             useNativeDriver
             iconSize={25}
             onChange={(e) => {
-              console.log(e)
+              this.userName = e.nativeEvent.text
             }}
           />
         </View>
@@ -54,6 +119,9 @@ class RegisterCard extends Component {
             inputStyle={{ color: 'white' }}
             useNativeDriver
             iconSize={25}
+            onChange={(e) => {
+              this.password = e.nativeEvent.text
+            }}
           />
         </View>
         <View style={{ height: 20 }} />
@@ -69,6 +137,9 @@ class RegisterCard extends Component {
               inputStyle={{ color: 'white' }}
               useNativeDriver
               iconSize={25}
+              onChange={(e) => {
+                this.verificationCode = e.nativeEvent.text
+              }}
             />
           </View>
           <View style={[styles.verificationCodeView, { backgroundColor: '#51a9e7' }]}>
@@ -79,24 +150,31 @@ class RegisterCard extends Component {
     )
   }
 
+  /**
+   * 头部标题界面
+   */
   _renderTopView () {
     return (
       <View style={[styles.topView]}>
-        <Text style={styles.signinText}>手机号注册</Text>
+        <Text style={styles.registerText}>手机号注册</Text>
       </View>
     )
   }
 
+  /**
+   * 底部操作界面
+   */
   _renderFooterView () {
     const { onFlipPress } = this.props
     return (
       <View style={{ flex: 3 }}>
         <TouchableOpacity
+          disabled={this.state.registerLoading || this.state.registerSuccess}
           onPress={() => {
-            this.phoneAvailable()
+            this.registerAvailable()
           }}
-          style={styles.signinBtn}>
-          <Text style={styles.signinBtnText}>注册</Text>
+          style={[styles.registerBtn, { backgroundColor: this.state.registerLoading ? '#bdbdbd' : '#51a9e7' }]}>
+          <Text style={styles.registerBtnText}>{ this.state.registerLoading ? '注册中...' : (this.state.registerSuccess ? '注册成功' : '注册') }</Text>
         </TouchableOpacity>
         <View style={styles.footerBottomView}>
           <Text
@@ -127,7 +205,8 @@ class RegisterCard extends Component {
 RegisterCard.defaultProps = {
   height: 300,
   wdith: 200,
-  onFlipPress: () => {}
+  onFlipPress: () => {},
+  onJiggle: () => {}
 }
 
 const styles = StyleSheet.create({
@@ -142,20 +221,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 2
   },
-  signinText: {
+  registerText: {
     fontSize: 23,
     color: 'white',
     fontWeight: 'bold'
   },
-  signinBtn: {
+  registerBtn: {
     marginTop: 20,
     height: 50,
-    backgroundColor: '#51a9e7',
     borderRadius: 25,
     alignItems: 'center',
     justifyContent: 'center'
   },
-  signinBtnText: {
+  registerBtnText: {
     fontSize: 16,
     color: 'white'
   },
@@ -183,4 +261,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default RegisterCard
+export default withNavigation(RegisterCard)

@@ -149,7 +149,7 @@ class HomeScreen extends Component {
       return (
         <PulseLoader
           borderColor={commonStyles.primaryColor.color}
-          avatar={require('../../../assets/images/header.jpg')}
+          avatar={require('../../../assets/icons/author.png')}
         />
       )
     }

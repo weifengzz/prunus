@@ -64,6 +64,10 @@ const mainNavigator = createStackNavigator({
   collection: {
     screen: CollectionScreen,
     path: '/drawer/main/collection'
+  },
+  profile: {
+    screen: ProfileScreen,
+    path: '/drawer/profile'
   }
 },
 {
@@ -83,10 +87,6 @@ const drawerNavigator = createDrawerNavigator({
   main: {
     screen: mainNavigator,
     path: '/drawer/main'
-  },
-  profile: {
-    screen: ProfileScreen,
-    path: '/drawer/profile'
   }
 }, {
   initialRouteName: 'main',

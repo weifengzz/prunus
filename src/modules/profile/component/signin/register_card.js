@@ -15,7 +15,7 @@ import {
   TouchableOpacity,
   Toast
 } from '../../../../components'
-import { px, phoneAvailable } from '../../../../utils'
+import { phoneAvailable } from '../../../../utils'
 import CommonTextInput from './common_textinput'
 import { withNavigation } from 'react-navigation'
 
@@ -199,6 +199,7 @@ class RegisterCard extends Component {
     const { height, width } = this.props
     return (
       <View style={[styles.container, { height, width }]}>
+        <View style={{ height, width, position: 'absolute', top: 0, left: 0, backgroundColor: 'black', opacity: 0.1, borderRadius: 20 }} />
         { this._renderTopView() }
         { this._renderTextInput() }
         { this._renderFooterView() }
@@ -216,8 +217,8 @@ RegisterCard.defaultProps = {
 
 const styles = StyleSheet.create({
   container: {
-    borderWidth: px(2),
-    borderColor: '#bdbdbd',
+    // borderWidth: px(2),
+    // borderColor: '#bdbdbd',
     borderRadius: 15,
     padding: 10
   },

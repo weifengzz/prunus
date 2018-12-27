@@ -187,6 +187,7 @@ class SigninCard extends Component {
     const { height, width } = this.props
     return (
       <View style={[styles.container, { height, width }]}>
+        <View style={{ height, width, position: 'absolute', top: 0, left: 0, backgroundColor: 'black', opacity: 0.1, borderRadius: 20 }} />
         { this._renderTopView() }
         { this._renderTextInput() }
         { this._renderFooterView() }
@@ -204,8 +205,8 @@ SigninCard.defaultProps = {
 
 const styles = StyleSheet.create({
   container: {
-    borderWidth: px(2),
-    borderColor: '#bdbdbd',
+    // borderWidth: px(2),
+    // borderColor: '#bdbdbd',
     borderRadius: 15,
     padding: 10
   },

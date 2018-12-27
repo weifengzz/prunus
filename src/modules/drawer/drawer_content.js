@@ -25,11 +25,16 @@ import {
 
 import { withNavigation } from 'react-navigation'
 
+const IS_IOS = Platform.OS === 'ios'
+
 /**
  * @class
  * @classdesc 自定义抽屉栏
  */
 class DrawerContent extends Component {
+  /**
+   * 添加头部布局
+   */
   renderHeaderView () {
     const { navigation } = this.props
     return (
@@ -42,42 +47,72 @@ class DrawerContent extends Component {
           }, 300)
         }}
         style={styles.headerView}>
-        <Image style={styles.headerImage} source={require('../../assets/images/header.jpg')} />
-        <Text style={styles.headerNameText}>阿飞</Text>
+        <Image style={styles.headerImage} source={require('../../assets/icons/author.png')} />
+        <Text style={styles.headerNameText}>登录</Text>
       </TouchableOpacity>
     )
   }
 
-  _renderItem () {
-    // const { navigation } = this.props
+  _renderItem (params) {
+    const { title, iconType, iconName, iconSize, onPress } = params
     return (
       <TouchableOpacity
         useFeedBack
         onPress={() => {
+          onPress()
         }}
       >
         <View style={styles.itemView} >
-          <Icon size={20} type='icon_font' name='p_home' color='white' />
-          <Text style={styles.itemText}>个人中心</Text>
+          <Icon size={iconSize} type={iconType} name={iconName} color='#bdbdbd' />
+          <Text style={styles.itemText}>{title}</Text>
         </View>
       </TouchableOpacity>
     )
   }
 
-  _renderContentText () {
+  /**
+   * 渲染内容
+   */
+  _renderContent () {
+    const { navigation } = this.props
     return (
       <View style={styles.contentView}>
-        { this._renderItem() }
-        { this._renderItem() }
-        { this._renderItem() }
-        { this._renderItem() }
-        { this._renderItem() }
-        { this._renderItem() }
-        { this._renderItem() }
-        { this._renderItem() }
-        { this._renderItem() }
-        { this._renderItem() }
-        { this._renderItem() }
+        {
+          // 个人中心
+          this._renderItem({
+            title: '个人中心',
+            iconType: 'icon_font',
+            iconName: 'p_people',
+            iconSize: 25,
+            onPress: () => {
+              navigation.navigate('profile')
+            }
+          })
+        }
+        {
+          // 我的收藏
+          this._renderItem({
+            title: '我的收藏',
+            iconType: 'ant_design',
+            iconName: 'staro',
+            iconSize: 25,
+            onPress: () => {
+              navigation.navigate('profile')
+            }
+          })
+        }
+        {
+          // 设置
+          this._renderItem({
+            title: '系统设置',
+            iconType: 'ant_design',
+            iconName: 'setting',
+            iconSize: 25,
+            onPress: () => {
+              navigation.navigate('profile')
+            }
+          })
+        }
       </View>
     )
   }
@@ -85,11 +120,12 @@ class DrawerContent extends Component {
   render () {
     return (
       <View style={{ flex: 1 }}>
-        <Image blurRadius={10} style={styles.backgroundImg} source={require('../../assets/images/header.jpg')} />
+        <Image blurRadius={IS_IOS ? 15 : 10} style={styles.backgroundImg} source={require('../../assets/icons/author.png')} />
+        <View style={styles.backgroundView} />
         <ScrollView>
           <SafeAreaView style={styles.container}>
             { this.renderHeaderView() }
-            { this._renderContentText() }
+            { this._renderContent() }
           </SafeAreaView>
         </ScrollView>
       </View>
@@ -112,6 +148,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     opacity: 0.7
   },
+  backgroundView: {
+    height: '100%',
+    width: '100%',
+    position: 'absolute',
+    opacity: 0.2,
+    backgroundColor: 'black'
+  },
   headerView: {
     height: Dimensions.get('window').width / 5 + 80,
     width: '100%',
@@ -133,15 +176,16 @@ const styles = StyleSheet.create({
     flex: 1
   },
   itemView: {
-    paddingVertical: 10,
-    paddingHorizontal: 15,
+    paddingVertical: 12,
+    paddingHorizontal: 25,
     flexDirection: 'row',
     alignItems: 'center'
   },
   itemText: {
     marginLeft: 10,
-    fontSize: 16,
-    color: 'white'
+    fontSize: 20,
+    color: '#bdbdbd',
+    fontWeight: 'bold'
   }
 })
 

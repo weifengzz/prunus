@@ -18,6 +18,8 @@ import {
 } from '../../../../components'
 import { px, phoneAvailable } from '../../../../utils'
 import CommonTextInput from './common_textinput'
+import { withNavigation } from 'react-navigation'
+
 /**
  * @class
  * @classdesc 登录卡片
@@ -26,7 +28,8 @@ class SigninCard extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      signinLoading: false
+      signinLoading: false,
+      signinSuccess: false
     }
     this.userName = ''
     this.password = ''
@@ -35,7 +38,7 @@ class SigninCard extends Component {
   /**
    * 验证手机号密码
    */
-  phoneAvailable () {
+  signinAvailable () {
     const { onJiggle } = this.props
     if (!this.userName) {
       Toast.show('请输入用户名！', {
@@ -61,6 +64,18 @@ class SigninCard extends Component {
       })
       return onJiggle()
     }
+    this.setState({
+      signinLoading: true
+    })
+    setTimeout(() => {
+      this.setState({
+        signinLoading: false,
+        signinSuccess: true
+      })
+      setTimeout(() => {
+        this.props.navigation.goBack(null)
+      }, 500)
+    }, 2000)
   }
 
   /**
@@ -127,11 +142,12 @@ class SigninCard extends Component {
     return (
       <View style={{ flex: 5 }}>
         <TouchableOpacity
+          disabled={this.state.signinLoading || this.state.signinSuccess}
           onPress={() => {
-            this.phoneAvailable()
+            this.signinAvailable()
           }}
-          style={styles.signinBtn}>
-          <Text style={styles.signinBtnText}>登录</Text>
+          style={[styles.signinBtn, { backgroundColor: this.state.signinLoading ? '#bdbdbd' : '#51a9e7' }]}>
+          <Text style={styles.signinBtnText}>{ this.state.signinLoading ? '正在登录...' : (this.state.signinSuccess ? '登录成功' : '登录') }</Text>
         </TouchableOpacity>
         <View style={styles.footerBottomView}>
           <Text
@@ -201,7 +217,6 @@ const styles = StyleSheet.create({
   signinBtn: {
     marginTop: 20,
     height: 50,
-    backgroundColor: '#51a9e7',
     borderRadius: 25,
     alignItems: 'center',
     justifyContent: 'center'
@@ -231,4 +246,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default SigninCard
+export default withNavigation(SigninCard)

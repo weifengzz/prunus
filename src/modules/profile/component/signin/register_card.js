@@ -13,6 +13,10 @@ import {
 } from 'react-native'
 import { px } from '../../../../utils'
 import CommonTextInput from './common_textinput'
+import {
+  TouchableOpacity
+} from '../../../../components'
+
 /**
  * @class
  * @classdesc 注册卡片
@@ -87,9 +91,13 @@ class RegisterCard extends Component {
     const { onFlipPress } = this.props
     return (
       <View style={{ flex: 3 }}>
-        <View style={styles.signinBtn}>
+        <TouchableOpacity
+          onPress={() => {
+            this.phoneAvailable()
+          }}
+          style={styles.signinBtn}>
           <Text style={styles.signinBtnText}>注册</Text>
-        </View>
+        </TouchableOpacity>
         <View style={styles.footerBottomView}>
           <Text
             style={styles.smallText}

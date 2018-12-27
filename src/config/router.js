@@ -30,7 +30,7 @@ import { GuideScreen } from '../modules/guide/screens'
 import { HomeScreen, CardDetailScreen } from '../modules/home/screens'
 
 // 登录注册相关界面
-import { SigninScreen, ProfileScreen, ForgetPasswordScreen } from '../modules/profile/screens'
+import { SigninScreen, ProfileScreen, ForgetPasswordScreen, TermsOfServiceScreen, PrivacyPolicyScreen } from '../modules/profile/screens'
 
 // 自定义抽屉
 import { DrawerContent } from '../modules/drawer'
@@ -109,6 +109,14 @@ const widthSigninNavigator = createStackNavigator({
   forget_password: {
     screen: ForgetPasswordScreen,
     path: '/width_signin/forget_password'
+  },
+  terms_of_service: {
+    screen: TermsOfServiceScreen,
+    path: '/width_signin/terms_of_service'
+  },
+  privacy_policy: {
+    screen: PrivacyPolicyScreen,
+    path: '/width_signin/privacy_policy'
   }
 },
 {

@@ -94,9 +94,19 @@ class SigninScreen extends Component {
       <View style={styles.bottomView}>
         <Text style={styles.footerText}>
           登录即代表您已同意
-          <Text style={{ textDecorationLine: 'underline' }}>“服务条款”</Text>
+          <Text
+            style={{ textDecorationLine: 'underline' }}
+            onPress={() => {
+              this.props.navigation.navigate('terms_of_service')
+            }}
+          >“服务条款”</Text>
           和
-          <Text style={{ textDecorationLine: 'underline' }}>“隐私策略”</Text>
+          <Text
+            style={{ textDecorationLine: 'underline' }}
+            onPress={() => {
+              this.props.navigation.navigate('privacy_policy')
+            }}
+          >“隐私策略”</Text>
         </Text>
       </View>
     )

@@ -7,8 +7,7 @@ import {
   View,
   Animated,
   PanResponder,
-  Dimensions,
-  Alert
+  Dimensions
 } from 'react-native'
 
 /**
@@ -327,8 +326,8 @@ class SwipeCards extends Component {
       let offsetY = this.props.stackOffsetY * cards.length - i * this.props.stackOffsetY
       let lastOffsetY = offsetY + this.props.stackOffsetY
 
-      let opacity = 0.25 + (0.75 / cards.length) * (i + 1)
-      let lastOpacity = 0.25 + (0.75 / cards.length) * i
+      // let opacity = 0.25 + (0.75 / cards.length) * (i + 1)
+      // let lastOpacity = 0.25 + (0.75 / cards.length) * i
 
       let scale = 0.9 + (0.1 / cards.length) * (i + 1)
       let lastScale = 0.9 + (0.1 / cards.length) * i
@@ -337,7 +336,8 @@ class SwipeCards extends Component {
         position: 'absolute',
         top: this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOffsetY, offsetY] }),
         left: G_WIDTH * 0.06 / 2 || this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOffsetX, offsetX] }),
-        opacity: this.props.smoothTransition ? 1 : this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOpacity, opacity] }),
+        // opacity: this.props.smoothTransition ? 1 : this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOpacity, opacity] }),
+        opacity: 1,
         transform: [{ scale: this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastScale, scale] }) }],
         elevation: i * 10
       }
@@ -566,7 +566,7 @@ SwipeCards.defaultProps = {
   nopeText: 'Nope!',
   maybeText: 'Maybe!',
   yupText: 'Yup!',
-  onClickHandler: () => { Alert.alert('onClickHandler') },
+  onClickHandler: () => {},
   onDragStart: () => {},
   onDragRelease: () => {},
   cardRemoved: (ix) => null,

@@ -11,7 +11,8 @@ import {
   StyleSheet,
   Dimensions,
   View,
-  Image
+  Image,
+  Platform
 } from 'react-native'
 import {
   TouchableOpacity
@@ -20,6 +21,8 @@ import { withNavigation } from 'react-navigation'
 
 const { width } = Dimensions.get('window')
 const CARD_WIDTH = width * 0.94
+
+const IS_IOS = Platform.OS === 'ios'
 
 /**
  * @class
@@ -37,8 +40,8 @@ class Card extends Component {
   _renderImage () {
     const { img } = this.props
     return (
-      <View style={{ width: '100%', height: '80%' }}>
-        <Image source={{ uri: img }} style={{ width: '100%', height: '80%', borderTopLeftRadius: 10, borderTopRightRadius: 10, overlayColor: 'white' }} />
+      <View style={IS_IOS ? styles.imageViewIOS : styles.imageViewAndroid}>
+        <Image source={{ uri: img }} style={IS_IOS ? styles.imageIOS : styles.imageAndroid} />
       </View>
     )
   }
@@ -79,6 +82,29 @@ const styles = StyleSheet.create({
   card: {
     width: CARD_WIDTH,
     borderRadius: 10
+  },
+  imageViewAndroid: {
+    width: '100%',
+    height: '80%'
+  },
+  imageViewIOS: {
+    width: '100%',
+    height: '80%',
+    overflow: 'hidden',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10
+  },
+  imageAndroid: {
+    width: '100%',
+    height: '80%',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    overlayColor: 'white'
+  },
+  imageIOS: {
+    width: '100%',
+    height: '80%',
+    overlayColor: 'white'
   }
 })
 

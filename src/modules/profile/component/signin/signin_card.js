@@ -157,7 +157,12 @@ class SigninCard extends Component {
             }}
           >我要注册</Text>
           <Text style={[styles.smallText]}>    |    </Text>
-          <Text style={styles.smallText}>忘记密码？</Text>
+          <Text
+            style={styles.smallText}
+            onPress={() => {
+              this.props.navigation.navigate('forget_password')
+            }}
+          >忘记密码？</Text>
         </View>
         <View style={styles.anotherSigninView}>
           <View style={styles.aSigninTopView}>

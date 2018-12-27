@@ -65,6 +65,9 @@ class SigninScreen extends Component {
         onFlipPress={() => {
           this.cardFlip.flip()
         }}
+        onJiggle={() => {
+          this.cardFlip.jiggle()
+        }}
       />
     )
   }

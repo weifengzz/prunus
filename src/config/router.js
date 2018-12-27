@@ -30,7 +30,7 @@ import { GuideScreen } from '../modules/guide/screens'
 import { HomeScreen, CardDetailScreen } from '../modules/home/screens'
 
 // 登录注册相关界面
-import { SigninScreen, ProfileScreen } from '../modules/profile/screens'
+import { SigninScreen, ProfileScreen, ForgetPasswordScreen } from '../modules/profile/screens'
 
 // 自定义抽屉
 import { DrawerContent } from '../modules/drawer'
@@ -98,6 +98,30 @@ const drawerNavigator = createDrawerNavigator({
 })
 
 /**
+ * 登录相关界面
+ */
+
+const widthSigninNavigator = createStackNavigator({
+  signin: {
+    screen: SigninScreen,
+    path: '/width_signin/signin'
+  },
+  forget_password: {
+    screen: ForgetPasswordScreen,
+    path: '/width_signin/forget_password'
+  }
+},
+{
+  transitionConfig: () => ({
+    screenInterpolator: CardStackStyleInterpolator.forHorizontal,
+    transitionSpec: {
+      duration: 300
+    }
+  }),
+  headerMode: 'screen'
+})
+
+/**
  * 根界面
  */
 const rootNavigator = createStackNavigator({
@@ -108,9 +132,12 @@ const rootNavigator = createStackNavigator({
       header: null
     }
   },
-  signin: {
-    screen: SigninScreen,
-    path: '/signin'
+  width_signin: {
+    screen: widthSigninNavigator,
+    path: '/width_signin',
+    navigationOptions: {
+      header: null
+    }
   }
 },
 {

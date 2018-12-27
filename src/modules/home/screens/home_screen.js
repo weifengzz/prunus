@@ -109,12 +109,14 @@ class HomeScreen extends Component {
 
   /**
    * 设置组件内容高度
+   * AndroidMainfest.xml 使用 windowSoftInputMode=“stateVisible”
+   * 可能会出现问题
+   * 在android中键盘遮挡问题会使android的整体布局向上推
+   * 这样会导致本界面整体布局上推，从而使布局错乱
+   * 判断android布局与屏幕高度相差太多（值现在设为30高度），则不再响应重定义布局
    */
   setContentHeight (nativeEvent) {
     let height = nativeEvent.layout.height
-    // 在android中键盘遮挡问题会使android的整体布局向上推
-    // 这样会导致本界面整体布局上推，从而使布局错乱
-    // 判断android布局与屏幕高度相差太多（值现在设为30高度），则不再响应重定义布局
     let footerHeight = height * CARD_HEIGHT_RATIO
     if (footerHeight < FOOTER_HEIGHT) {
       footerHeight = FOOTER_HEIGHT

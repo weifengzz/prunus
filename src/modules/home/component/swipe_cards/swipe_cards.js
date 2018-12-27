@@ -110,9 +110,9 @@ class SwipeCards extends Component {
         if (hasSwipedHorizontally || (hasSwipedVertically && this.props.hasMaybeAction)) {
           let cancelled = false
 
-          const hasMovedRight = hasSwipedHorizontally && this.state.pan.x._value > 0 && Math.abs(this.state.pan.x._value) > Math.abs(this.state.pan.y._value)
-          const hasMovedLeft = hasSwipedHorizontally && this.state.pan.x._value < 0 && Math.abs(this.state.pan.x._value) > Math.abs(this.state.pan.y._value)
-          const hasMovedUp = hasSwipedVertically && this.state.pan.y._value < 0 && Math.abs(this.state.pan.x._value) < Math.abs(this.state.pan.y._value)
+          const hasMovedRight = hasSwipedHorizontally && this.state.pan.x._value > 0 && Math.abs(this.state.pan.x._value) > Math.abs(this.state.pan.y._value) - SWIPE_THRESHOLD / 3
+          const hasMovedLeft = hasSwipedHorizontally && this.state.pan.x._value < 0 && Math.abs(this.state.pan.x._value) > Math.abs(this.state.pan.y._value) - SWIPE_THRESHOLD / 3
+          const hasMovedUp = hasSwipedVertically && this.state.pan.y._value < 0 && Math.abs(this.state.pan.x._value) < Math.abs(this.state.pan.y._value) - SWIPE_THRESHOLD / 3
 
           if (hasMovedRight) {
             cancelled = this.props.handleYup(this.state.card)

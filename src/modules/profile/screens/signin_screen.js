@@ -132,7 +132,7 @@ class SigninScreen extends Component {
             </View>
             { this._renderFooterView() }
           </SafeAreaView>
-          <StatusBar barStyle={'dark-content'} />
+          <StatusBar barStyle={'light-content'} />
         </View>
       </TextInputScrollView>
     )

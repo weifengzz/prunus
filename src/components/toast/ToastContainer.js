@@ -72,11 +72,13 @@ class ToastContainer extends Component {
     this._hideTimeout = null
     this._showTimeout = null
     this._keyboardHeight = 0
+    this.keyboardDidChangeFrame = this._keyboardDidChangeFrame.bind(this)
+    this.windowChanged = this._windowChanged.bind(this)
   }
 
   componentWillMount () {
-    Dimensions.addEventListener('change', this._windowChanged)
-    Keyboard.addListener('keyboardDidChangeFrame', this._keyboardDidChangeFrame)
+    Dimensions.addEventListener('change', this.windowChanged)
+    Keyboard.addListener('keyboardDidChangeFrame', this.keyboardDidChangeFrame)
   }
 
   componentDidMount () {
@@ -108,7 +110,7 @@ class ToastContainer extends Component {
 
   componentWillUnmount () {
     Dimensions.removeEventListener('change', this._windowChanged)
-    Keyboard.removeListener('keyboardDidChangeFrame', this._keyboardDidChangeFrame)
+    Keyboard.removeListener('keyboardDidChangeFrame', this.keyboardDidChangeFrame)
     this._hide()
   }
 

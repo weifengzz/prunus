@@ -44,12 +44,21 @@ class SigninCard extends Component {
       return onJiggle()
     }
     if (!this.password) {
+      Toast.show('请输入密码！', {
+        position: Toast.positions.CENTER
+      })
       return onJiggle()
     }
     if (!phoneAvailable(this.userName)) {
+      Toast.show('手机号格式不正确！', {
+        position: Toast.positions.CENTER
+      })
       return onJiggle()
     }
     if (this.password.length < 6) {
+      Toast.show('密码不能小于6位！', {
+        position: Toast.positions.CENTER
+      })
       return onJiggle()
     }
   }

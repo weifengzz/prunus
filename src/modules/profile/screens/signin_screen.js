@@ -103,8 +103,8 @@ class SigninScreen extends Component {
     return (
       <TextInputScrollView>
         <View style={styles.container}>
-          <Image source={require('../../../assets/images/signin_bg.gif')} style={styles.bgImage} />
-          {/* <Image blurRadius={10} source={require('../../../assets/images/signin_bg4.jpg')} style={styles.bgImage} /> */}
+          {/* <Image source={require('../../../assets/images/signin_bg.gif')} style={styles.bgImage} /> */}
+          <Image blurRadius={10} source={require('../../../assets/images/signin_bg4.jpg')} style={styles.bgImage} />
           <View style={styles.bgView} />
           <SafeAreaView style={{ flex: 1 }}>
             { this._renderBackView() }

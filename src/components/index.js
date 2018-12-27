@@ -16,6 +16,8 @@ import CardFlip from './card_flip'
 import TextInputScrollView from './text_input_scrollview'
 // toast
 import Toast from './toast'
+// loading
+import { CircleLoading } from './loading'
 
 export {
   Icon,
@@ -26,5 +28,6 @@ export {
   WebViewError,
   CardFlip,
   TextInputScrollView,
-  Toast
+  Toast,
+  CircleLoading
 }

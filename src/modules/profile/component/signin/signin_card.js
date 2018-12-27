@@ -25,6 +25,9 @@ import CommonTextInput from './common_textinput'
 class SigninCard extends Component {
   constructor (props) {
     super(props)
+    this.state = {
+      signinLoading: false
+    }
     this.userName = ''
     this.password = ''
   }

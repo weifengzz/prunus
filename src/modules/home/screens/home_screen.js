@@ -72,7 +72,7 @@ class HomeScreen extends Component {
         this.setState({
           loading: false
         })
-      }, 5000)
+      }, 2000)
     }, 50)
     // 存储广告信息
     storage.setItem(OPEN_SCREEN_AD_SCREEN, DATA[randomNumber(0, 1)])

@@ -13,9 +13,11 @@ import {
 } from 'react-native'
 import {
   Icon,
-  TouchableOpacity
+  TouchableOpacity,
+  LottieView
 } from '../../../components'
 import { px } from '../../../utils'
+import DisLikeIcon from './dislike_icon'
 
 const { width } = Dimensions.get('window')
 const LARGE_IMG_WIDTH = (width - 40) * 0.2315 - px(10)
@@ -42,10 +44,11 @@ class HomeFooter extends Component {
         <View style={styles.itemLargeView}>
           <TouchableOpacity
             onPress={() => {
+              this.dli.startAnimate()
               onUnLikePress()
             }}
             style={styles.itemLargeBtnView}>
-            <Icon size={LARGE_IMG_WIDTH / 2.2} color={'#bdbdbd'} name='close' type='ant_design' />
+            <DisLikeIcon ref={(dli) => { this.dli = dli }} size={LARGE_IMG_WIDTH / 2.2} />
           </TouchableOpacity>
         </View>
         <View style={styles.itemSmallView}>
@@ -59,11 +62,21 @@ class HomeFooter extends Component {
         </View>
         <View style={styles.itemLargeView}>
           <TouchableOpacity
+            useFeedBack={false}
+            intervalTime={500}
             onPress={() => {
+              this.like.play()
               onLikePress()
             }}
             style={styles.itemLargeBtnView}>
-            <Icon size={LARGE_IMG_WIDTH / 2.4} color={'red'} name='heart' type='ant_design' />
+            <LottieView
+              loop={false}
+              ref={(like) => { this.like = like }}
+              autoPlay={false}
+              resizeMode={'cover'}
+              style={{ height: LARGE_IMG_WIDTH + 20, width: LARGE_IMG_WIDTH + 20 }}
+              source={require('../../../assets/lotties/like.json')}
+            />
           </TouchableOpacity>
         </View>
         <View style={styles.itemSmallView}>

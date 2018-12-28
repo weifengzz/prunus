@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "husky": "^1.2.0",
+    "lottie-react-native": "^2.5.11",
     "moment": "^2.23.0",
     "react": "16.6.1",
     "react-native": "0.57.7",

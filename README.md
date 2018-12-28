@@ -17,6 +17,16 @@
     1、在使用yarn或者npm安装新包之后，android和iOS可能都会报错，报错解决办法如下：
         1）、android：最新版本的android sdk已经弃用了compile导入库的方式，而是使用implementation方式，但是使用‘react-native link’命令后，会默认添加compile导入方式，所以可能导致包的重复引用，在gradle中修改或删除即可，同时若MainActivity中重复link，同样删除即可
         2）、ios：ios在yarn 或者 ‘react-native link’后，可能丢失自定义图标，iconfont.ttf文件，将此文件重新复制导入即可
+    2、由于使用lottie-react-native(https://github.com/react-native-community/lottie-react-native/blob/master/docs/api.md)android会出现报错，需要将配置 app下build.gradle，在defaultConfig下添加如下代码：
+
+    defaultConfig {
+        ....
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+        ....
+    }
 
 ```
 

@@ -85,26 +85,27 @@ const styles = StyleSheet.create({
   },
   imageViewAndroid: {
     width: '100%',
-    height: '80%'
+    height: '100%'
   },
   imageViewIOS: {
     width: '100%',
-    height: '80%',
+    height: '100%',
     overflow: 'hidden',
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10
+    borderRadius: 10
   },
   imageAndroid: {
     width: '100%',
-    height: '80%',
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    overlayColor: 'white'
+    height: '100%',
+    borderRadius: 10,
+    overlayColor: 'white',
+    resizeMode: 'cover'
   },
   imageIOS: {
     width: '100%',
-    height: '80%',
-    overlayColor: 'white'
+    height: '100%',
+    overlayColor: 'white',
+    resizeMode: 'cover',
+    borderRadius: 10
   }
 })
 

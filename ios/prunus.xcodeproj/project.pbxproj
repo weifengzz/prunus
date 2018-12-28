@@ -43,6 +43,10 @@
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		3B4A895FE0B04135926821E1 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87C6144A8FC4459AAFFC48F7 /* Zocial.ttf */; };
 		3EBC5975B3B04B6A8A265361 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85148F236E3D42BDA03EA656 /* AntDesign.ttf */; };
+		3EBE31D421D62FC3006BB9CC /* UMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EBE31A521D62FC3006BB9CC /* UMCommon.framework */; };
+		3EBE31FC21D63056006BB9CC /* UMAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EBE31FB21D63056006BB9CC /* UMAnalytics.framework */; };
+		3EBE31FE21D630D7006BB9CC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EBE31FD21D630D7006BB9CC /* libz.tbd */; };
+		3EBE320021D630EE006BB9CC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EBE31FF21D630EE006BB9CC /* libsqlite3.tbd */; };
 		4E2D260D878F4260828F3797 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D253424379F414BAEA2F00D /* libRNVectorIcons.a */; };
 		4EF631CD29574770817756B2 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FC756EF3CA94285A7118592 /* FontAwesome5_Solid.ttf */; };
 		5000D3685EB54A9E805C1B04 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0ACDE23321D946829DBBCB3D /* iconfont.ttf */; };
@@ -437,6 +441,10 @@
 		2FC756EF3CA94285A7118592 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		32078D2F7281458B86D6DFD3 /* libRNVectorIcons-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNVectorIcons-tvOS.a"; sourceTree = "<group>"; };
 		36631BBE039F4CA1ABA802FA /* LottieReactNative.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = LottieReactNative.xcodeproj; path = "../node_modules/lottie-react-native/src/ios/LottieReactNative.xcodeproj"; sourceTree = "<group>"; };
+		3EBE31A521D62FC3006BB9CC /* UMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMCommon.framework; sourceTree = "<group>"; };
+		3EBE31FB21D63056006BB9CC /* UMAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMAnalytics.framework; sourceTree = "<group>"; };
+		3EBE31FD21D630D7006BB9CC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		3EBE31FF21D630EE006BB9CC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		4695C3FEB9ED4821A83E4BCA /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = "<group>"; };
 		4D3D2AF57ED84B9B9B13B44B /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		5B265D93969645B29F9202D4 /* Lottie.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = Lottie.xcodeproj; path = "../node_modules/lottie-ios/Lottie.xcodeproj"; sourceTree = "<group>"; };
@@ -472,12 +480,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EBE320021D630EE006BB9CC /* libsqlite3.tbd in Frameworks */,
+				3EBE31FE21D630D7006BB9CC /* libz.tbd in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
+				3EBE31FC21D63056006BB9CC /* UMAnalytics.framework in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
+				3EBE31D421D62FC3006BB9CC /* UMCommon.framework in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
@@ -639,6 +651,10 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3EBE31FF21D630EE006BB9CC /* libsqlite3.tbd */,
+				3EBE31FD21D630D7006BB9CC /* libz.tbd */,
+				3EBE31FB21D63056006BB9CC /* UMAnalytics.framework */,
+				3EBE31A521D62FC3006BB9CC /* UMCommon.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 			);
 			name = Frameworks;
@@ -1553,6 +1569,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
@@ -1580,6 +1600,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CURRENT_PROJECT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",

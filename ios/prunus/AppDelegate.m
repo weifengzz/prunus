@@ -9,6 +9,8 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <UMCommon/UMCommon.h>
+#import <UMAnalytics/MobClick.h>
 
 @implementation AppDelegate
 
@@ -29,7 +31,13 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  [UMConfigure initWithAppkey:@"5c25e226f1f556e32b00019d" channel:@"App Store"];
+  [UMConfigure setLogEnabled:YES];//此处在初始化函数前面是为了打印初始化的日志
+  [MobClick setScenarioType:E_UM_NORMAL|E_UM_GAME|E_UM_DPLUS];
+  [MobClick setCrashReportEnabled:YES];
+  [UMConfigure initWithAppkey:@"your appkey" channel:@"App Store"];
   return YES;
 }
+
 
 @end

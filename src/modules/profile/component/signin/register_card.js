@@ -100,6 +100,7 @@ class RegisterCard extends Component {
             labelStyle={{ color: '#bdbdbd' }}
             inputStyle={{ color: 'white' }}
             useNativeDriver
+            keyboardType={'numeric'}
             iconSize={25}
             onChange={(e) => {
               this.userName = e.nativeEvent.text

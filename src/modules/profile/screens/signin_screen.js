@@ -10,7 +10,7 @@ import {
   View,
   StyleSheet,
   StatusBar,
-  Image,
+  // Image,
   SafeAreaView,
   Platform,
   Dimensions,
@@ -20,7 +20,8 @@ import {
   CardFlip,
   TouchableOpacity,
   Icon,
-  TextInputScrollView
+  TextInputScrollView,
+  LottieView
 } from '../../../components'
 import {
   SigninCard,
@@ -117,7 +118,13 @@ class SigninScreen extends Component {
       <TextInputScrollView>
         <View style={styles.container}>
           {/* <Image source={require('../../../assets/images/signin_bg.gif')} style={styles.bgImage} /> */}
-          <Image blurRadius={10} source={require('../../../assets/images/signin_bg4.jpg')} style={styles.bgImage} />
+          {/* <Image blurRadius={10} source={require('../../../assets/images/signin_bg4.jpg')} style={styles.bgImage} /> */}
+          <LottieView
+            autoPlay
+            resizeMode={'cover'}
+            style={styles.bgImage}
+            source={require('../../../assets/lotties/signin_background.json')}
+          />
           <View style={styles.bgView} />
           <SafeAreaView style={{ flex: 1 }}>
             { this._renderBackView() }
@@ -153,9 +160,7 @@ const styles = StyleSheet.create({
     width: '100%',
     position: 'absolute',
     top: 0,
-    left: 0,
-    resizeMode: 'cover',
-    opacity: 0.7
+    left: 0
   },
   bgView: {
     height: '100%',

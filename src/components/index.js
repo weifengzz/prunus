@@ -18,6 +18,8 @@ import TextInputScrollView from './text_input_scrollview'
 import Toast from './toast'
 // loading
 import { CircleLoading } from './loading'
+// lottie
+import LottieView from 'lottie-react-native'
 
 export {
   Icon,
@@ -29,5 +31,6 @@ export {
   CardFlip,
   TextInputScrollView,
   Toast,
-  CircleLoading
+  CircleLoading,
+  LottieView
 }

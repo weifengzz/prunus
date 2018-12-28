@@ -14,7 +14,8 @@ import {
 } from 'react-native'
 import {
   SplashScreen,
-  PulseLoader
+  LottieView
+  // PulseLoader
 } from '../../../components'
 import {
   HeaderLeft,
@@ -22,7 +23,7 @@ import {
   HomeSwipe
 } from '../component'
 import setStackOptions from '../../../config/stackNavigatorOptions'
-import commonStyles from '../../../styles'
+// import commonStyles from '../../../styles'
 import { storage, randomNumber } from '../../../utils'
 import { OPEN_SCREEN_AD_SCREEN } from '../../../data'
 
@@ -71,7 +72,7 @@ class HomeScreen extends Component {
         this.setState({
           loading: false
         })
-      }, 3000)
+      }, 5000)
     }, 50)
     // 存储广告信息
     storage.setItem(OPEN_SCREEN_AD_SCREEN, DATA[randomNumber(0, 1)])
@@ -147,10 +148,20 @@ class HomeScreen extends Component {
   render () {
     if (this.state.loading) {
       return (
-        <PulseLoader
-          borderColor={commonStyles.primaryColor.color}
-          avatar={require('../../../assets/icons/author.png')}
-        />
+        // <PulseLoader
+        //   borderColor={commonStyles.primaryColor.color}
+        //   avatar={require('../../../assets/icons/author.png')}
+        // />
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <View style={{ height: '40%', width: '40%' }}>
+            <LottieView
+              autoPlay
+              resizeMode={'cover'}
+              style={{ flex: 1 }}
+              source={require('../../../assets/lotties/furtune.json')}
+            />
+          </View>
+        </View>
       )
     }
     return (

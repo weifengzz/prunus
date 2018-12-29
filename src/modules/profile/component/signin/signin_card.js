@@ -140,7 +140,7 @@ class SigninCard extends Component {
   _renderFooterView () {
     const { onFlipPress } = this.props
     return (
-      <View style={{ flex: 5 }}>
+      <View style={{ flex: 3 }}>
         <TouchableOpacity
           disabled={this.state.signinLoading || this.state.signinSuccess}
           onPress={() => {
@@ -213,10 +213,10 @@ const styles = StyleSheet.create({
   topView: {
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 2
+    flex: 1
   },
   signinText: {
-    fontSize: 23,
+    fontSize: 20,
     color: 'white',
     fontWeight: 'bold'
   },

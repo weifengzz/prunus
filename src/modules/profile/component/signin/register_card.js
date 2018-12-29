@@ -168,7 +168,7 @@ class RegisterCard extends Component {
   _renderFooterView () {
     const { onFlipPress } = this.props
     return (
-      <View style={{ flex: 3 }}>
+      <View style={{ flex: 5 }}>
         <TouchableOpacity
           disabled={this.state.registerLoading || this.state.registerSuccess}
           onPress={() => {
@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
     flex: 2
   },
   registerText: {
-    fontSize: 23,
+    fontSize: 20,
     color: 'white',
     fontWeight: 'bold'
   },

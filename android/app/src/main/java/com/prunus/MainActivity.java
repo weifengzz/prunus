@@ -10,6 +10,7 @@ import android.support.v4.app.ActivityCompat;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
+import com.prunus.umeng.ShareModule;
 import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.socialize.UMShareAPI;
@@ -21,6 +22,7 @@ public class MainActivity extends ReactActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         SplashScreen.show(this);
         super.onCreate(savedInstanceState);
+        ShareModule.initSocialSDK(this);
         applyPermission();
     }
     /**

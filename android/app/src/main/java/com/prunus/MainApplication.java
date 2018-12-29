@@ -9,6 +9,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.oblador.vectoricons.VectorIconsPackage;
+import com.prunus.umeng.DplusReactPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
@@ -32,6 +33,7 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new LottiePackage(),
+            new DplusReactPackage(),
             new VectorIconsPackage(),
             new SplashScreenReactPackage(),
             new RNGestureHandlerPackage()

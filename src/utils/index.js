@@ -17,6 +17,10 @@ import clamp from './clamp'
 import randomNumber from './random_number'
 // 手机号码验证
 import phoneAvailable from './phone_available'
+// 友盟分享工具
+import shareUtil from './umeng/ShareUtil'
+// 友盟统计工具
+import analyticsUtil from './umeng/AnalyticsUtil'
 
 // 导出工具
 export {
@@ -29,5 +33,7 @@ export {
   storage,
   clamp,
   randomNumber,
-  phoneAvailable
+  phoneAvailable,
+  shareUtil,
+  analyticsUtil
 }

@@ -28,7 +28,7 @@ export default class App extends Component {
   //           circleStyle={circleStyle}
   componentDidMount () {
     SplashScreen.hide()
-    shareUtil.shareboard('12312321', null, 'https://www.baidu.com', '标题', [0, 1, 2], (code, message) => {
+    shareUtil.shareboard('12312321', null, 'https://www.baidu.com', '标题', [0, 1, 2, 3, 4], (code, message) => {
       Alert.alert(code + message)
     })
     // shareUtil.share("text",null,'https://www.baidu.com','title', 0 , (code,message) =>{

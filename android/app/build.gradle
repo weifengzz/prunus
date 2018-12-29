@@ -96,7 +96,7 @@ def enableSeparateBuildPerCPUArchitecture = false
 /**
  * Run Proguard to shrink the Java bytecode in release builds.
  */
-def enableProguardInReleaseBuilds = false
+def enableProguardInReleaseBuilds = true
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -115,9 +115,18 @@ android {
             sourceCompatibility JavaVersion.VERSION_1_8
             targetCompatibility JavaVersion.VERSION_1_8
         }
+        multiDexEnabled true
     }
     signingConfigs {
         release {
+            if (project.hasProperty('MYAPP_RELEASE_STORE_FILE_e')) {
+                storeFile file(MYAPP_RELEASE_STORE_FILE_e)
+                storePassword MYAPP_RELEASE_STORE_PASSWORD_e
+                keyAlias MYAPP_RELEASE_KEY_ALIAS_e
+                keyPassword MYAPP_RELEASE_KEY_PASSWORD_e
+            }
+        }
+        debug {
             if (project.hasProperty('MYAPP_RELEASE_STORE_FILE_e')) {
                 storeFile file(MYAPP_RELEASE_STORE_FILE_e)
                 storePassword MYAPP_RELEASE_STORE_PASSWORD_e
@@ -139,6 +148,11 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.debug
         }
     }
 
@@ -173,10 +187,18 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation 'com.facebook.react:react-native:+'
+    implementation 'com.android.support:multidex:1.0.0'
     // From node_modules
     implementation files('libs/umeng-shareboard-widget-6.9.4.jar')
     implementation files('libs/umeng-common-1.5.4.jar')
     implementation files('libs/umeng-analytics-7.5.4.jar')
+    implementation files('libs/umeng-sharetool-6.9.4.jar')
+    implementation files('libs/umeng-share-core-6.9.4.jar')
+    implementation files('libs/wechat-sdk-android-without-mta-5.1.4.jar')
+    implementation files('libs/umeng-share-wechat-full-6.9.4.jar')
+    implementation files('libs/umeng-share-sina-simplify-6.9.4.jar')
+    implementation files('libs/open_sdk_r5990_lite.jar')
+    implementation files('libs/umeng-share-QQ-full-6.9.4.jar')
 }
 
 // Run this once to be able to run the application with BUCK

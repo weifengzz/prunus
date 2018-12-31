@@ -16,7 +16,7 @@ import {
   TouchableOpacity,
   Toast
 } from '../../../../components'
-import { px, phoneAvailable } from '../../../../utils'
+import { px, phoneAvailable, shareUtil } from '../../../../utils'
 import CommonTextInput from './common_textinput'
 import { withNavigation } from 'react-navigation'
 
@@ -170,9 +170,13 @@ class SigninCard extends Component {
             <Text style={{ fontSize: 14, color: '#bdbdbd', marginHorizontal: 10 }}>第三方登录</Text>
             <View style={{ flex: 1, height: px(2), backgroundColor: '#bdbdbd' }} />
           </View>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
             <TouchableOpacity
               style={{ height: 40, width: 40, borderRadius: 25, backgroundColor: '#22bf0a', alignItems: 'center', justifyContent: 'center' }}
+              onPress={() => {
+                shareUtil.shareboard('12312321', null, 'https://www.baidu.com', '标题', [0, 1, 2, 3, 4], (code, message) => {
+                })
+              }}
             >
               <Icon size={25} color={'#bdbdbd'} name={'wechat'} type={'ant_design'} />
             </TouchableOpacity>

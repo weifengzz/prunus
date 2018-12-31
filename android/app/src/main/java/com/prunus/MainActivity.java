@@ -23,7 +23,8 @@ public class MainActivity extends ReactActivity {
         SplashScreen.show(this);
         super.onCreate(savedInstanceState);
         ShareModule.initSocialSDK(this);
-        applyPermission();
+        // 权限申请
+        // applyPermission();
     }
     /**
      * Returns the name of the main component registered from JavaScript.

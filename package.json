@@ -24,7 +24,8 @@
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0"
+    "reselect": "^4.0.0",
+    "rn-fetch-blob": "^0.10.15"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",

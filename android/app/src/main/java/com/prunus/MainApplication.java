@@ -2,6 +2,7 @@ package com.prunus;
 
 import android.support.multidex.MultiDexApplication;
 
+import com.RNFetchBlob.RNFetchBlobPackage;
 import com.airbnb.android.react.lottie.LottiePackage;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
@@ -32,6 +33,7 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFetchBlobPackage(),
             new LottiePackage(),
             new DplusReactPackage(),
             new VectorIconsPackage(),

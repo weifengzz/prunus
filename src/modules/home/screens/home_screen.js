@@ -14,7 +14,9 @@ import {
 } from 'react-native'
 import {
   SplashScreen,
-  LottieView
+  LottieView,
+  RNFetchBlob,
+  FileDirAndroid
   // PulseLoader
 } from '../../../components'
 import {
@@ -74,8 +76,42 @@ class HomeScreen extends Component {
         })
       }, 2000)
     }, 50)
-    // 存储广告信息
+    this.operationOpenAddScreen()
+  }
+
+  // 操作广告信息
+  operationOpenAddScreen () {
     storage.setItem(OPEN_SCREEN_AD_SCREEN, DATA[randomNumber(0, 1)])
+    RNFetchBlob
+      .config({
+        // add this option that makes response data to be stored as a file,
+        // this is much more performant.
+        fileCache: true,
+        appendExt: 'apk',
+        path: FileDirAndroid.externalStorageDirection + '/prunus/downloads/a.apk',
+        addAndroidDownloads: {
+          useDownloadManager: true,
+          // Show notification when response data transmitted
+          notification: true,
+          // Title of download notification
+          title: '花猫热点',
+          // File description (not notification description)
+          description: '下载app',
+          mime: 'application/vnd.android.package-archive',
+          // Make the file scannable  by media scanner
+          mediaScannable: true
+        }
+      }).fetch('GET', 'http://app.huamao001.cn/huamao_1.1.9.apk', {
+        // some headers ..
+      })
+      .then((res) => {
+        // console.log('The file saved to ', FileDirAndroid)
+        // the temp file path
+        // RNFetchBlob.android.actionViewIntent(res.path(), 'application/vnd.android.package-archive')
+      })
+      .catch(err => {
+        console.log('err', err)
+      })
   }
 
   componentWillUnmount () {

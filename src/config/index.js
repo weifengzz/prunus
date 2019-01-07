@@ -14,7 +14,8 @@ import {
   StatusBar,
   PermissionsAndroid,
   Platform,
-  ToastAndroid
+  ToastAndroid,
+  YellowBox
 } from 'react-native'
 
 const IS_ANDROID = Platform.OS === 'android'
@@ -24,11 +25,18 @@ const IS_ANDROID = Platform.OS === 'android'
  * @classdesc 绑定redux组件
  */
 export default class App extends Component {
+  constructor (props) {
+    super(props)
+    // 屏蔽循环引用警告（由rn-fetch-blob 引发）
+    YellowBox.ignoreWarnings([
+      'Require cycle:'
+    ])
+  }
   async componentDidMount () {
     if (IS_ANDROID) {
       // 判断用户是否有存储权限权限
       if (await PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE)) {
-        this.dowload()
+        // this.dowload()
       } else {
         try {
           const granted = await PermissionsAndroid.request(

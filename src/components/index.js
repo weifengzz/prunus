@@ -20,6 +20,10 @@ import Toast from './toast'
 import { CircleLoading } from './loading'
 // lottie
 import LottieView from 'lottie-react-native'
+// rn-fetch-blob https://github.com/joltup/rn-fetch-blob
+import RNFetchBlob from 'rn-fetch-blob'
+// 文件路径获取
+import FileDirAndroid from './file_dir'
 
 export {
   Icon,
@@ -32,5 +36,7 @@ export {
   TextInputScrollView,
   Toast,
   CircleLoading,
-  LottieView
+  LottieView,
+  RNFetchBlob,
+  FileDirAndroid
 }

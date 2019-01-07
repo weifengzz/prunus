@@ -10,6 +10,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.oblador.vectoricons.VectorIconsPackage;
+import com.prunus.download.FileDirReactPackage;
 import com.prunus.umeng.DplusReactPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.umeng.analytics.MobclickAgent;
@@ -38,7 +39,8 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
             new DplusReactPackage(),
             new VectorIconsPackage(),
             new SplashScreenReactPackage(),
-            new RNGestureHandlerPackage()
+            new RNGestureHandlerPackage(),
+            new FileDirReactPackage()
       );
     }
 

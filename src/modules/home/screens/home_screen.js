@@ -15,9 +15,7 @@ import {
 import {
   SplashScreen,
   LottieView,
-  RNFetchBlob,
-  FileDirAndroid,
-  AppInstall
+  downloadAndInstallApp
   // PulseLoader
 } from '../../../components'
 import {
@@ -78,43 +76,22 @@ class HomeScreen extends Component {
       }, 2000)
     }, 50)
     this.operationOpenAddScreen()
+    downloadAndInstallApp({
+      useDownloadManager: true,
+      notification: true,
+      title: '下载',
+      description: '下载app',
+      appName: 'huamao',
+      downLoadUrl: 'http://app.huamao001.cn/huamao_1.1.9.apk',
+      onError: () => {},
+      onProgress: () => {},
+      onSuccess: () => {}
+    })
   }
 
   // 操作广告信息
   operationOpenAddScreen () {
     storage.setItem(OPEN_SCREEN_AD_SCREEN, DATA[randomNumber(0, 1)])
-    RNFetchBlob
-      .config({
-        // add this option that makes response data to be stored as a file,
-        // this is much more performant.
-        fileCache: true,
-        appendExt: 'apk',
-        addAndroidDownloads: {
-          useDownloadManager: true,
-          // Show notification when response data transmitted
-          notification: true,
-          // Title of download notification
-          title: '花猫热点',
-          // File description (not notification description)
-          description: '下载app',
-          mime: 'application/vnd.android.package-archive',
-          // Make the file scannable  by media scanner
-          mediaScannable: true,
-          path: FileDirAndroid.externalStorageDirection + '/prunus/downloads/a.apk'
-        }
-      }).fetch('GET', 'http://app.huamao001.cn/huamao_1.1.9.apk', {
-        // some headers ..
-      })
-      .then((res) => {
-        console.log('The file saved to -=-=-=-', FileDirAndroid.externalStorageDirection + '/prunus/downloads/a.apk', '-=-=-=-=-=-', res.path())
-        AppInstall.installApk(FileDirAndroid.externalStorageDirection + '/prunus/downloads/a.apk')
-        // console.log('The file saved to ', FileDirAndroid)
-        // the temp file path
-        // RNFetchBlob.android.actionViewIntent(res.path(), 'application/vnd.android.package-archive')
-      })
-      .catch(err => {
-        console.log('err', err)
-      })
   }
 
   componentWillUnmount () {

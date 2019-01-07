@@ -10,6 +10,8 @@ import android.support.v4.app.ActivityCompat;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
+import com.prunus.AppInstall.AppInstallModule;
+import com.prunus.AppInstall.InstallUtil;
 import com.prunus.umeng.ShareModule;
 import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 import com.umeng.analytics.MobclickAgent;
@@ -68,9 +70,18 @@ public class MainActivity extends ReactActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         // 友盟分享
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            // 安装应用
+            case AppInstallModule.INSTALL_RESULT_CODE:
+                if (AppInstallModule.fp != "") {
+                    InstallUtil.installApk(AppInstallModule.fp, this);
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     /**
@@ -83,4 +94,5 @@ public class MainActivity extends ReactActivity {
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
     }
+
 }

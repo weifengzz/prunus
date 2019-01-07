@@ -1,9 +1,10 @@
 /**
+ * android 文件路径获取类
  * 参考
  * https://www.cnblogs.com/zxxiaoxia/p/6857466.html
  * https://www.cnblogs.com/mengdd/p/3742623.html
  */
-package com.prunus.download;
+package com.prunus.FileDirs;
 
 import android.os.Environment;
 
@@ -102,12 +103,6 @@ public class FileDirModule extends ReactContextBaseJavaModule {
      * @return 路径
      */
     public String getExternalStorageDirectory() {
-//        System.out.print("Environment.getExternalStorageState() ||| " + Environment.getExternalStorageState().toString());
-//        if ("MEDIA_MOUNTED".equals(Environment.getExternalStorageState())) {
-//            return Environment.getExternalStorageDirectory().getPath();
-//        } else {
-//            return null;
-//        }
         return Environment.getExternalStorageDirectory().getPath();
     }
 

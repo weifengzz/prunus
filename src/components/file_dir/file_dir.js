@@ -1,7 +1,11 @@
 /**
  * 获取文件存储路径
+ * 2019-01-07 11:59
+ * @author koohead
+ * @description 获取文件存储路径
  */
-let { NativeModules } = require('react-native')
+
+import { NativeModules } from 'react-native'
 let FileDir = NativeModules.FileDirAndroid
 
 let FileDirAndroid = {}

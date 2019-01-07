@@ -36,6 +36,9 @@
         android:exported="true"
         android:launchMode="singleTask"
         android:windowSoftInputMode="adjustPan">
+          <intent-filter>
+              <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
+          </intent-filter>
       </activity>
         <activity
             android:name="com.umeng.socialize.media.WBShareCallBackActivity"

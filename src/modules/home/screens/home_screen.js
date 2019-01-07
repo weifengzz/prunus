@@ -16,7 +16,8 @@ import {
   SplashScreen,
   LottieView,
   RNFetchBlob,
-  FileDirAndroid
+  FileDirAndroid,
+  AppInstall
   // PulseLoader
 } from '../../../components'
 import {
@@ -88,7 +89,6 @@ class HomeScreen extends Component {
         // this is much more performant.
         fileCache: true,
         appendExt: 'apk',
-        path: FileDirAndroid.externalStorageDirection + '/prunus/downloads/a.apk',
         addAndroidDownloads: {
           useDownloadManager: true,
           // Show notification when response data transmitted
@@ -99,12 +99,15 @@ class HomeScreen extends Component {
           description: '下载app',
           mime: 'application/vnd.android.package-archive',
           // Make the file scannable  by media scanner
-          mediaScannable: true
+          mediaScannable: true,
+          path: FileDirAndroid.externalStorageDirection + '/prunus/downloads/a.apk'
         }
       }).fetch('GET', 'http://app.huamao001.cn/huamao_1.1.9.apk', {
         // some headers ..
       })
       .then((res) => {
+        console.log('The file saved to -=-=-=-', FileDirAndroid.externalStorageDirection + '/prunus/downloads/a.apk', '-=-=-=-=-=-', res.path())
+        AppInstall.installApk(FileDirAndroid.externalStorageDirection + '/prunus/downloads/a.apk')
         // console.log('The file saved to ', FileDirAndroid)
         // the temp file path
         // RNFetchBlob.android.actionViewIntent(res.path(), 'application/vnd.android.package-archive')

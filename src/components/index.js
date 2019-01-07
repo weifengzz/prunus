@@ -24,6 +24,8 @@ import LottieView from 'lottie-react-native'
 import RNFetchBlob from 'rn-fetch-blob'
 // 文件路径获取
 import FileDirAndroid from './file_dir'
+// app安装
+import AppInstall from './app_install'
 
 export {
   Icon,
@@ -38,5 +40,6 @@ export {
   CircleLoading,
   LottieView,
   RNFetchBlob,
-  FileDirAndroid
+  FileDirAndroid,
+  AppInstall
 }

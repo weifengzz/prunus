@@ -28,6 +28,7 @@ import commonStyles from '../../styles'
 import AppInstall from './app_install'
 import { APP_DOWNLOAD_FILE_PATH } from '../../config/config'
 import downloadAndInstallApp from './download'
+import RNFetchBlob from 'rn-fetch-blob'
 
 const { width } = Dimensions.get('window')
 
@@ -45,6 +46,7 @@ class NewVersionModal extends Component {
       downloadSuccess: false,
       downloadFail: false
     }
+    this.filePath = ''
   }
 
   componentDidMount () {
@@ -241,10 +243,28 @@ class NewVersionModal extends Component {
   }
   // 显示modal
   _showModal (versionData) {
-    this.setState({
-      modalVisible: true,
-      versionData
-    })
+    let filePath = `${APP_DOWNLOAD_FILE_PATH}${versionData.appName}.apk`
+    this.filePath = filePath
+    // 判断文件是否存在
+    RNFetchBlob.fs.exists(filePath)
+      .then((exist) => {
+        if (exist) {
+          this.setState({
+            modalVisible: true,
+            versionData,
+            downloadSuccess: true
+          })
+        } else {
+          this.setState({
+            modalVisible: true,
+            versionData,
+            downloadSuccess: false
+          })
+        }
+      })
+      .catch(() => {
+        Toast.show('文件系统发生未知错误')
+      })
   }
   // 隐藏modal
   _hideModal () {

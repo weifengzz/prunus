@@ -80,24 +80,13 @@ class HomeScreen extends Component {
         versionMsg.version = '1.0.1'
         versionMsg.address = 'http://app.huamao001.cn/huamao_1.1.9.apk'
         versionMsg.updateMsg = '更新信息'
-        versionMsg.updateState = 1
+        versionMsg.updateState = 0
         versionMsg.appName = '花猫'
         versionMsg.appAddress = 'http://app.huamao001.cn/huamao_1.1.9.apk'
         this._newVersionModal._showModal(versionMsg)
       }, 2000)
     }, 50)
     this.operationOpenAddScreen()
-    // downloadAndInstallApp({
-    //   useDownloadManager: true,
-    //   notification: true,
-    //   title: '下载',
-    //   description: '下载app',
-    //   appName: 'huamao',
-    //   downLoadUrl: 'http://app.huamao001.cn/huamao_1.1.9.apk',
-    //   onError: () => {},
-    //   onProgress: (received, total) => {},
-    //   onSuccess: () => {}
-    // })
   }
 
   // 操作广告信息

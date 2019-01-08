@@ -206,7 +206,7 @@ class NewVersionModal extends Component {
       notification: true,
       title: `下载${this.state.versionData.appName}`,
       description: `升级${this.state.versionData.appName}`,
-      appName: 'huamao',
+      appName: this.state.versionData.appName,
       downLoadUrl: this.state.versionData.address,
       onError: () => {},
       onProgress: (received, total) => {},

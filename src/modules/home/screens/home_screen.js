@@ -84,7 +84,7 @@ class HomeScreen extends Component {
       appName: 'huamao',
       downLoadUrl: 'http://app.huamao001.cn/huamao_1.1.9.apk',
       onError: () => {},
-      onProgress: () => {},
+      onProgress: (received, total) => {},
       onSuccess: () => {}
     })
   }

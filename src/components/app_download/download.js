@@ -29,6 +29,7 @@ const downloadAndInstallApp = ({
     .config({
       fileCache: true,
       appendExt: 'apk',
+      trusty: true,
       addAndroidDownloads: {
         useDownloadManager,
         notification,

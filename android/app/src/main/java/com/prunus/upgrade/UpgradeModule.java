@@ -1,6 +1,5 @@
 package com.prunus.upgrade;
 
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
 
@@ -57,7 +56,8 @@ public class UpgradeModule extends ReactContextBaseJavaModule {
                 public void onResponse(Call call, Response response) throws IOException {
                     if (response != null) {
                         //新建一个File，传入文件夹目录
-                        File file = new File(Environment.getExternalStorageDirectory().getPath() + "/kuaikanxiaoshuo/download");
+                        int index = filePath.lastIndexOf("/");
+                        File file = new File(filePath.substring(0, index));
                         //判断文件夹是否存在，如果不存在就创建，否则不创建
                         if (!file.exists()) {
                             //通过file的mkdirs()方法创建<span style="color:#FF0000;">目录中包含却不存在</span>的文件夹

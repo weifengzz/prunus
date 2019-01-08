@@ -27,6 +27,7 @@ import Toast from '../toast'
 import commonStyles from '../../styles'
 import AppInstall from './app_install'
 import { APP_DOWNLOAD_FILE_PATH } from '../../config/config'
+import downloadAndInstallApp from './download'
 
 const { width } = Dimensions.get('window')
 
@@ -231,7 +232,24 @@ class NewVersionModal extends Component {
           style={styles.btnView}
           onPress={() => {
             if (this.state.versionData.updateState === 0) {
-              this.updateVersion(this.state.versionData.address)
+              downloadAndInstallApp({
+                useDownloadManager: true,
+                notification: true,
+                title: `下载${this.state.versionData.appName}`,
+                description: `升级${this.state.versionData.appName}`,
+                appName: 'huamao',
+                downLoadUrl: this.state.versionData.address,
+                onError: () => {},
+                onProgress: (received, total) => {},
+                onSuccess: () => {}
+              })
+              this.setState({
+                modalVisible: false
+              })
+              Toast.show(`开始下载${this.state.versionData.appName}`, {
+                position: Toast.positions.CENTER
+              })
+              // this.updateVersion(this.state.versionData.address)
               onPress(false)
             } else {
               onPress(false)

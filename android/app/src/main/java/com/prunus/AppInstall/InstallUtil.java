@@ -11,20 +11,25 @@ public class InstallUtil {
      * @param fp
      */
     public static void installApk (final String fp, Activity activity) {
-        try {
-            InstallUtils.installAPK(activity, fp, new InstallUtils.InstallCallBack() {
-                @Override
-                public void onSuccess() {
-                    Toast.makeText(activity, "正在安装程序", Toast.LENGTH_SHORT).show();
-                }
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    InstallUtils.installAPK(activity, fp, new InstallUtils.InstallCallBack() {
+                        @Override
+                        public void onSuccess() {
+                            Toast.makeText(activity, "正在安装程序", Toast.LENGTH_SHORT).show();
+                        }
 
-                @Override
-                public void onFail(Exception e) {
-                    Toast.makeText(activity, "安装失败:" + e.toString(), Toast.LENGTH_SHORT).show();
+                        @Override
+                        public void onFail(Exception e) {
+                            Toast.makeText(activity, "安装失败:" + e.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            }
+        });
     }
 }

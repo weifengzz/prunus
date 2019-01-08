@@ -252,7 +252,7 @@ class NewVersionModal extends Component {
           this.setState({
             modalVisible: true,
             versionData,
-            downloadSuccess: true
+            downloadSuccess: false // 未解决下载到一半失败问题
           })
         } else {
           this.setState({

@@ -5,26 +5,30 @@
  * @description 获取文件存储路径
  */
 
-import { NativeModules } from 'react-native'
+import {
+  NativeModules,
+  Platform
+} from 'react-native'
 let FileDir = NativeModules.FileDirAndroid
 
-let FileDirAndroid = {}
-FileDirAndroid.directoryMusic = FileDir.DIRECTORY_MUSIC
-FileDirAndroid.directoryPodcasts = FileDir.DIRECTORY_PODCASTS
-FileDirAndroid.directoryRingtones = FileDir.DIRECTORY_RINGTONES
-FileDirAndroid.directoryAlarms = FileDir.DIRECTORY_ALARMS
-FileDirAndroid.directoryNotifications = FileDir.DIRECTORY_NOTIFICATIONS
-FileDirAndroid.directoryPictures = FileDir.DIRECTORY_PICTURES
-FileDirAndroid.directoryMovies = FileDir.DIRECTORY_MOVIES
-FileDirAndroid.directoryDownloads = FileDir.DIRECTORY_DOWNLOADS
-FileDirAndroid.directoryDcim = FileDir.DIRECTORY_DCIM
-FileDirAndroid.directoryDocuments = FileDir.DIRECTORY_DOCUMENTS
-FileDirAndroid.downloadCacheDirection = FileDir.DOWNLOAD_CACHE_DIRECTION
-FileDirAndroid.dataDirection = FileDir.DATA_DIRECTION
-FileDirAndroid.externalStorageDirection = FileDir.EXTERNAL_STORAGE_DIRECTION
-FileDirAndroid.externalFilesDir = FileDir.EXTERNAL_FILES_DIR
-FileDirAndroid.cacheDir = FileDir.CACHE_DIR
-FileDirAndroid.filesDir = FileDir.FILES_DIR
-FileDirAndroid.externalCacheDir = FileDir.EXTERNAL_CACHE_DIR
+let FileDirAndroid = Platform.OS === 'android' ? {
+  directoryMusic: FileDir.DIRECTORY_MUSIC,
+  directoryPodcasts: FileDir.DIRECTORY_PODCASTS,
+  directoryRingtones: FileDir.DIRECTORY_RINGTONES,
+  directoryAlarms: FileDir.DIRECTORY_ALARMS,
+  directoryNotifications: FileDir.DIRECTORY_NOTIFICATIONS,
+  directoryPictures: FileDir.DIRECTORY_PICTURES,
+  directoryMovies: FileDir.DIRECTORY_MOVIES,
+  directoryDownloads: FileDir.DIRECTORY_DOWNLOADS,
+  directoryDcim: FileDir.DIRECTORY_DCIM,
+  directoryDocuments: FileDir.DIRECTORY_DOCUMENTS,
+  downloadCacheDirection: FileDir.DOWNLOAD_CACHE_DIRECTION,
+  dataDirection: FileDir.DATA_DIRECTION,
+  externalStorageDirection: FileDir.EXTERNAL_STORAGE_DIRECTION,
+  externalFilesDir: FileDir.EXTERNAL_FILES_DIR,
+  cacheDir: FileDir.CACHE_DIR,
+  filesDir: FileDir.FILES_DIR,
+  externalCacheDir: FileDir.EXTERNAL_CACHE_DIR
+} : {}
 
 export default FileDirAndroid

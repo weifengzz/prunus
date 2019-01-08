@@ -27,6 +27,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Octicons from 'react-native-vector-icons/Octicons'
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
 import Zocial from 'react-native-vector-icons/Zocial'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 /**
  * 自定义字体图标文件
@@ -74,6 +75,8 @@ class Icon extends Component {
         return <SimpleLineIcons {...props} />
       case 'zocial':
         return <Zocial {...props} />
+      case 'ionicon':
+        return <Ionicons {...props} />
       case 'icon_font':
         return <IconSet {...props} />
       default:

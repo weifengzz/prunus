@@ -15,7 +15,8 @@ import {
 import {
   SplashScreen,
   LottieView,
-  downloadAndInstallApp
+  NewVersionModal
+  // downloadAndInstallApp
   // PulseLoader
 } from '../../../components'
 import {
@@ -73,20 +74,30 @@ class HomeScreen extends Component {
         this.setState({
           loading: false
         })
+        // 展示版本信息
+        let versionMsg = {}
+        versionMsg.updateTime = '2012-12-02'
+        versionMsg.version = '1.0.1'
+        versionMsg.address = 'http://app.huamao001.cn/huamao_1.1.9.apk'
+        versionMsg.updateMsg = '更新信息'
+        versionMsg.updateState = 0
+        versionMsg.appName = 'huamao'
+        versionMsg.appAddress = 'http://app.huamao001.cn/huamao_1.1.9.apk'
+        this._newVersionModal._showModal(versionMsg)
       }, 2000)
     }, 50)
     this.operationOpenAddScreen()
-    downloadAndInstallApp({
-      useDownloadManager: true,
-      notification: true,
-      title: '下载',
-      description: '下载app',
-      appName: 'huamao',
-      downLoadUrl: 'http://app.huamao001.cn/huamao_1.1.9.apk',
-      onError: () => {},
-      onProgress: (received, total) => {},
-      onSuccess: () => {}
-    })
+    // downloadAndInstallApp({
+    //   useDownloadManager: true,
+    //   notification: true,
+    //   title: '下载',
+    //   description: '下载app',
+    //   appName: 'huamao',
+    //   downLoadUrl: 'http://app.huamao001.cn/huamao_1.1.9.apk',
+    //   onError: () => {},
+    //   onProgress: (received, total) => {},
+    //   onSuccess: () => {}
+    // })
   }
 
   // 操作广告信息
@@ -191,6 +202,13 @@ class HomeScreen extends Component {
             { this._renderCard() }
           </View>
         </SafeAreaView>
+        <NewVersionModal
+          ref={(nvm) => { this._newVersionModal = nvm }}
+          onPress={(hide) => {
+          }}
+          onClose={async () => {
+          }}
+        />
       </View>
     )
   }

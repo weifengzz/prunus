@@ -7,7 +7,10 @@
 
 // 下载并安装app
 import downloadAndInstallApp from './download'
+// 下载modal
+import NewVersionModal from './new_version_modal'
 
 export {
-  downloadAndInstallApp
+  downloadAndInstallApp,
+  NewVersionModal
 }

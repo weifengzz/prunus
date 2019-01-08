@@ -21,6 +21,8 @@ import phoneAvailable from './phone_available'
 import shareUtil from './umeng/ShareUtil'
 // 友盟统计工具
 import analyticsUtil from './umeng/AnalyticsUtil'
+// 获取网络状态
+import { getNetInfo, isNetConnected } from './netinfo'
 
 // 导出工具
 export {
@@ -35,5 +37,7 @@ export {
   randomNumber,
   phoneAvailable,
   shareUtil,
-  analyticsUtil
+  analyticsUtil,
+  getNetInfo,
+  isNetConnected
 }

@@ -7,11 +7,10 @@
 
 import AppInstall from './app_install'
 import RNFetchBlob from 'rn-fetch-blob'
-import FileDirAndroid from '../file_dir'
+import { APP_DOWNLOAD_FILE_PATH } from '../../config/config'
 
 /**
  * 下载并安装app
- * 'http://app.huamao001.cn/huamao_1.1.9.apk'
  */
 const downloadAndInstallApp = ({
   useDownloadManager = true,
@@ -24,7 +23,7 @@ const downloadAndInstallApp = ({
   onProgress = () => {},
   onSuccess = () => {}
 }) => {
-  const filePath = `${FileDirAndroid.externalStorageDirection}/prunus/downloads/${appName}.apk`
+  const filePath = `${APP_DOWNLOAD_FILE_PATH}${appName}.apk`
   RNFetchBlob
     .config({
       fileCache: true,

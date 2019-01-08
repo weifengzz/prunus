@@ -13,6 +13,7 @@ import com.oblador.vectoricons.VectorIconsPackage;
 import com.prunus.AppInstall.AppInstallReactPackage;
 import com.prunus.FileDirs.FileDirReactPackage;
 import com.prunus.umeng.DplusReactPackage;
+import com.prunus.upgrade.UpgradeReactPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
@@ -42,7 +43,8 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
             new SplashScreenReactPackage(),
             new RNGestureHandlerPackage(),
             new FileDirReactPackage(),
-            new AppInstallReactPackage()
+            new AppInstallReactPackage(),
+            new UpgradeReactPackage()
       );
     }
 

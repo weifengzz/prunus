@@ -25,7 +25,7 @@ import RNFetchBlob from 'rn-fetch-blob'
 // 文件路径获取
 import FileDirAndroid from './file_dir'
 // 下载并安装app相关组件
-import { downloadAndInstallApp } from './app_download'
+import { downloadAndInstallApp, NewVersionModal } from './app_download'
 
 export {
   Icon,
@@ -41,5 +41,6 @@ export {
   LottieView,
   RNFetchBlob,
   FileDirAndroid,
-  downloadAndInstallApp
+  downloadAndInstallApp,
+  NewVersionModal
 }

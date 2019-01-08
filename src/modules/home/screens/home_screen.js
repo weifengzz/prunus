@@ -81,7 +81,7 @@ class HomeScreen extends Component {
         versionMsg.address = 'http://app.huamao001.cn/huamao_1.1.9.apk'
         versionMsg.updateMsg = '更新信息'
         versionMsg.updateState = 1
-        versionMsg.appName = 'huamao'
+        versionMsg.appName = '花猫'
         versionMsg.appAddress = 'http://app.huamao001.cn/huamao_1.1.9.apk'
         this._newVersionModal._showModal(versionMsg)
       }, 2000)

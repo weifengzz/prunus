@@ -127,6 +127,7 @@ class NewVersionModal extends Component {
       }
     }
   }
+
   // 下载
   async dowload () {
     let netInfo = await getNetInfo()
@@ -171,6 +172,65 @@ class NewVersionModal extends Component {
       )
     }
   }
+
+  /**
+   * 下载管理器下载文件
+   */
+  async managerDownloadApp () {
+    // 判断用户是否有存储权限权限
+    if (await PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE)) {
+      this.managerDownload()
+    } else {
+      try {
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+          {
+            'title': '申请空间存储权限',
+            'message': '请开通空间存储权限，否则应用无法正常升级！'
+          }
+        )
+        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+          this.managerDownload()
+        } else {
+          ToastAndroid.show('请开通空间存储权限，否则应用无法正常升级！', ToastAndroid.SHORT)
+        }
+      } catch (err) {
+        ToastAndroid.show('请开通空间存储权限，否则应用无法正常升级！', ToastAndroid.SHORT)
+      }
+    }
+  }
+
+  managerDownload () {
+    downloadAndInstallApp({
+      useDownloadManager: true,
+      notification: true,
+      title: `下载${this.state.versionData.appName}`,
+      description: `升级${this.state.versionData.appName}`,
+      appName: 'huamao',
+      downLoadUrl: this.state.versionData.address,
+      onError: () => {},
+      onProgress: (received, total) => {},
+      onSuccess: () => {}
+    })
+    this.setState({
+      modalVisible: false
+    })
+    Toast.show(`开始下载${this.state.versionData.appName}`, {
+      position: Toast.positions.CENTER
+    })
+  }
+
+  // 升级
+  updateVersion (address, updateState) {
+    if (Platform.OS === 'android') {
+      if (updateState === 0) {
+        this.managerDownloadApp()
+      } else {
+        this.dowloadApp()
+      }
+    }
+  }
+
   // 获取版本信息
   getVersionMsg () {
     let updateMsg = this.state.versionData && this.state.versionData.updateMsg
@@ -191,17 +251,6 @@ class NewVersionModal extends Component {
     this.setState({
       modalVisible: false
     })
-  }
-  // 升级
-  updateVersion (address) {
-    if (Platform.OS === 'android') {
-      this.dowloadApp()
-      // Linking.canOpenURL(address || '').then(supported => { // weixin://  alipay://
-      //   if (supported) {
-      //     Linking.openURL(address || '')
-      //   }
-      // })
-    }
   }
 
   _renderButtonView () {
@@ -231,30 +280,8 @@ class NewVersionModal extends Component {
         <TouchableOpacity
           style={styles.btnView}
           onPress={() => {
-            if (this.state.versionData.updateState === 0) {
-              downloadAndInstallApp({
-                useDownloadManager: true,
-                notification: true,
-                title: `下载${this.state.versionData.appName}`,
-                description: `升级${this.state.versionData.appName}`,
-                appName: 'huamao',
-                downLoadUrl: this.state.versionData.address,
-                onError: () => {},
-                onProgress: (received, total) => {},
-                onSuccess: () => {}
-              })
-              this.setState({
-                modalVisible: false
-              })
-              Toast.show(`开始下载${this.state.versionData.appName}`, {
-                position: Toast.positions.CENTER
-              })
-              // this.updateVersion(this.state.versionData.address)
-              onPress(false)
-            } else {
-              onPress(false)
-              this.updateVersion(this.state.versionData.address)
-            }
+            onPress(false)
+            this.updateVersion(this.state.versionData.address, this.state.versionData.updateState)
           }}
         >
           <Text style={styles.updateText}>升级</Text>

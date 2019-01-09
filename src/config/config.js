@@ -15,6 +15,7 @@ const OPEN_SCREEN_TIME_DIFF = 60
 const OPEN_SCREEN_REAMINI_TIME = 5
 // app下载文件存储地址
 const APP_DOWNLOAD_FILE_PATH = Platform.OS === 'android' ? `${FileDirAndroid.externalStorageDirection}/prunus/downloads/` : ''
+// app缓存文件存储地址
 
 export {
   OPEN_SCREEN_TIME_DIFF,

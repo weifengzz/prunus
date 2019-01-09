@@ -103,7 +103,9 @@ public class FileDirModule extends ReactContextBaseJavaModule {
      * @return 路径
      */
     public String getExternalStorageDirectory() {
-        return Environment.getExternalStorageDirectory().getPath();
+        if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
+            return Environment.getExternalStorageDirectory().getPath();        else
+        return reactContext.getFilesDir().getPath();
     }
 
     /**

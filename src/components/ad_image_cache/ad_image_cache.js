@@ -57,7 +57,6 @@ const cacheImg = (imgUrl, filePath, formatName, onSuccess, onError) => {
     })
     .then((res) => {
       onSuccess(res.path())
-      console.log('res.path()', res.path())
     })
     .catch((err) => {
       onError(err)

@@ -75,17 +75,22 @@ class HomeScreen extends Component {
           loading: false
         })
         // 展示版本信息
-        // let versionMsg = {}
-        // versionMsg.updateTime = '2012-12-02'
-        // versionMsg.version = '1.0.1'
-        // versionMsg.address = 'http://app.huamao001.cn/huamao_1.1.9.apk'
-        // versionMsg.updateMsg = '更新信息'
-        // versionMsg.updateState = 0
-        // versionMsg.appName = '花猫'
-        // versionMsg.appAddress = 'http://app.huamao001.cn/huamao_1.1.9.apk'
-        // if (!IS_IOS) {
-        //   this._newVersionModal._showModal(versionMsg)
-        // }
+        let versionMsg = {}
+        versionMsg.updateTime = '2012-12-02'
+        versionMsg.version = '1.0.1'
+        versionMsg.address = 'http://app.huamao001.cn/huamao_1.1.9.apk'
+        versionMsg.updateMsg = '更新信息'
+        versionMsg.updateState = 0
+        versionMsg.appName = '花猫'
+        versionMsg.appAddress = 'http://app.huamao001.cn/huamao_1.1.9.apk'
+        if (!IS_IOS) {
+          // this._newVersionModal._showModal(versionMsg)
+        } else {
+          // openMarket({
+          //   androidAddress: '',
+          //   iOSAddress: 'wei-xin/id414478124'
+          // })
+        }
       }, 2000)
     }, 50)
     this.operationOpenAddScreen()

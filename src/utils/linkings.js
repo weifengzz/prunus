@@ -5,6 +5,22 @@
  * @description Linking 打开相关地址
  */
 
+/**
+  一、常用URL Scheme
+    QQ: mqq://
+    微信: weixin://
+    新浪微博: weibo:// (sinaweibo://)
+    腾讯微博: tencentweibo://
+    淘宝: taobao://
+    支付宝: alipay://
+    美团: imeituan://
+    知乎: zhihu://
+    优酷: youku://
+  二、配置Scheme白名单（仅ios，Android平台不需要）
+    在项目的info.plist中添加一LSApplicationQueriesSchemes，类型为Array。
+    添加需要支持的项目，类型为字符串类型；
+ */
+
 import {
   Platform,
   Linking,

@@ -23,6 +23,8 @@ import shareUtil from './umeng/ShareUtil'
 import analyticsUtil from './umeng/AnalyticsUtil'
 // 获取网络状态
 import { getNetInfo, isNetConnected } from './netinfo'
+// Linking 相关
+import { openMarket, openTel, openWechat, openWebBrowser } from './linkings'
 
 // 导出工具
 export {
@@ -39,5 +41,9 @@ export {
   shareUtil,
   analyticsUtil,
   getNetInfo,
-  isNetConnected
+  isNetConnected,
+  openMarket,
+  openTel,
+  openWechat,
+  openWebBrowser
 }

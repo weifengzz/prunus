@@ -8,7 +8,6 @@
 import React, { Component } from 'react'
 import {
   View,
-  Image,
   StyleSheet,
   Text,
   SafeAreaView,
@@ -16,7 +15,11 @@ import {
   BackHandler,
   StatusBar
 } from 'react-native'
-import { SplashScreen, TouchableOpacity } from '../../../components'
+import {
+  SplashScreen,
+  TouchableOpacity,
+  AdImage
+} from '../../../components'
 import { OPEN_SCREEN_AD_SCREEN, LAST_INACTIVE_TIME } from '../../../data'
 import { storage } from '../../../utils'
 import { OPEN_SCREEN_REAMINI_TIME } from '../../../config/config'
@@ -126,7 +129,11 @@ class OpenScreenAdScreen extends Component {
   _renderContent () {
     return (
       <View style={styles.contentView}>
-        <Image source={{ uri: this.state.data.url }} style={styles.image} />
+        <AdImage
+          style={styles.image}
+          filePath={this.state.data.filePath}
+          imageUri={this.state.data.url}
+        />
         <View style={styles.contentPView}>
           <SafeAreaView style={{ flex: 1 }}>
             {

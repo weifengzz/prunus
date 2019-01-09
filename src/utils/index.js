@@ -25,6 +25,8 @@ import analyticsUtil from './umeng/AnalyticsUtil'
 import { getNetInfo, isNetConnected } from './netinfo'
 // Linking 相关
 import { openMarket, openTel, openWechat, openWebBrowser } from './linkings'
+// 生成全球唯一标志符
+import uuid from './uuid'
 
 // 导出工具
 export {
@@ -45,5 +47,6 @@ export {
   openMarket,
   openTel,
   openWechat,
-  openWebBrowser
+  openWebBrowser,
+  uuid
 }

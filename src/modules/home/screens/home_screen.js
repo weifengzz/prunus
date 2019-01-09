@@ -15,7 +15,9 @@ import {
 import {
   SplashScreen,
   LottieView,
-  NewVersionModal
+  NewVersionModal,
+  adImageCache,
+  deleteAdImageCache
   // downloadAndInstallApp
   // PulseLoader
 } from '../../../components'
@@ -97,8 +99,54 @@ class HomeScreen extends Component {
   }
 
   // 操作广告信息
-  operationOpenAddScreen () {
-    storage.setItem(OPEN_SCREEN_AD_SCREEN, DATA[randomNumber(0, 1)])
+  async operationOpenAddScreen () {
+    // 获取最新的文件数据
+    const imageData = Object.assign({}, DATA[randomNumber(0, 1)])
+    const lastCacheData = await storage.getItem(OPEN_SCREEN_AD_SCREEN)
+    // 有上次缓存数据
+    if (lastCacheData) {
+      deleteAdImageCache({
+        filePath: lastCacheData.filePath || '',
+        onSuccess: () => {
+          adImageCache(
+            {
+              imgUrl: imageData.url,
+              imgName: '',
+              onSuccess: (filePath) => {
+                imageData.filePath = filePath
+                storage.setItem(OPEN_SCREEN_AD_SCREEN, imageData)
+              },
+              onError: () => {}
+            }
+          )
+        },
+        onError: () => {
+          adImageCache(
+            {
+              imgUrl: imageData.url,
+              imgName: '',
+              onSuccess: (filePath) => {
+                imageData.filePath = filePath
+                storage.setItem(OPEN_SCREEN_AD_SCREEN, imageData)
+              },
+              onError: () => {}
+            }
+          )
+        }
+      })
+    } else {
+      adImageCache(
+        {
+          imgUrl: imageData.url,
+          imgName: '',
+          onSuccess: (filePath) => {
+            imageData.filePath = filePath
+            storage.setItem(OPEN_SCREEN_AD_SCREEN, imageData)
+          },
+          onError: () => {}
+        }
+      )
+    }
   }
 
   componentWillUnmount () {

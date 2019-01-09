@@ -26,6 +26,8 @@ import RNFetchBlob from 'rn-fetch-blob'
 import FileDirAndroid from './file_dir'
 // 下载并安装app相关组件
 import { downloadAndInstallApp, NewVersionModal } from './app_download'
+// 图片缓存
+import { adImageCache, deleteAdImageCache, AdImage } from './ad_image_cache'
 
 export {
   Icon,
@@ -42,5 +44,8 @@ export {
   RNFetchBlob,
   FileDirAndroid,
   downloadAndInstallApp,
-  NewVersionModal
+  NewVersionModal,
+  adImageCache,
+  deleteAdImageCache,
+  AdImage
 }

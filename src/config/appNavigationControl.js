@@ -15,6 +15,7 @@ import {
   AppState,
   StatusBar
 } from 'react-native'
+import { fileExists } from '../components'
 import { NavigationActions } from 'react-navigation'
 import { storage } from '../utils'
 import { LAST_INACTIVE_TIME, OPEN_SCREEN_AD_SCREEN } from '../data'
@@ -83,10 +84,14 @@ class AppNavigationControl extends Component {
       let timeDiff = moment(moment()).diff(moment(lastInactiveTime), 'seconds')
       if (timeDiff > OPEN_SCREEN_TIME_DIFF) {
         storage.removeItem(LAST_INACTIVE_TIME)
-        const navigateAction = NavigationActions.navigate({
-          routeName: 'open_screen'
+        fileExists(openAdData.filePath, (exist) => {
+          if (exist) {
+            const navigateAction = NavigationActions.navigate({
+              routeName: 'open_screen'
+            })
+            this.props.dispatch(navigateAction)
+          }
         })
-        this.props.dispatch(navigateAction)
       }
     }
   }

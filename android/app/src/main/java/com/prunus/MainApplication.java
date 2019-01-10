@@ -5,6 +5,11 @@ import android.support.multidex.MultiDexApplication;
 import com.RNFetchBlob.RNFetchBlobPackage;
 import com.airbnb.android.react.lottie.LottiePackage;
 import com.facebook.react.ReactApplication;
+import com.RNFetchBlob.RNFetchBlobPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+import com.airbnb.android.react.lottie.LottiePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -37,10 +42,10 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new RNFetchBlobPackage(),
-            new LottiePackage(),
-            new DplusReactPackage(),
             new VectorIconsPackage(),
             new SplashScreenReactPackage(),
+            new LottiePackage(),
+            new DplusReactPackage(),
             new RNGestureHandlerPackage(),
             new FileDirReactPackage(),
             new AppInstallReactPackage(),

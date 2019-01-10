@@ -19,7 +19,6 @@ const OPEN_SCREEN_REAMINI_TIME = 5
 // app下载文件存储地址
 const APP_DOWNLOAD_FILE_PATH = Platform.OS === 'android' ? `${FileDirAndroid.externalStorageDirection}/prunus/downloads/` : ''
 // app缓存文件存储地址
-console.log('RNFetchBlob.fs.dirs.PictureDir', RNFetchBlob.fs.dirs)
 const AD_IMAGE_FILE_PATH = Platform.OS === 'android' ? `${FileDirAndroid.externalStorageDirection}/prunus/ad_images/` : `${RNFetchBlob.fs.dirs.DocumentDir}/`
 
 export {

@@ -52,13 +52,13 @@ class OpenScreenAdScreen extends Component {
           // 100毫秒给加载图片时间
           setTimeout(() => {
             SplashScreen.hide()
+            // 开启计时器
+            this.openRemainingTimer()
           }, 100)
         } else {
           this.props.navigation.navigate('main')
         }
       })
-      // 开启计时器
-      this.openRemainingTimer()
     } else {
       this.props.navigation.navigate('main')
     }

@@ -18,7 +18,8 @@ import {
 import {
   SplashScreen,
   TouchableOpacity,
-  AdImage
+  AdImage,
+  fileExists
 } from '../../../components'
 import { OPEN_SCREEN_AD_SCREEN, LAST_INACTIVE_TIME } from '../../../data'
 import { storage } from '../../../utils'
@@ -43,10 +44,19 @@ class OpenScreenAdScreen extends Component {
   async componentDidMount () {
     const data = await storage.getItem(OPEN_SCREEN_AD_SCREEN)
     if (data) {
-      this.setState({
-        data
+      fileExists(data.filePath, (exist) => {
+        if (exist) {
+          this.setState({
+            data
+          })
+          // 100毫秒给加载图片时间
+          setTimeout(() => {
+            SplashScreen.hide()
+          }, 100)
+        } else {
+          this.props.navigation.navigate('main')
+        }
       })
-      SplashScreen.hide()
       // 开启计时器
       this.openRemainingTimer()
     } else {

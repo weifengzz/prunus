@@ -28,6 +28,8 @@ import FileDirAndroid from './file_dir'
 import { downloadAndInstallApp, NewVersionModal } from './app_download'
 // 图片缓存
 import { adImageCache, deleteAdImageCache, AdImage } from './ad_image_cache'
+// 文件操作
+import { fileExists } from './file_operation'
 
 export {
   Icon,
@@ -47,5 +49,6 @@ export {
   NewVersionModal,
   adImageCache,
   deleteAdImageCache,
-  AdImage
+  AdImage,
+  fileExists
 }

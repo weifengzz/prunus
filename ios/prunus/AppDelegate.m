@@ -12,6 +12,7 @@
 #import <UMCommon/UMCommon.h>
 #import <UMAnalytics/MobClick.h>
 #import <UMShare/UMShare.h>
+#import "RNSplashScreen.h"
 
 @implementation AppDelegate
 
@@ -39,6 +40,7 @@
   // U-Share 平台设置
   [self configUSharePlatforms];
   [self confitUShareSettings];
+  [RNSplashScreen show];
   return YES;
 }
 

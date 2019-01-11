@@ -1,4 +1,4 @@
-package com.prunus.fileDirs;
+package com.prunus.fullScreen;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class FileDirReactPackage implements ReactPackage {
+public class FullScreenReactPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules;
         modules = new ArrayList<>();
-        modules.add(new FileDirModule(reactContext));
+        modules.add(new FullScreenModule(reactContext));
         return modules;
     }
 

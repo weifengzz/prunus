@@ -1,4 +1,4 @@
-package com.prunus.AppInstall;
+package com.prunus.appInstall;
 
 import android.content.Intent;
 import android.net.Uri;

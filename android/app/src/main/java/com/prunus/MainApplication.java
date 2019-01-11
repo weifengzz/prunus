@@ -5,26 +5,22 @@ import android.support.multidex.MultiDexApplication;
 import com.RNFetchBlob.RNFetchBlobPackage;
 import com.airbnb.android.react.lottie.LottiePackage;
 import com.facebook.react.ReactApplication;
-import com.RNFetchBlob.RNFetchBlobPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
+
+import com.prunus.fullScreen.FullScreenReactPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
-import com.airbnb.android.react.lottie.LottiePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
-import com.oblador.vectoricons.VectorIconsPackage;
-import com.prunus.AppInstall.AppInstallReactPackage;
-import com.prunus.FileDirs.FileDirReactPackage;
+import com.prunus.appInstall.AppInstallReactPackage;
+import com.prunus.fileDirs.FileDirReactPackage;
 import com.prunus.umeng.DplusReactPackage;
 import com.prunus.upgrade.UpgradeReactPackage;
-import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.socialize.PlatformConfig;
-
-import org.devio.rn.splashscreen.SplashScreenReactPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -49,7 +45,8 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
             new RNGestureHandlerPackage(),
             new FileDirReactPackage(),
             new AppInstallReactPackage(),
-            new UpgradeReactPackage()
+            new UpgradeReactPackage(),
+            new FullScreenReactPackage()
       );
     }
 

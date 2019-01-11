@@ -1,4 +1,4 @@
-package com.prunus.AppInstall;
+package com.prunus.appInstall;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;

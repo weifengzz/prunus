@@ -4,7 +4,7 @@
  * https://www.cnblogs.com/zxxiaoxia/p/6857466.html
  * https://www.cnblogs.com/mengdd/p/3742623.html
  */
-package com.prunus.FileDirs;
+package com.prunus.fileDirs;
 
 import android.os.Environment;
 

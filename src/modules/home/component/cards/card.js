@@ -18,6 +18,7 @@ import {
   TouchableOpacity
 } from '../../../../components'
 import { withNavigation } from 'react-navigation'
+import FullScreenAndroid from '../../../../components/full_screen'
 
 const { width } = Dimensions.get('window')
 const CARD_WIDTH = width * 0.94
@@ -60,7 +61,10 @@ class Card extends Component {
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => {
-          navigation.navigate('card_detail')
+          if (!IS_IOS) {
+            FullScreenAndroid.fullScreen()
+            navigation.navigate('card_detail')
+          }
         }}>
         <View style={[styles.card, { backgroundColor: this.props.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }]}>
           {

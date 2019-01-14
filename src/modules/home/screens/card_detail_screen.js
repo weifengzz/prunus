@@ -7,26 +7,24 @@
 
 import React, { Component } from 'react'
 import {
-  View
+  View,
+  Text
 } from 'react-native'
-import FullScreenAndroid from '../../../components/full_screen.android'
+import FullScreenAndroid from '../../../components/full_screen'
 
 /**
  * @class
  * @classdesc 卡片详情
  */
 class CardDetailScreen extends Component {
-  componentDidMount () {
-    setTimeout(() => {
-      FullScreenAndroid.fullScreen()
-    }, 500)
-  }
   componentWillUnmount () {
     FullScreenAndroid.cancelFullScreen()
   }
   render () {
     return (
-      <View style={{ flex: 1, backgroundColor: 'green' }} />
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>hello</Text>
+      </View>
     )
   }
 }

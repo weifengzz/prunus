@@ -30,6 +30,8 @@ import { downloadAndInstallApp, NewVersionModal } from './app_download'
 import { adImageCache, deleteAdImageCache, AdImage } from './ad_image_cache'
 // 文件操作
 import { fileExists } from './file_operation'
+// 全屏相关
+import { fullScreen, cancelFullScreen } from './full_screen_android'
 
 export {
   Icon,
@@ -50,5 +52,7 @@ export {
   adImageCache,
   deleteAdImageCache,
   AdImage,
-  fileExists
+  fileExists,
+  fullScreen,
+  cancelFullScreen
 }

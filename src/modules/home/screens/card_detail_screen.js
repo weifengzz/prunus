@@ -8,9 +8,14 @@
 import React, { Component } from 'react'
 import {
   View,
-  Text
+  Text,
+  Platform
 } from 'react-native'
-import FullScreenAndroid from '../../../components/full_screen'
+import {
+  cancelFullScreen
+} from '../../../components'
+
+const IS_IOS = Platform.OS === 'ios'
 
 /**
  * @class
@@ -18,7 +23,9 @@ import FullScreenAndroid from '../../../components/full_screen'
  */
 class CardDetailScreen extends Component {
   componentWillUnmount () {
-    FullScreenAndroid.cancelFullScreen()
+    if (!IS_IOS) {
+      cancelFullScreen()
+    }
   }
   render () {
     return (

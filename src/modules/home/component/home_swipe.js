@@ -23,7 +23,7 @@ const CARDS = [
     一楼回复：给他来个大姨妈……
     二楼回复：外加溃疡和痔疮！”
     三楼：双手受伤。`,
-    backgroundColor: 'red',
+    backgroundColor: '#409ef4',
     type: 1,
     img: '',
     key: '1'

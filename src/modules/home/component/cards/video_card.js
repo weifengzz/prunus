@@ -76,10 +76,10 @@ const styles = StyleSheet.create({
   shadowStyle: {
     shadowColor: '#000',
     shadowOffset: {
-      width: 3,
-      height: 3
+      width: 4,
+      height: 4
     },
-    shadowOpacity: 0.6,
+    shadowOpacity: 0.7,
     shadowRadius: 10
   },
   imageViewAndroid: {

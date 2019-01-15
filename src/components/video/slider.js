@@ -1,3 +1,11 @@
+/**
+ * 进度条（支持点击随意跳转）
+ * 2018-12-13 11:47
+ * @author koohead
+ * @description 进度条
+ * 参考：https://github.com/jeanregisser/react-native-slider
+ * 点击随意跳转参考：https://github.com/jeanregisser/react-native-slider/pull/136/files
+ */
 import React, { PureComponent } from 'react'
 
 import {
@@ -61,7 +69,7 @@ export default class Slider extends PureComponent {
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: (e) => this._handleStartShouldSetPanResponder(e),
       onMoveShouldSetPanResponder: () => this._handleMoveShouldSetPanResponder(),
-      onPanResponderGrant: () => this._handlePanResponderGrant(),
+      onPanResponderGrant: (e, gestureState) => this._handlePanResponderGrant(e, gestureState),
       onPanResponderMove: (e, gestureState) => this._handlePanResponderMove(e, gestureState),
       onPanResponderRelease: (e, gestureState) => this._handlePanResponderEnd(e, gestureState),
       onPanResponderTerminationRequest: (e, gestureState) => this._handlePanResponderRequestEnd(e, gestureState),
@@ -98,6 +106,7 @@ export default class Slider extends PureComponent {
       thumbTouchSize,
       animationType,
       animateTransitions,
+      trackPressable,
       ...other
     } = this.props
     const {
@@ -198,7 +207,7 @@ export default class Slider extends PureComponent {
     e /* gestureState: Object */
   ) {
     // Should we become active when the user presses down on the thumb?
-    return this._thumbHitTest(e)
+    return this.props.trackPressable || this._thumbHitTest(e)
   }
 
   _handleMoveShouldSetPanResponder (/* e: Object, gestureState: Object */) {
@@ -206,8 +215,8 @@ export default class Slider extends PureComponent {
     return false
   }
 
-  _handlePanResponderGrant (/* e: Object, gestureState: Object */) {
-    this._previousLeft = this._getThumbLeft(this._getCurrentValue())
+  _handlePanResponderGrant (e, gestureState) {
+    this._previousLeft = this.props.trackPressable ? e.nativeEvent.locationX - (this.props.thumbTouchSize.width / 2) : this._getThumbLeft(this._getCurrentValue())
     this._fireChangeEvent('onSlidingStart')
   };
 
@@ -443,7 +452,8 @@ Slider.defaultProps = {
   thumbTintColor: '#343434',
   thumbTouchSize: { width: 40, height: 40 },
   debugTouchArea: false,
-  animationType: 'timing'
+  animationType: 'timing',
+  trackPressable: true
 }
 
 var defaultStyles = StyleSheet.create({

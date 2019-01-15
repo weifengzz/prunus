@@ -1,13 +1,12 @@
 /**
- * 卡片组件
- * 2018-12-14 14:13
+ * 视频卡片组件
+ * 2018-01-15 10:21
  * @author koohead
- * @description home底部按钮界面
+ * @description 视频卡片组件
  */
 
 import React, { Component } from 'react'
 import {
-  Text,
   StyleSheet,
   Dimensions,
   View,
@@ -29,28 +28,15 @@ const IS_IOS = Platform.OS === 'ios'
  * @class
  * @classdesc 滑动卡片
  */
-class Card extends Component {
+class VideoCard extends Component {
   _renderContent () {
-    const { type } = this.props
-    if (type === 1) {
-      return this._renderTextInput()
-    } else {
-      return this._renderImage()
-    }
+    return this._renderImage()
   }
   _renderImage () {
     const { img } = this.props
     return (
       <View style={IS_IOS ? styles.imageViewIOS : styles.imageViewAndroid}>
         <Image source={{ uri: img }} style={IS_IOS ? styles.imageIOS : styles.imageAndroid} />
-      </View>
-    )
-  }
-  _renderTextInput () {
-    const { text } = this.props
-    return (
-      <View style={{ flex: 1, padding: 20 }}>
-        <Text style={{ fontSize: 20, color: 'white' }}>{text}</Text>
       </View>
     )
   }
@@ -61,14 +47,12 @@ class Card extends Component {
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => {
-          if (IS_IOS) {
-            navigation.navigate('card_detail')
-          } else {
+          if (!IS_IOS) {
             fullScreen()
-            navigation.navigate('card_detail')
           }
+          navigation.navigate('card_detail')
         }}>
-        <View style={[styles.card, { backgroundColor: this.props.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }]}>
+        <View style={[styles.card, { backgroundColor: this.props.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }, IS_IOS ? styles.shadowStyle : {}]}>
           {
             this._renderContent()
           }
@@ -78,7 +62,7 @@ class Card extends Component {
   }
 }
 
-Card.defaultProps = {
+VideoCard.defaultProps = {
   cardHeight: 0,
   stackOffsetY: 15,
   stackDepth: 3
@@ -88,6 +72,15 @@ const styles = StyleSheet.create({
   card: {
     width: CARD_WIDTH,
     borderRadius: 10
+  },
+  shadowStyle: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 3,
+      height: 3
+    },
+    shadowOpacity: 0.6,
+    shadowRadius: 10
   },
   imageViewAndroid: {
     width: '100%',
@@ -104,7 +97,9 @@ const styles = StyleSheet.create({
     height: '100%',
     borderRadius: 10,
     overlayColor: 'white',
-    resizeMode: 'cover'
+    resizeMode: 'cover',
+    borderWidth: 1,
+    borderColor: '#bdbdbd'
   },
   imageIOS: {
     width: '100%',
@@ -115,4 +110,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default withNavigation(Card)
+export default withNavigation(VideoCard)

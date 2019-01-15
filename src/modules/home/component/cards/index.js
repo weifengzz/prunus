@@ -5,9 +5,15 @@
  * @description 导出组件
  */
 
-// 卡片组件
-import Card from './card'
+// 文字卡片组件
+import TextCard from './text_card'
+// 图片卡片组件
+import ImageCard from './image_card'
+// 视频卡片组件
+import VideoCard from './video_card'
 
 export {
-  Card
+  TextCard,
+  ImageCard,
+  VideoCard
 }

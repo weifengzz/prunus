@@ -15,7 +15,7 @@ import {
 } from '../../../components'
 import SwipeCards from './swipe_cards'
 import HomeFooter from './home_footer'
-import { Card } from './cards'
+import { TextCard, ImageCard, VideoCard } from './cards'
 
 const CARDS = [
   {
@@ -36,13 +36,12 @@ const CARDS = [
     key: '2'
   },
   {
-    text: `一楼主发帖：好久没见男友了，真是想他啊，已经决定在他那住上七天了，请问大家，我要给他来个什么惊喜呢？
-    一楼回复：给他来个大姨妈……
-    二楼回复：外加溃疡和痔疮！”
-    三楼：双手受伤。`,
-    backgroundColor: 'orange',
-    type: 1,
+    text: ``,
+    backgroundColor: 'white',
+    type: 3,
     img: '',
+    videoUrl: 'https://video.pearvideo.com/mp4/adshort/20190114/cont-1505670-13478217_adpkg-ad_hd.mp4',
+    videoImg: 'https://image.pearvideo.com/cont/20190114/cont-1505670-11796291.jpg',
     key: '3'
   },
   {
@@ -237,15 +236,41 @@ class HomeSwipe extends Component {
    */
   _renderCards (cardData) {
     const { cardHeight } = this.props
-    return (
-      <Card
-        {...cardData}
-        cardHeight={cardHeight}
-        stackDepth={3}
-        stackOffsetY={15}
-        ref={(card) => { this.card = card }}
-      />
-    )
+    const { type } = cardData
+    switch (type) {
+      case 1:
+        return <TextCard
+          {...cardData}
+          cardHeight={cardHeight}
+          stackDepth={3}
+          stackOffsetY={15}
+          ref={(card) => { this.card = card }}
+        />
+      case 2:
+        return <ImageCard
+          {...cardData}
+          cardHeight={cardHeight}
+          stackDepth={3}
+          stackOffsetY={15}
+          ref={(card) => { this.card = card }}
+        />
+      case 3:
+        return <VideoCard
+          {...cardData}
+          cardHeight={cardHeight}
+          stackDepth={3}
+          stackOffsetY={15}
+          ref={(card) => { this.card = card }}
+        />
+      default:
+        return <TextCard
+          {...cardData}
+          cardHeight={cardHeight}
+          stackDepth={3}
+          stackOffsetY={15}
+          ref={(card) => { this.card = card }}
+        />
+    }
   }
   render () {
     return (

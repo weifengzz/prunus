@@ -28,6 +28,13 @@ const SMALL_IMG_WIDTH = (width - 40) * 0.179 - px(10)
  * @classdesc home底部按钮界面
  */
 class HomeFooter extends Component {
+  likes () {
+    this.like && this.like.reset()
+    this.like && this.like.play()
+  }
+  unLike () {
+    this.dli && this.dli.startAnimate()
+  }
   render () {
     const { onUnLikePress, onLikePress, onCollectionPress, onPrevPress, onRecommendPress } = this.props
     return (
@@ -44,7 +51,7 @@ class HomeFooter extends Component {
         <View style={styles.itemLargeView}>
           <TouchableOpacity
             onPress={() => {
-              this.dli.startAnimate()
+              // this.dli.startAnimate()
               onUnLikePress()
             }}
             style={styles.itemLargeBtnView}>
@@ -65,7 +72,7 @@ class HomeFooter extends Component {
             useFeedBack={false}
             intervalTime={500}
             onPress={() => {
-              this.like.play()
+              // this.like.play()
               onLikePress()
             }}
             style={styles.itemLargeBtnView}>

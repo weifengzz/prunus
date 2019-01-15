@@ -175,13 +175,12 @@ const CARDS = [
 
 class HomeSwipe extends Component {
   handleYup (card) {
-    console.log(`Yup for ${card.text}`)
+    this.homeFooter && this.homeFooter.likes()
   }
   handleNope (card) {
-    console.log(`Nope for ${card.text}`)
+    this.homeFooter && this.homeFooter.unLike()
   }
   handleMaybe (card) {
-    console.log(`Maybe for ${card.text}`)
   }
   /**
    * 加载底部组件

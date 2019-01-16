@@ -11,9 +11,12 @@ import TextCard from './text_card'
 import ImageCard from './image_card'
 // 视频卡片组件
 import VideoCard from './video_card'
+// 短视频卡片组件
+import ShortVideoCard from './short_video_card'
 
 export {
   TextCard,
   ImageCard,
-  VideoCard
+  VideoCard,
+  ShortVideoCard
 }

@@ -53,12 +53,6 @@ class VideoCard extends Component {
     })
   }
 
-  // componentWillReceiveProps (nextProps) {
-  //   this.setState({
-  //     paused: nextProps.paused
-  //   })
-  // }
-
   _renderContent () {
     return (
       <View style={styles.contentView}>
@@ -143,9 +137,9 @@ class VideoCard extends Component {
    * 视频
    */
   _renderVideo () {
-    const { cardHeight, videoUrl } = this.props
+    const { cardHeight, videoUrl, stackOffsetY, stackDepth } = this.props
     // 卡片高度
-    const ch = cardHeight
+    const ch = cardHeight - stackOffsetY * stackDepth + stackOffsetY
     // 卡片宽度
     const cw = CARD_WIDTH
     // 视频高度

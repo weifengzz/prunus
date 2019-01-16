@@ -36,6 +36,8 @@ import { fullScreen, cancelFullScreen } from './full_screen_android'
 import CoverImage from './cover_image'
 // 分割线
 import SpliteLine from './splite_line'
+// 渐变
+import LinearGradient from 'react-native-linear-gradient'
 
 export {
   Icon,
@@ -60,5 +62,6 @@ export {
   fullScreen,
   cancelFullScreen,
   CoverImage,
-  SpliteLine
+  SpliteLine,
+  LinearGradient
 }

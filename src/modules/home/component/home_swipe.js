@@ -15,7 +15,7 @@ import {
 } from '../../../components'
 import SwipeCards from './swipe_cards'
 import HomeFooter from './home_footer'
-import { TextCard, ImageCard, VideoCard } from './cards'
+import { TextCard, ImageCard, VideoCard, ShortVideoCard } from './cards'
 
 const CARDS = [
   {
@@ -46,16 +46,17 @@ const CARDS = [
   },
   {
     text: '',
-    backgroundColor: 'blue',
+    backgroundColor: 'white',
     type: 2,
     img: 'https://www.gifjia5.com/wp-content/uploads/2018/07/15312235433978123.gif',
     key: '4'
   },
   {
     text: '',
-    backgroundColor: 'green',
-    type: 2,
-    img: 'http://pic24.nipic.com/20121010/3798632_184253198370_2.jpg',
+    backgroundColor: 'white',
+    type: 4,
+    videoUrl: 'http://flv3.bn.netease.com/videolib1/1808/05/lQNaE924V/HD/lQNaE924V-mobile.mp4',
+    videoImg: 'http://tupian.qqjay.com/u/2017/1221/1_143855_6.jpg',
     key: '5'
   },
   {
@@ -255,6 +256,15 @@ class HomeSwipe extends Component {
         />
       case 3:
         return <VideoCard
+          {...cardData}
+          cardHeight={cardHeight}
+          stackDepth={3}
+          paused={!isTopCard}
+          stackOffsetY={15}
+          ref={(card) => { this.videoCard = card }}
+        />
+      case 4:
+        return <ShortVideoCard
           {...cardData}
           cardHeight={cardHeight}
           stackDepth={3}

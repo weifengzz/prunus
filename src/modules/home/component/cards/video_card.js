@@ -160,7 +160,7 @@ class VideoCard extends Component {
         ref={(ref) => {
           this.player = ref
         }}
-        paused
+        paused={!this.props.paused}
         repeat
         style={{ height: vh, width: vw }} />
     )

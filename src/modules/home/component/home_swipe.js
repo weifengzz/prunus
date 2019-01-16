@@ -235,7 +235,7 @@ class HomeSwipe extends Component {
   /**
    * 加载
    */
-  _renderCards (cardData) {
+  _renderCards (cardData, isTopCard) {
     const { cardHeight } = this.props
     const { type } = cardData
     switch (type) {
@@ -260,6 +260,7 @@ class HomeSwipe extends Component {
           {...cardData}
           cardHeight={cardHeight}
           stackDepth={3}
+          paused={isTopCard}
           stackOffsetY={15}
           ref={(card) => { this.videoCard = card }}
         />
@@ -281,7 +282,7 @@ class HomeSwipe extends Component {
             ref={(swipecards) => { this.swipecards = swipecards }}
             cards={CARDS}
             cardHeight={this.props.cardHeight}
-            renderCard={(cardData) => { return this._renderCards(cardData) }}
+            renderCard={(cardData, isTopCard) => { return this._renderCards(cardData, isTopCard) }}
             renderNoMoreCards={() => <Text>没有更多卡片</Text>}
             loop
             stack
@@ -297,7 +298,6 @@ class HomeSwipe extends Component {
             onDragStart={() => {
             }}
             callbackShowingData={(card) => {
-              console.log('card', card)
             }}
           />
         </View>

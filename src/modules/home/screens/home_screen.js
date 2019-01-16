@@ -274,7 +274,7 @@ HomeScreen.navigationOptions = props => {
   const { navigation } = props
   return setStackOptions({
     navigation: navigation,
-    title: '首页',
+    title: 'Prunus',
     headerLeftComponent: () => <HeaderLeft navigation={navigation} />,
     headerRightComponent: () => <HeaderRight navigation={navigation} />
   })

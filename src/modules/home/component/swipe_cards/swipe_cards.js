@@ -318,6 +318,7 @@ class SwipeCards extends Component {
 
     // Get the next stack of cards to render.
     let cards = this.state.cards.slice(currentIndex[this.guid], currentIndex[this.guid] + this.props.stackDepth).reverse()
+    this.props.callbackShowingData(cards[cards.length - 1])
 
     return cards.map((card, i) => {
       let offsetX = this.props.stackOffsetX * cards.length - i * this.props.stackOffsetX
@@ -575,7 +576,8 @@ SwipeCards.defaultProps = {
   dragY: true,
   smoothTransition: false,
   bottomView: () => null,
-  cardHeight: 0
+  cardHeight: 0,
+  callbackShowingData: () => {}
 }
 
 export default SwipeCards

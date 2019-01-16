@@ -32,6 +32,10 @@ import { adImageCache, deleteAdImageCache, AdImage } from './ad_image_cache'
 import { fileExists } from './file_operation'
 // 全屏相关
 import { fullScreen, cancelFullScreen } from './full_screen_android'
+// 加载或加载失败覆盖图片
+import CoverImage from './cover_image'
+// 分割线
+import SpliteLine from './splite_line'
 
 export {
   Icon,
@@ -54,5 +58,7 @@ export {
   AdImage,
   fileExists,
   fullScreen,
-  cancelFullScreen
+  cancelFullScreen,
+  CoverImage,
+  SpliteLine
 }

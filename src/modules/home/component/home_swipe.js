@@ -41,7 +41,7 @@ const CARDS = [
     type: 3,
     img: '',
     videoUrl: 'https://video.pearvideo.com/mp4/adshort/20190114/cont-1505670-13478217_adpkg-ad_hd.mp4',
-    videoImg: 'https://image.pearvideo.com/cont/20190114/cont-1505670-11796291.jpg',
+    videoImg: 'http://tupian.qqjay.com/u/2017/1221/1_143855_6.jpg',
     key: '3'
   },
   {
@@ -175,9 +175,11 @@ const CARDS = [
 
 class HomeSwipe extends Component {
   handleYup (card) {
+    console.log('card', card)
     this.homeFooter && this.homeFooter.likes()
   }
   handleNope (card) {
+    console.log('card', card)
     this.homeFooter && this.homeFooter.unLike()
   }
   handleMaybe (card) {
@@ -243,7 +245,7 @@ class HomeSwipe extends Component {
           cardHeight={cardHeight}
           stackDepth={3}
           stackOffsetY={15}
-          ref={(card) => { this.card = card }}
+          ref={(card) => { this.textCard = card }}
         />
       case 2:
         return <ImageCard
@@ -251,7 +253,7 @@ class HomeSwipe extends Component {
           cardHeight={cardHeight}
           stackDepth={3}
           stackOffsetY={15}
-          ref={(card) => { this.card = card }}
+          ref={(card) => { this.imageCard = card }}
         />
       case 3:
         return <VideoCard
@@ -259,7 +261,7 @@ class HomeSwipe extends Component {
           cardHeight={cardHeight}
           stackDepth={3}
           stackOffsetY={15}
-          ref={(card) => { this.card = card }}
+          ref={(card) => { this.videoCard = card }}
         />
       default:
         return <TextCard
@@ -267,7 +269,7 @@ class HomeSwipe extends Component {
           cardHeight={cardHeight}
           stackDepth={3}
           stackOffsetY={15}
-          ref={(card) => { this.card = card }}
+          ref={(card) => { this.textCard = card }}
         />
     }
   }
@@ -293,6 +295,9 @@ class HomeSwipe extends Component {
               return this.renderFooter()
             }}
             onDragStart={() => {
+            }}
+            callbackShowingData={(card) => {
+              console.log('card', card)
             }}
           />
         </View>

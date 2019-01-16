@@ -30,9 +30,9 @@ const CARDS = [
   },
   {
     text: '',
-    backgroundColor: 'green',
+    backgroundColor: 'white',
     type: 2,
-    img: 'http://pic24.nipic.com/20121010/3798632_184253198370_2.jpg',
+    img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547635267283&di=3b399ab2eccccc937d5962b8eea66462&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201411%2F01%2F20141101043443_F25UB.thumb.700_0.jpeg',
     key: '2'
   },
   {

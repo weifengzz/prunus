@@ -53,6 +53,12 @@ class VideoCard extends Component {
     })
   }
 
+  // componentWillReceiveProps (nextProps) {
+  //   this.setState({
+  //     paused: nextProps.paused
+  //   })
+  // }
+
   _renderContent () {
     return (
       <View style={styles.contentView}>
@@ -160,7 +166,7 @@ class VideoCard extends Component {
         ref={(ref) => {
           this.player = ref
         }}
-        paused={!this.props.paused}
+        paused={this.state.paused}
         repeat
         style={{ height: vh, width: vw }} />
     )
@@ -184,6 +190,12 @@ class VideoCard extends Component {
         </View>
       </TouchableOpacity>
     )
+  }
+}
+
+VideoCard.getDerivedStateFromProps = (nextProps) => {
+  return {
+    paused: nextProps.paused
   }
 }
 

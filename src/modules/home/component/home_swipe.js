@@ -175,11 +175,9 @@ const CARDS = [
 
 class HomeSwipe extends Component {
   handleYup (card) {
-    console.log('card', card)
     this.homeFooter && this.homeFooter.likes()
   }
   handleNope (card) {
-    console.log('card', card)
     this.homeFooter && this.homeFooter.unLike()
   }
   handleMaybe (card) {
@@ -260,7 +258,7 @@ class HomeSwipe extends Component {
           {...cardData}
           cardHeight={cardHeight}
           stackDepth={3}
-          paused={isTopCard}
+          paused={!isTopCard}
           stackOffsetY={15}
           ref={(card) => { this.videoCard = card }}
         />

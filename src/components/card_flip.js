@@ -41,14 +41,6 @@ export default class CardFlip extends Component {
     })
   }
 
-  componentWillReceiveProps (nextProps) {
-    this.setState({
-      duration: nextProps.duration,
-      flipZoom: nextProps.flipZoom,
-      sides: nextProps.children
-    })
-  }
-
   tip (customConfig) {
     const defaultConfig = { direction: 'left', progress: 0.05, duration: 150 }
     const config = { ...defaultConfig, ...customConfig }
@@ -343,6 +335,14 @@ const styles = StyleSheet.create({
     top: 0
   }
 })
+
+CardFlip.getDerivedStateFromProps = nextProps => {
+  return {
+    duration: nextProps.duration,
+    flipZoom: nextProps.flipZoom,
+    sides: nextProps.children
+  }
+}
 
 CardFlip.defaultProps = {
   style: {},

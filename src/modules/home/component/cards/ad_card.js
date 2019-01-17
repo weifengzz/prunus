@@ -16,7 +16,6 @@ import {
 } from 'react-native'
 import {
   TouchableOpacity,
-  fullScreen,
   LinearGradient,
   Icon
 } from '../../../../components'
@@ -88,15 +87,12 @@ class AdCard extends Component {
   }
 
   render () {
-    const { cardHeight, stackOffsetY, stackDepth, navigation } = this.props
+    const { cardHeight, stackOffsetY, stackDepth, webUrl } = this.props
     return (
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => {
-          if (!IS_IOS) {
-            fullScreen()
-          }
-          navigation.navigate('card_detail')
+          this.props.navigation.navigate('ad_detail', { webUrl })
         }}>
         <View style={[styles.card, { backgroundColor: this.props.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }, IS_IOS ? styles.shadowStyle : {}]}>
           {

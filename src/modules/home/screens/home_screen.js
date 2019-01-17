@@ -93,7 +93,7 @@ class HomeScreen extends Component {
           //   iOSAddress: 'wei-xin/id414478124'
           // })
         }
-      }, 2000)
+      }, 4000)
     }, 50)
     this.operationOpenAddScreen()
   }
@@ -223,14 +223,27 @@ class HomeScreen extends Component {
         //   borderColor={commonStyles.primaryColor.color}
         //   avatar={require('../../../assets/icons/author.png')}
         // />
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <View style={{ height: '40%', width: '40%' }}>
-            <LottieView
-              autoPlay
-              resizeMode={'cover'}
-              style={{ flex: 1 }}
-              source={require('../../../assets/lotties/furtune.json')}
-            />
+        <View style={{ flex: 1 }}>
+          <View style={{ flex: 1 }}>
+            <View style={{ flex: 1 }} />
+            <View style={{ flex: 5, alignItems: 'center', justifyContent: 'flex-end' }}>
+              <LottieView
+                autoPlay
+                loop
+                resizeMode={'cover'}
+                style={{ width: '70%' }}
+                source={require('../../../assets/lotties/happy_new_year_.json')}
+              />
+            </View>
+            <View style={{ flex: 3, alignItems: 'center' }}>
+              <LottieView
+                autoPlay
+                loop
+                resizeMode={'cover'}
+                style={{ width: '40%' }}
+                source={require('../../../assets/lotties/material_wave_loading.json')}
+              />
+            </View>
           </View>
         </View>
       )

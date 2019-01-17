@@ -63,15 +63,33 @@ const mainNavigator = createStackNavigator({
   },
   ad_detail: {
     screen: AdDetail,
-    path: '/drawer/main/ad_detail'
+    path: '/drawer/main/ad_detail',
+    navigationOptions: () => ({
+      gesturesEnabled: true, // 设置手势返回
+      gestureResponseDistance: {
+        horizontal: width
+      }
+    })
   },
   collection: {
     screen: CollectionScreen,
-    path: '/drawer/main/collection'
+    path: '/drawer/main/collection',
+    navigationOptions: () => ({
+      gesturesEnabled: true, // 设置手势返回
+      gestureResponseDistance: {
+        horizontal: width
+      }
+    })
   },
   profile: {
     screen: ProfileScreen,
-    path: '/drawer/profile'
+    path: '/drawer/profile',
+    navigationOptions: () => ({
+      gesturesEnabled: true, // 设置手势返回
+      gestureResponseDistance: {
+        horizontal: width
+      }
+    })
   }
 },
 {

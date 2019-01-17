@@ -240,7 +240,7 @@ class HomeScreen extends Component {
                 autoPlay
                 loop
                 resizeMode={'cover'}
-                style={{ width: '40%' }}
+                style={{ width: '30%' }}
                 source={require('../../../assets/lotties/material_wave_loading.json')}
               />
             </View>

@@ -13,10 +13,16 @@ import ImageCard from './image_card'
 import VideoCard from './video_card'
 // 短视频卡片组件
 import ShortVideoCard from './short_video_card'
+// 广告视频组件
+import AdCard from './ad_card'
+// 游戏广告界面
+import GameCard from './game_card'
 
 export {
   TextCard,
   ImageCard,
   VideoCard,
-  ShortVideoCard
+  ShortVideoCard,
+  AdCard,
+  GameCard
 }

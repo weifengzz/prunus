@@ -27,7 +27,7 @@ import { createAppContainer } from '@react-navigation/native'
 import { GuideScreen } from '../modules/guide/screens'
 
 // 主页面
-import { HomeScreen, CardDetailScreen } from '../modules/home/screens'
+import { HomeScreen, CardDetailScreen, AdDetail } from '../modules/home/screens'
 
 // 登录注册相关界面
 import { SigninScreen, ProfileScreen, ForgetPasswordScreen, TermsOfServiceScreen, PrivacyPolicyScreen } from '../modules/profile/screens'
@@ -60,6 +60,10 @@ const mainNavigator = createStackNavigator({
         horizontal: width
       }
     })
+  },
+  ad_detail: {
+    screen: AdDetail,
+    path: '/drawer/main/ad_detail'
   },
   collection: {
     screen: CollectionScreen,

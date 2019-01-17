@@ -15,7 +15,7 @@ import {
 } from '../../../components'
 import SwipeCards from './swipe_cards'
 import HomeFooter from './home_footer'
-import { TextCard, ImageCard, VideoCard, ShortVideoCard } from './cards'
+import { TextCard, ImageCard, VideoCard, ShortVideoCard, AdCard, GameCard } from './cards'
 
 const CARDS = [
   {
@@ -60,14 +60,25 @@ const CARDS = [
     key: '5'
   },
   {
-    text: `一楼主发帖：好久没见男友了，真是想他啊，已经决定在他那住上七天了，请问大家，我要给他来个什么惊喜呢？
-    一楼回复：给他来个大姨妈……
-    二楼回复：外加溃疡和痔疮！”
-    三楼：双手受伤。`,
-    backgroundColor: 'orange',
-    type: 1,
+    text: `欧莱雅LOREAL 男士8重护肤套装`,
+    backgroundColor: 'white',
     img: '',
-    key: '6'
+    type: 5,
+    key: '6',
+    adImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547704789561&di=11555fb9d4eb99f98a1f70d022fb5a78&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fdesign%2F00%2F69%2F33%2F36%2F8e6474bfec16567dd9d2f971fa6d5ada.jpg',
+    downLoadUrl: '',
+    webUrl: 'https://item.m.jd.com/product/7463833.html?jd_pop=d345ffef-53aa-4366-8693-11b662274c50'
+  },
+  {
+    title: '贪玩蓝月',
+    text: `系兄弟就来砍我！`,
+    backgroundColor: 'white',
+    img: '',
+    type: 6,
+    key: '886',
+    gameImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547701402703&di=1a0d17a895f6f488a7a3412029b9f4d9&imgtype=0&src=http%3A%2F%2Fapoil.paipaijoy.com%2Fgame%2Fpics%2F20170902220827580.gif',
+    downLoadUrl: 'https://imtt.dd.qq.com/16891/09C18D190BB99AEE5B60848EF1C68443.apk?fsname=com.tencent.tmgp.lycqly_1.0.7.81_70.apk&csr=1bbd',
+    webUrl: 'https://app.tanwan.com/htmlcode/11731.html?cplaceid=70054636.2280071307.58078986729'
   },
   {
     text: '',
@@ -244,7 +255,6 @@ class HomeSwipe extends Component {
           cardHeight={cardHeight}
           stackDepth={3}
           stackOffsetY={15}
-          ref={(card) => { this.textCard = card }}
         />
       case 2:
         return <ImageCard
@@ -252,7 +262,6 @@ class HomeSwipe extends Component {
           cardHeight={cardHeight}
           stackDepth={3}
           stackOffsetY={15}
-          ref={(card) => { this.imageCard = card }}
         />
       case 3:
         return <VideoCard
@@ -261,7 +270,6 @@ class HomeSwipe extends Component {
           stackDepth={3}
           paused={!isTopCard}
           stackOffsetY={15}
-          ref={(card) => { this.videoCard = card }}
         />
       case 4:
         return <ShortVideoCard
@@ -270,7 +278,20 @@ class HomeSwipe extends Component {
           stackDepth={3}
           paused={!isTopCard}
           stackOffsetY={15}
-          ref={(card) => { this.videoCard = card }}
+        />
+      case 5:
+        return <AdCard
+          {...cardData}
+          cardHeight={cardHeight}
+          stackDepth={3}
+          stackOffsetY={15}
+        />
+      case 6:
+        return <GameCard
+          {...cardData}
+          cardHeight={cardHeight}
+          stackDepth={3}
+          stackOffsetY={15}
         />
       default:
         return <TextCard
@@ -278,7 +299,6 @@ class HomeSwipe extends Component {
           cardHeight={cardHeight}
           stackDepth={3}
           stackOffsetY={15}
-          ref={(card) => { this.textCard = card }}
         />
     }
   }

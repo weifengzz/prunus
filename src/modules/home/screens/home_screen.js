@@ -44,12 +44,12 @@ const DATA = [
   {
     title: '开屏广告',
     content: '开屏广告内容',
-    url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545645009567&di=0ca0c1a2901e968a74a286e8ae980bda&imgtype=0&src=http%3A%2F%2Fwww.desktx.com%2Fd%2Ffile%2Fphone%2Fmeinv%2F20180420%2F782b5f69008fb9d3a3946451121379bc.jpg'
+    url: 'http://5b0988e595225.cdn.sohucs.com/q_70,c_zoom,w_640/images/20180131/8a669b1775ba44edbaa8641465edca29.gif'
   },
   {
     title: '开屏广告',
     content: '开屏广告内容',
-    url: 'http://pic1.win4000.com/mobile/2017-11-20/5a1283e93a10d.jpg'
+    url: 'http://d.ifengimg.com/w128/p0.ifengimg.com/pmop/2017/0707/A01A745C519DF02950347113AD22939E74C97590_size1521_w730_h1123.gif'
   }
 ]
 

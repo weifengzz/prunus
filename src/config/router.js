@@ -76,6 +76,7 @@ const mainNavigator = createStackNavigator({
     screen: VideoCardDetailScreen,
     path: '/drawer/main/video_card_detail',
     navigationOptions: () => ({
+      header: null,
       gesturesEnabled: true, // 设置手势返回
       gestureResponseDistance: {
         horizontal: width
@@ -107,7 +108,7 @@ const mainNavigator = createStackNavigator({
   transitionConfig: () => ({
     screenInterpolator: CardStackStyleInterpolator.forFade,
     transitionSpec: {
-      duration: 300
+      duration: 400
     }
   }),
   headerMode: 'screen'

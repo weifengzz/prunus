@@ -17,6 +17,8 @@ import HomeFooter from './home_footer'
 import { Card } from './cards'
 // 卡片切换组件
 import SwipeCards from './swipe_cards'
+// 视频组件卡片详情界面组件
+import VideoCardChildren from './video_card_children'
 
 export {
   HeaderLeft,
@@ -24,5 +26,6 @@ export {
   HomeSwipe,
   HomeFooter,
   Card,
-  SwipeCards
+  SwipeCards,
+  VideoCardChildren
 }

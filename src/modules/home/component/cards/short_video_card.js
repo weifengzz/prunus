@@ -32,8 +32,24 @@ class ShortVideoCard extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      paused: true
+      paused: true,
+      isFirstLoad: true
     }
+  }
+
+  componentDidMount () {
+    this.didBlurSubscription = this.props.navigation.addListener(
+      'didFocus',
+      payload => {
+        if (!this.state.isFirstLoad) {
+          this.play()
+        }
+      }
+    )
+  }
+
+  componentWillUnmount () {
+    this.didBlurSubscription && this.didBlurSubscription.remove()
   }
 
   /**
@@ -185,6 +201,7 @@ class ShortVideoCard extends Component {
           if (!IS_IOS) {
             fullScreen()
           }
+          this.paused()
           navigation.navigate('card_detail')
         }}>
         <View style={[styles.card, { backgroundColor: this.props.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }, IS_IOS ? styles.shadowStyle : {}]}>
@@ -197,10 +214,14 @@ class ShortVideoCard extends Component {
   }
 }
 
-ShortVideoCard.getDerivedStateFromProps = (nextProps) => {
-  return {
-    paused: nextProps.paused
+ShortVideoCard.getDerivedStateFromProps = (nextProps, state) => {
+  if (state.paused !== nextProps.paused && state.isFirstLoad) {
+    return {
+      paused: nextProps.paused,
+      isFirstLoad: false
+    }
   }
+  return null
 }
 
 ShortVideoCard.defaultProps = {

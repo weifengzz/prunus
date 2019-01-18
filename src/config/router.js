@@ -27,7 +27,7 @@ import { createAppContainer } from '@react-navigation/native'
 import { GuideScreen } from '../modules/guide/screens'
 
 // 主页面
-import { HomeScreen, CardDetailScreen, AdDetail } from '../modules/home/screens'
+import { HomeScreen, CardDetailScreen, AdDetailScreen, VideoCardDetailScreen } from '../modules/home/screens'
 
 // 登录注册相关界面
 import { SigninScreen, ProfileScreen, ForgetPasswordScreen, TermsOfServiceScreen, PrivacyPolicyScreen } from '../modules/profile/screens'
@@ -56,14 +56,25 @@ const mainNavigator = createStackNavigator({
     path: '/drawer/main/card_detail',
     navigationOptions: () => ({
       gesturesEnabled: true, // 设置手势返回
+      header: null,
       gestureResponseDistance: {
         horizontal: width
       }
     })
   },
   ad_detail: {
-    screen: AdDetail,
+    screen: AdDetailScreen,
     path: '/drawer/main/ad_detail',
+    navigationOptions: () => ({
+      gesturesEnabled: true, // 设置手势返回
+      gestureResponseDistance: {
+        horizontal: width
+      }
+    })
+  },
+  video_card_detail: {
+    screen: VideoCardDetailScreen,
+    path: '/drawer/main/video_card_detail',
     navigationOptions: () => ({
       gesturesEnabled: true, // 设置手势返回
       gestureResponseDistance: {

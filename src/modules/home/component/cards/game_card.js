@@ -47,10 +47,10 @@ class GameCard extends Component {
    * 渲染图片
    */
   _renderImage () {
-    const { gameImg } = this.props
+    const { cardData } = this.props
     return (
       <View style={IS_IOS ? styles.imageViewIOS : styles.imageViewAndroid}>
-        <Image source={{ uri: gameImg }} style={IS_IOS ? styles.imageIOS : styles.imageAndroid} />
+        <Image source={{ uri: cardData.gameImg }} style={IS_IOS ? styles.imageIOS : styles.imageAndroid} />
       </View>
     )
   }
@@ -120,13 +120,14 @@ class GameCard extends Component {
   }
 
   managerDownload () {
+    const { cardData } = this.props
     downloadAndInstallApp({
       useDownloadManager: true,
       notification: true,
-      title: `下载${this.props.title || '应用'}`,
-      description: `${this.props.text || '快来玩啊'}`,
-      appName: this.props.title || '应用',
-      downLoadUrl: this.props.downLoadUrl,
+      title: `下载${cardData.title || '应用'}`,
+      description: `${cardData.text || '快来玩啊'}`,
+      appName: cardData.title || '应用',
+      downLoadUrl: cardData.downLoadUrl,
       onError: () => {},
       onProgress: (received, total) => {},
       onSuccess: () => {}
@@ -134,20 +135,20 @@ class GameCard extends Component {
     this.setState({
       modalVisible: false
     })
-    Toast.show(`开始下载${this.props.title || '应用'}`, {
+    Toast.show(`开始下载${cardData.title || '应用'}`, {
       position: Toast.positions.CENTER
     })
   }
 
   render () {
-    const { cardHeight, stackOffsetY, stackDepth, navigation, webUrl } = this.props
+    const { cardHeight, stackOffsetY, stackDepth, navigation, webUrl, cardData } = this.props
     return (
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => {
           navigation.navigate('ad_detail', { webUrl })
         }}>
-        <View style={[styles.card, { backgroundColor: this.props.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }, IS_IOS ? styles.shadowStyle : {}]}>
+        <View style={[styles.card, { backgroundColor: cardData.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }, IS_IOS ? styles.shadowStyle : {}]}>
           {
             this._renderContent()
           }

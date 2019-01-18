@@ -43,10 +43,10 @@ class AdCard extends Component {
    * 渲染图片
    */
   _renderImage () {
-    const { adImg } = this.props
+    const { cardData } = this.props
     return (
       <View style={IS_IOS ? styles.imageViewIOS : styles.imageViewAndroid}>
-        <Image source={{ uri: adImg }} style={IS_IOS ? styles.imageIOS : styles.imageAndroid} />
+        <Image source={{ uri: cardData.adImg }} style={IS_IOS ? styles.imageIOS : styles.imageAndroid} />
       </View>
     )
   }
@@ -55,7 +55,7 @@ class AdCard extends Component {
    * 描述界面
    */
   _renderDescView () {
-    const { text, webUrl } = this.props
+    const { cardData } = this.props
     return (
       <LinearGradient
         colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.3)', 'rgba(0, 0, 0, 0.4)']}
@@ -67,13 +67,13 @@ class AdCard extends Component {
         <View style={{ flex: 1 }} />
         <View style={styles.footerView}>
           <View style={styles.descContentView}>
-            <Text numberOfLines={2} style={styles.descNameText}>{text}</Text>
+            <Text numberOfLines={2} style={styles.descNameText}>{cardData.text}</Text>
           </View>
           {
-            webUrl
+            cardData.webUrl
               ? <TouchableOpacity
                 onPress={() => {
-                  this.props.navigation.navigate('ad_detail', { webUrl: webUrl })
+                  this.props.navigation.navigate('ad_detail', { webUrl: cardData.webUrl })
                 }}
                 style={styles.optionView}>
                 <Text style={styles.optionText}>{'查看详情'}</Text>
@@ -87,14 +87,14 @@ class AdCard extends Component {
   }
 
   render () {
-    const { cardHeight, stackOffsetY, stackDepth, webUrl } = this.props
+    const { cardHeight, stackOffsetY, stackDepth, webUrl, cardData } = this.props
     return (
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => {
           this.props.navigation.navigate('ad_detail', { webUrl })
         }}>
-        <View style={[styles.card, { backgroundColor: this.props.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }, IS_IOS ? styles.shadowStyle : {}]}>
+        <View style={[styles.card, { backgroundColor: cardData.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }, IS_IOS ? styles.shadowStyle : {}]}>
           {
             this._renderContent()
           }

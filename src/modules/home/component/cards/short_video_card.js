@@ -142,10 +142,10 @@ class ShortVideoCard extends Component {
    * 渲染背景图片
    */
   _renderImage () {
-    const { videoImg } = this.props
+    const { cardData } = this.props
     return (
       <View style={IS_IOS ? styles.imageViewIOS : styles.imageViewAndroid}>
-        <Image blurRadius={IS_IOS ? 80 : 20} source={{ uri: videoImg }} style={IS_IOS ? styles.imageIOS : styles.imageAndroid} />
+        <Image blurRadius={IS_IOS ? 80 : 20} source={{ uri: cardData.videoImg }} style={IS_IOS ? styles.imageIOS : styles.imageAndroid} />
         <View style={[IS_IOS ? styles.imageViewIOS : styles.imageViewAndroid, { backgroundColor: 'black', opacity: 0.7, borderRadius: 10 }]} />
       </View>
     )
@@ -161,7 +161,7 @@ class ShortVideoCard extends Component {
   }
 
   _renderVideo () {
-    const { cardHeight, videoUrl, stackOffsetY, stackDepth } = this.props
+    const { cardHeight, cardData, stackOffsetY, stackDepth } = this.props
     // 卡片高度
     const ch = cardHeight - stackOffsetY * stackDepth + stackOffsetY
     // 卡片宽度
@@ -181,7 +181,7 @@ class ShortVideoCard extends Component {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Video
-          source={{ uri: videoUrl }}
+          source={{ uri: cardData.videoUrl }}
           ref={(ref) => {
             this.player = ref
           }}
@@ -193,7 +193,7 @@ class ShortVideoCard extends Component {
   }
 
   render () {
-    const { cardHeight, stackOffsetY, stackDepth, navigation } = this.props
+    const { cardHeight, stackOffsetY, stackDepth, navigation, cardData } = this.props
     return (
       <TouchableOpacity
         activeOpacity={1}
@@ -202,9 +202,9 @@ class ShortVideoCard extends Component {
             fullScreen()
           }
           this.paused()
-          navigation.navigate('card_detail')
+          navigation.navigate('video_card_detail')
         }}>
-        <View style={[styles.card, { backgroundColor: this.props.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }, IS_IOS ? styles.shadowStyle : {}]}>
+        <View style={[styles.card, { backgroundColor: cardData.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }, IS_IOS ? styles.shadowStyle : {}]}>
           {
             this._renderContent()
           }

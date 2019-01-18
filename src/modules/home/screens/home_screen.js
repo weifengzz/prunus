@@ -93,7 +93,7 @@ class HomeScreen extends Component {
           //   iOSAddress: 'wei-xin/id414478124'
           // })
         }
-      }, 4000)
+      }, 2000)
     }, 50)
     this.operationOpenAddScreen()
   }

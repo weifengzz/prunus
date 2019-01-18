@@ -64,10 +64,10 @@ class TextCard extends Component {
    * 文字
    */
   _renderText () {
-    const { text } = this.props
+    const { cardData } = this.props
     return (
       <View style={{ flex: 1, paddingHorizontal: 20, alignItems: 'center', justifyContent: 'center' }}>
-        <Text numberOfLines={10} style={{ fontSize: 18, color: 'white', lineHeight: 30 }}>{text}</Text>
+        <Text numberOfLines={10} style={{ fontSize: 18, color: 'white', lineHeight: 30 }}>{cardData.text}</Text>
       </View>
     )
   }
@@ -97,7 +97,7 @@ class TextCard extends Component {
   }
 
   render () {
-    const { cardHeight, stackOffsetY, stackDepth, navigation } = this.props
+    const { cardHeight, stackOffsetY, stackDepth, navigation, cardData } = this.props
     return (
       <TouchableOpacity
         activeOpacity={1}
@@ -107,7 +107,7 @@ class TextCard extends Component {
           }
           navigation.navigate('card_detail')
         }}>
-        <View style={[styles.card, { backgroundColor: this.props.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }, IS_IOS ? styles.shadowStyle : { borderWidth: 1, borderColor: '#bdbdbd' }]}>
+        <View style={[styles.card, { backgroundColor: cardData.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }, IS_IOS ? styles.shadowStyle : { borderWidth: 1, borderColor: '#bdbdbd' }]}>
           {
             this._renderContent()
           }

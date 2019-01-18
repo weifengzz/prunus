@@ -38,6 +38,8 @@ import CoverImage from './cover_image'
 import SpliteLine from './splite_line'
 // 渐变
 import LinearGradient from 'react-native-linear-gradient'
+// 视频播放滑动组件
+import VideoScrollView from './video_scrollview'
 
 export {
   Icon,
@@ -63,5 +65,6 @@ export {
   cancelFullScreen,
   CoverImage,
   SpliteLine,
-  LinearGradient
+  LinearGradient,
+  VideoScrollView
 }

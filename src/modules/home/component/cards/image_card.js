@@ -46,10 +46,10 @@ class ImageCard extends Component {
    * 渲染图片
    */
   _renderImage () {
-    const { img } = this.props
+    const { cardData } = this.props
     return (
       <View style={IS_IOS ? styles.imageViewIOS : styles.imageViewAndroid}>
-        <Image source={{ uri: img }} style={IS_IOS ? styles.imageIOS : styles.imageAndroid} />
+        <Image source={{ uri: cardData.img }} style={IS_IOS ? styles.imageIOS : styles.imageAndroid} />
       </View>
     )
   }
@@ -58,7 +58,7 @@ class ImageCard extends Component {
    * 描述界面
    */
   _renderDescView () {
-    const { text } = this.props
+    const { cardData } = this.props
     return (
       <LinearGradient
         colors={['rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.3)', 'rgba(0, 0, 0, 0.4)', 'rgba(0, 0, 0, 0.6)']}
@@ -75,7 +75,7 @@ class ImageCard extends Component {
           </View>
         </View>
         <View style={styles.centerView}>
-          <Text numberOfLines={5} style={styles.centerText}>{text}</Text>
+          <Text numberOfLines={5} style={styles.centerText}>{cardData.text}</Text>
         </View>
         <View>
           <SpliteLine color={'white'} />
@@ -101,7 +101,7 @@ class ImageCard extends Component {
   }
 
   render () {
-    const { cardHeight, stackOffsetY, stackDepth, navigation } = this.props
+    const { cardHeight, stackOffsetY, stackDepth, navigation, cardData } = this.props
     return (
       <TouchableOpacity
         activeOpacity={1}
@@ -111,7 +111,7 @@ class ImageCard extends Component {
           }
           navigation.navigate('card_detail')
         }}>
-        <View style={[styles.card, { backgroundColor: this.props.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }, IS_IOS ? styles.shadowStyle : {}]}>
+        <View style={[styles.card, { backgroundColor: cardData.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }, IS_IOS ? styles.shadowStyle : {}]}>
           {
             this._renderContent()
           }

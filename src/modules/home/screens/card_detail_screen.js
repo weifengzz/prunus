@@ -8,11 +8,11 @@
 import React, { Component } from 'react'
 import {
   View,
-  Text,
   Platform
 } from 'react-native'
 import {
-  cancelFullScreen
+  cancelFullScreen,
+  VideoScrollView
 } from '../../../components'
 
 const IS_IOS = Platform.OS === 'ios'
@@ -29,8 +29,32 @@ class CardDetailScreen extends Component {
   }
   render () {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>hello</Text>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'red' }}>
+        <VideoScrollView
+          datas={[
+            {
+              backgroundColor: 'blue'
+            },
+            {
+              backgroundColor: 'yellow'
+            },
+            {
+              backgroundColor: 'green'
+            },
+            {
+              backgroundColor: 'yellow'
+            },
+            {
+              backgroundColor: 'blue'
+            },
+            {
+              backgroundColor: 'green'
+            },
+            {
+              backgroundColor: 'red'
+            }
+          ]}
+        />
       </View>
     )
   }

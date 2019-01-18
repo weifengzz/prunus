@@ -148,21 +148,21 @@ class HomeSwipe extends Component {
     switch (type) {
       case 1:
         return <TextCard
-          {...cardData}
+          cardData={cardData}
           cardHeight={cardHeight}
           stackDepth={3}
           stackOffsetY={15}
         />
       case 2:
         return <ImageCard
-          {...cardData}
+          cardData={cardData}
           cardHeight={cardHeight}
           stackDepth={3}
           stackOffsetY={15}
         />
       case 3:
         return <VideoCard
-          {...cardData}
+          cardData={cardData}
           cardHeight={cardHeight}
           stackDepth={3}
           paused={!isTopCard}
@@ -170,7 +170,7 @@ class HomeSwipe extends Component {
         />
       case 4:
         return <ShortVideoCard
-          {...cardData}
+          cardData={cardData}
           cardHeight={cardHeight}
           stackDepth={3}
           paused={!isTopCard}
@@ -178,21 +178,21 @@ class HomeSwipe extends Component {
         />
       case 5:
         return <AdCard
-          {...cardData}
+          cardData={cardData}
           cardHeight={cardHeight}
           stackDepth={3}
           stackOffsetY={15}
         />
       case 6:
         return <GameCard
-          {...cardData}
+          cardData={cardData}
           cardHeight={cardHeight}
           stackDepth={3}
           stackOffsetY={15}
         />
       default:
         return <TextCard
-          {...cardData}
+          cardData={cardData}
           cardHeight={cardHeight}
           stackDepth={3}
           stackOffsetY={15}

@@ -21,6 +21,7 @@ import {
   CoverImage
 } from '../../../components'
 import Video from 'react-native-video'
+import { withNavigation } from 'react-navigation'
 
 const { width: G_WIDTH } = Dimensions.get('window')
 const IS_IOS = Platform.OS === 'ios'
@@ -28,8 +29,14 @@ const IS_IOS = Platform.OS === 'ios'
 class VideoCardChildren extends Component {
   _renderHeaderView () {
     return (
-      <SafeAreaView style={styles.headerView}>
-        <TouchableOpacity style={styles.backBtn}>
+      <SafeAreaView
+        style={styles.headerView}
+      >
+        <TouchableOpacity
+          onPress={() => {
+            this.props.navigation.goBack(null)
+          }}
+          style={styles.backBtn}>
           <Icon size={22} color={'#c3dcdd'} name={'left'} type={'ant_design'} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.titleView}>
@@ -155,4 +162,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default VideoCardChildren
+export default withNavigation(VideoCardChildren)

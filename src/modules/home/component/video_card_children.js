@@ -76,6 +76,7 @@ class VideoCardChildren extends Component {
               ref={(ref) => {
                 this.player = ref
               }}
+              resizeMode={data.type === 4 ? 'cover' : 'contain'}
               paused={false}
               repeat
               style={{ flex: 1 }} />
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
   },
   footerView: {
     width: G_WIDTH,
-    height: IS_IOS ? 50 : 120,
+    height: IS_IOS ? 80 : 120,
     position: 'absolute',
     bottom: 0,
     left: 0,
@@ -122,8 +123,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     left: 0,
-    paddingTop: IS_IOS ? 24 : StatusBar.currentHeight + 24,
-    height: 70,
+    marginTop: IS_IOS ? 24 : StatusBar.currentHeight,
+    height: IS_IOS ? 60 : 50,
     width: G_WIDTH,
     flexDirection: 'row'
   },

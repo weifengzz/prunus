@@ -29,10 +29,10 @@ const CARDS = [
     key: '1'
   },
   {
-    text: '',
+    text: '捕捉一只有灵气的老奶奶👀',
     backgroundColor: 'white',
     type: 2,
-    img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547635267283&di=3b399ab2eccccc937d5962b8eea66462&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201411%2F01%2F20141101043443_F25UB.thumb.700_0.jpeg',
+    img: 'https://imgsa.baidu.com/forum/pic/item/ee79ad4bd11373f0d5461663a90f4bfbfaed048e.jpg',
     key: '2'
   },
   {
@@ -45,7 +45,7 @@ const CARDS = [
     key: '3'
   },
   {
-    text: '',
+    text: '这胸真好听，哦，不对这琴真好看😊',
     backgroundColor: 'white',
     type: 2,
     img: 'https://www.gifjia5.com/wp-content/uploads/2018/07/15312235433978123.gif',
@@ -79,109 +79,6 @@ const CARDS = [
     gameImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547701402703&di=1a0d17a895f6f488a7a3412029b9f4d9&imgtype=0&src=http%3A%2F%2Fapoil.paipaijoy.com%2Fgame%2Fpics%2F20170902220827580.gif',
     downLoadUrl: 'https://imtt.dd.qq.com/16891/09C18D190BB99AEE5B60848EF1C68443.apk?fsname=com.tencent.tmgp.lycqly_1.0.7.81_70.apk&csr=1bbd',
     webUrl: 'https://app.tanwan.com/htmlcode/11731.html?cplaceid=70054636.2280071307.58078986729'
-  },
-  {
-    text: '',
-    backgroundColor: 'blue',
-    type: 2,
-    img: 'https://www.gifjia5.com/wp-content/uploads/2018/07/15312235433978123.gif',
-    key: '7'
-  },
-  {
-    text: '',
-    backgroundColor: 'green',
-    type: 2,
-    img: 'http://pic24.nipic.com/20121010/3798632_184253198370_2.jpg',
-    key: '8'
-  },
-  {
-    text: `一楼主发帖：好久没见男友了，真是想他啊，已经决定在他那住上七天了，请问大家，我要给他来个什么惊喜呢？
-    一楼回复：给他来个大姨妈……
-    二楼回复：外加溃疡和痔疮！”
-    三楼：双手受伤。`,
-    backgroundColor: 'orange',
-    type: 1,
-    img: '',
-    key: '9'
-  },
-  {
-    text: '',
-    backgroundColor: 'blue',
-    type: 2,
-    img: 'https://www.gifjia5.com/wp-content/uploads/2018/07/15312235433978123.gif',
-    key: '41'
-  },
-  {
-    text: '',
-    backgroundColor: 'green',
-    type: 2,
-    img: 'http://pic24.nipic.com/20121010/3798632_184253198370_2.jpg',
-    key: '22'
-  },
-  {
-    text: `一楼主发帖：好久没见男友了，真是想他啊，已经决定在他那住上七天了，请问大家，我要给他来个什么惊喜呢？
-    一楼回复：给他来个大姨妈……
-    二楼回复：外加溃疡和痔疮！”
-    三楼：双手受伤。`,
-    backgroundColor: 'orange',
-    type: 1,
-    img: '',
-    key: '33'
-  },
-  {
-    text: '',
-    backgroundColor: 'blue',
-    type: 2,
-    img: 'https://www.gifjia5.com/wp-content/uploads/2018/07/15312235433978123.gif',
-    key: '44'
-  },
-  {
-    text: '',
-    backgroundColor: 'green',
-    type: 2,
-    img: 'http://pic24.nipic.com/20121010/3798632_184253198370_2.jpg',
-    key: '25'
-  },
-  {
-    text: `一楼主发帖：好久没见男友了，真是想他啊，已经决定在他那住上七天了，请问大家，我要给他来个什么惊喜呢？
-    一楼回复：给他来个大姨妈……
-    二楼回复：外加溃疡和痔疮！”
-    三楼：双手受伤。`,
-    backgroundColor: 'orange',
-    type: 1,
-    img: '',
-    key: '36'
-  },
-  {
-    text: '',
-    backgroundColor: 'blue',
-    type: 2,
-    img: 'https://www.gifjia5.com/wp-content/uploads/2018/07/15312235433978123.gif',
-    key: '47'
-  },
-  {
-    text: '',
-    backgroundColor: 'green',
-    type: 2,
-    img: 'http://pic24.nipic.com/20121010/3798632_184253198370_2.jpg',
-    key: '29'
-  },
-  {
-    text: `一楼主发帖：好久没见男友了，真是想他啊，已经决定在他那住上七天了，请问大家，我要给他来个什么惊喜呢？
-    一楼回复：给他来个大姨妈……
-    二楼回复：外加溃疡和痔疮！”
-    三楼：双手受伤。`,
-    backgroundColor: 'orange',
-    type: 1,
-    img: '',
-    key: '3c'
-  },
-  {
-    text: '',
-    backgroundColor: 'blue',
-    type: 2,
-    img: 'https://www.gifjia5.com/wp-content/uploads/2018/07/15312235433978123.gif',
-    key: '4d'
   }
 ]
 

@@ -19,7 +19,8 @@ import {
   fullScreen,
   LinearGradient,
   Icon,
-  CoverImage
+  CoverImage,
+  SpliteLine
 } from '../../../../components'
 import { withNavigation } from 'react-navigation'
 
@@ -57,22 +58,42 @@ class ImageCard extends Component {
    * 描述界面
    */
   _renderDescView () {
+    const { text } = this.props
     return (
       <LinearGradient
-        colors={['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.4)', 'rgba(0, 0, 0, 0.6)']}
+        colors={['rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.3)', 'rgba(0, 0, 0, 0.4)', 'rgba(0, 0, 0, 0.6)']}
         style={styles.descView}
       >
         <View style={styles.headerView}>
-          <Icon size={20} color={'white'} name={'sharealt'} type={'ant_design'} />
-        </View>
-        <View style={styles.centerView}>
-          <Text style={styles.centerText}>城市的夜晚, 繁华中隐藏着一种孤独#</Text>
-        </View>
-        <View style={styles.footerView}>
           <CoverImage source={{ uri: 'http://cdn.duitang.com/uploads/item/201407/24/20140724190906_MCkXs.thumb.700_0.jpeg' }} style={styles.headerImage} />
           <View style={styles.headerContentView}>
             <Text style={styles.headerNameText}>我叫白小飞</Text>
-            <Text numberOfLines={1} style={styles.timeText}>1天前</Text>
+            <Text style={styles.descText}>笑死你Y的</Text>
+          </View>
+          <View style={{ width: 30 }}>
+            <Icon size={20} color={'white'} name={'sharealt'} type={'ant_design'} />
+          </View>
+        </View>
+        <View style={styles.centerView}>
+          <Text numberOfLines={5} style={styles.centerText}>{text}</Text>
+        </View>
+        <View>
+          <SpliteLine color={'white'} />
+          <View style={styles.footerView}>
+            <View style={[styles.footerItemView, { flex: 2 }]}>
+              <View style={styles.itemLeftView}>
+                <Icon size={18} color={'white'} name={'smileo'} type={'ant_design'} />
+                <Text style={styles.commonSmallText}>100</Text>
+                <View style={{ width: 20 }} />
+                <Icon size={20} color={'white'} name={'eyeo'} type={'ant_design'} />
+                <Text style={styles.commonSmallText}>3.5k</Text>
+              </View>
+              <Icon size={18} color={'red'} name={'heart'} type={'ant_design'} />
+              <Text style={styles.commonSmallText}>2.2k</Text>
+              <View style={{ width: 20 }} />
+              <Icon size={18} color={'white'} name={'message1'} type={'ant_design'} />
+              <Text style={styles.commonSmallText}>80</Text>
+            </View>
           </View>
         </View>
       </LinearGradient>
@@ -160,31 +181,15 @@ const styles = StyleSheet.create({
     borderRadius: 10
   },
   headerView: {
-    height: 80,
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    paddingHorizontal: 20
-  },
-  centerView: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: CARD_WIDTH / 5
-  },
-  centerText: {
-    fontSize: 20,
-    color: 'white',
-    fontWeight: 'bold',
-    lineHeight: 30
-  },
-  footerView: {
-    height: 80,
-    width: CARD_WIDTH,
-    flexDirection: 'row',
-    alignItems: 'center',
+    height: 70,
     paddingHorizontal: 15,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  headerImage: {
+    height: 40,
+    width: 40,
+    borderRadius: 20
   },
   headerContentView: {
     justifyContent: 'center',
@@ -195,15 +200,50 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'white'
   },
-  timeText: {
+  descText: {
     fontSize: 12,
     marginTop: 5,
     color: 'white'
   },
-  headerImage: {
-    height: 40,
-    width: 40,
-    borderRadius: 20
+  centerView: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: CARD_WIDTH / 6
+  },
+  centerText: {
+    fontSize: 20,
+    color: 'white',
+    fontWeight: 'bold',
+    lineHeight: 30
+  },
+  footerView: {
+    height: 70,
+    width: CARD_WIDTH,
+    flexDirection: 'row'
+  },
+  footerItemView: {
+    paddingHorizontal: 10,
+    flex: 1,
+    alignItems: 'center',
+    flexDirection: 'row'
+  },
+  itemLeftView: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: 5
+  },
+  commonSmallText: {
+    fontSize: 12,
+    color: '#ccd3dd',
+    marginLeft: 10,
+    alignSelf: 'center'
+  },
+  titleText: {
+    fontSize: 23,
+    color: 'white',
+    fontWeight: 'bold'
   }
 })
 

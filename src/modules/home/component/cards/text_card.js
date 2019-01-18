@@ -17,7 +17,8 @@ import {
   TouchableOpacity,
   fullScreen,
   Icon,
-  SpliteLine
+  SpliteLine,
+  CoverImage
 } from '../../../../components'
 import { withNavigation } from 'react-navigation'
 
@@ -47,9 +48,10 @@ class TextCard extends Component {
   _renderHeaderView () {
     return (
       <View style={styles.headerView}>
-        <View style={{ width: 30 }} />
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={styles.titleText}>开心一笑</Text>
+        <CoverImage source={{ uri: 'http://cdn.duitang.com/uploads/item/201407/24/20140724190906_MCkXs.thumb.700_0.jpeg' }} style={styles.headerImage} />
+        <View style={styles.headerContentView}>
+          <Text style={styles.headerNameText}>我叫白小飞</Text>
+          <Text style={styles.descText}>笑死你Y的</Text>
         </View>
         <View style={{ width: 30 }}>
           <Icon size={20} color={'white'} name={'sharealt'} type={'ant_design'} />
@@ -77,16 +79,16 @@ class TextCard extends Component {
         <View style={styles.footerView}>
           <View style={[styles.footerItemView, { flex: 2 }]}>
             <View style={styles.itemLeftView}>
-              <Icon size={18} color={'#c3dcdd'} name={'smileo'} type={'ant_design'} />
+              <Icon size={18} color={'white'} name={'smileo'} type={'ant_design'} />
               <Text style={styles.commonSmallText}>100</Text>
               <View style={{ width: 20 }} />
-              <Icon size={20} color={'#c3dcdd'} name={'eyeo'} type={'ant_design'} />
+              <Icon size={20} color={'white'} name={'eyeo'} type={'ant_design'} />
               <Text style={styles.commonSmallText}>3.5k</Text>
             </View>
             <Icon size={18} color={'red'} name={'heart'} type={'ant_design'} />
             <Text style={styles.commonSmallText}>2.2k</Text>
             <View style={{ width: 20 }} />
-            <Icon size={18} color={'#c3dcdd'} name={'message1'} type={'ant_design'} />
+            <Icon size={18} color={'white'} name={'message1'} type={'ant_design'} />
             <Text style={styles.commonSmallText}>80</Text>
           </View>
         </View>
@@ -140,13 +142,32 @@ const styles = StyleSheet.create({
     shadowRadius: 10
   },
   headerView: {
-    height: 80,
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    flexDirection: 'row'
+    height: 70,
+    paddingHorizontal: 15,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  headerImage: {
+    height: 40,
+    width: 40,
+    borderRadius: 20
+  },
+  headerContentView: {
+    justifyContent: 'center',
+    marginLeft: 10,
+    flex: 1
+  },
+  headerNameText: {
+    fontSize: 16,
+    color: 'white'
+  },
+  descText: {
+    fontSize: 12,
+    marginTop: 5,
+    color: 'white'
   },
   footerView: {
-    height: 80,
+    height: 70,
     width: CARD_WIDTH,
     flexDirection: 'row'
   },

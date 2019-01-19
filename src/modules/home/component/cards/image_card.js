@@ -16,7 +16,7 @@ import {
 } from 'react-native'
 import {
   TouchableOpacity,
-  fullScreen,
+  // fullScreen,
   LinearGradient,
   Icon,
   CoverImage,
@@ -101,15 +101,15 @@ class ImageCard extends Component {
   }
 
   render () {
-    const { cardHeight, stackOffsetY, stackDepth, navigation, cardData } = this.props
+    const { cardHeight, stackOffsetY, stackDepth, cardData } = this.props
     return (
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => {
-          if (!IS_IOS) {
-            fullScreen()
-          }
-          navigation.navigate('card_detail')
+          // if (!IS_IOS) {
+          //   fullScreen()
+          // }
+          // navigation.navigate('card_detail')
         }}>
         <View style={[styles.card, { backgroundColor: cardData.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }, IS_IOS ? styles.shadowStyle : {}]}>
           {

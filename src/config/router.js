@@ -56,7 +56,6 @@ const mainNavigator = createStackNavigator({
     path: '/drawer/main/card_detail',
     navigationOptions: () => ({
       gesturesEnabled: true, // 设置手势返回
-      header: null,
       gestureResponseDistance: {
         horizontal: width
       }

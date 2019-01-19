@@ -105,7 +105,7 @@ class TextCard extends Component {
           if (!IS_IOS) {
             fullScreen()
           }
-          navigation.navigate('card_detail')
+          navigation.navigate('card_detail', { data: cardData })
         }}>
         <View style={[styles.card, { backgroundColor: cardData.backgroundColor, height: cardHeight - stackOffsetY * stackDepth + stackOffsetY }, IS_IOS ? styles.shadowStyle : { borderWidth: 1, borderColor: '#bdbdbd' }]}>
           {

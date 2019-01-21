@@ -9,15 +9,14 @@ import React, { Component } from 'react'
 import {
   View,
   StyleSheet,
-  Text,
-  SafeAreaView
+  Text
 } from 'react-native'
 
 import {
   TouchableOpacity
 } from '../../../components'
 
-import { withNavigation } from 'react-navigation'
+import { withNavigation, SafeAreaView } from 'react-navigation'
 
 const BG_COLOR = [
   '#83ede0',

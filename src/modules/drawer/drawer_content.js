@@ -8,7 +8,6 @@
 import React, { Component } from 'react'
 import {
   StyleSheet,
-  SafeAreaView,
   Text,
   Platform,
   StatusBar,
@@ -23,7 +22,7 @@ import {
   TouchableOpacity
 } from '../../components'
 
-import { withNavigation } from 'react-navigation'
+import { withNavigation, SafeAreaView } from 'react-navigation'
 
 const IS_IOS = Platform.OS === 'ios'
 

@@ -10,7 +10,6 @@ import {
   View,
   StyleSheet,
   Text,
-  SafeAreaView,
   Platform,
   BackHandler,
   StatusBar
@@ -24,6 +23,7 @@ import {
 import { OPEN_SCREEN_AD_SCREEN, LAST_INACTIVE_TIME } from '../../../data'
 import { storage } from '../../../utils'
 import { OPEN_SCREEN_REAMINI_TIME } from '../../../config/config'
+import { SafeAreaView } from 'react-navigation'
 
 const IS_ANDROID = Platform.OS === 'android'
 

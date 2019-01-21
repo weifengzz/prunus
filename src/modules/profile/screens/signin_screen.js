@@ -11,7 +11,6 @@ import {
   StyleSheet,
   StatusBar,
   // Image,
-  SafeAreaView,
   Platform,
   Dimensions,
   Text
@@ -30,6 +29,7 @@ import {
 // import setStackOptions from '../../../config/stackNavigatorOptions'
 import commonStyles from '../../../styles'
 // import { px } from '../../../utils'
+import { SafeAreaView } from 'react-navigation'
 
 const { width: G_WIDTH } = Dimensions.get('window')
 

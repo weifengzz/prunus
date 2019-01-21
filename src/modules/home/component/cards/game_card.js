@@ -59,7 +59,7 @@ class GameCard extends Component {
    * 描述界面
    */
   _renderDescView () {
-    const { text, downLoadUrl } = this.props
+    const { cardData } = this.props
     return (
       <LinearGradient
         colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.3)', 'rgba(0, 0, 0, 0.4)']}
@@ -71,10 +71,10 @@ class GameCard extends Component {
         <View style={{ flex: 1 }} />
         <View style={styles.footerView}>
           <View style={styles.descContentView}>
-            <Text numberOfLines={2} style={styles.descNameText}>{text}</Text>
+            <Text numberOfLines={2} style={styles.descNameText}>{cardData.text}</Text>
           </View>
           {
-            downLoadUrl && !IS_IOS
+            cardData.downLoadUrl && !IS_IOS
               ? <TouchableOpacity
                 onPress={() => {
                   this.managerDownloadApp()

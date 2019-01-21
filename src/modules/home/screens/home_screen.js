@@ -8,7 +8,6 @@ import React, { Component } from 'react'
 import {
   View,
   StyleSheet,
-  SafeAreaView,
   Platform,
   Dimensions
 } from 'react-native'
@@ -30,6 +29,7 @@ import setStackOptions from '../../../config/stackNavigatorOptions'
 // import commonStyles from '../../../styles'
 import { storage, randomNumber } from '../../../utils'
 import { OPEN_SCREEN_AD_SCREEN } from '../../../data'
+import { SafeAreaView } from 'react-navigation'
 
 // 判断为iOS设备
 const IS_IOS = Platform.OS === 'ios'

@@ -12,7 +12,6 @@ import {
   Dimensions,
   Platform,
   Text,
-  SafeAreaView,
   StatusBar,
   TouchableOpacity
 } from 'react-native'
@@ -21,7 +20,7 @@ import {
   CoverImage
 } from '../../../components'
 import Video from 'react-native-video'
-import { withNavigation } from 'react-navigation'
+import { withNavigation, SafeAreaView } from 'react-navigation'
 
 const { width: G_WIDTH } = Dimensions.get('window')
 const IS_IOS = Platform.OS === 'ios'

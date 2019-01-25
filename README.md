@@ -2,6 +2,13 @@
 
 > 生活不易，且行且珍惜
 
+<p align="center">
+    <img src="https://github.com/weifengzz/prunus/blob/master/images/ss.gif?raw=true" alt="Sample"  width="140" height="250">
+    <p align="center">
+        <em>功能预览</em>
+    </p>
+</p>
+
 ### app运行说明
 
 ```

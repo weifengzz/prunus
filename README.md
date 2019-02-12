@@ -84,3 +84,6 @@
 * 本项目是半成品，由于各种原因已停止开发，自我感觉可能还有一些值得分享的地方，故开源，如果能给大家带来一点点启发就足够了
 * 本项目暂无继续开发计划，仅供参考
 * 项目中涉及到logo的图片、友盟统计key或其它涉及版权或隐私的信息，请勿使用，谢谢！
+
+### License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

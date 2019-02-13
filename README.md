@@ -1,6 +1,6 @@
 ## Li prunus
 
-> 生活不易，且行且珍惜
+> Look before you leap。Think first, Program later
 
 <p align="center">
     <img src="https://github.com/weifengzz/prunus/blob/master/images/ss.gif?raw=true" alt="Sample"  width="140" height="250">

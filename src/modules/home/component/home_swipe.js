@@ -19,10 +19,10 @@ import { TextCard, ImageCard, VideoCard, ShortVideoCard, AdCard, GameCard } from
 
 const CARDS = [
   {
-    text: `一楼主发帖：好久没见男友了，真是想他啊，已经决定在他那住上七天了，请问大家，我要给他来个什么惊喜呢？
-    一楼回复：给他来个大姨妈……
-    二楼回复：外加溃疡和痔疮！”
-    三楼：双手受伤。`,
+    text: `一个胖女人问：“老板，称一次体重要花多少钱？”
+    老板上下打量了下她，说道：“可能2元，也可能600元。”
+    胖女人问道：“为什么？”
+    老板说：“称一次2元，如果把秤压坏了是600元。”`,
     backgroundColor: '#409ef4',
     type: 1,
     img: '',
@@ -45,10 +45,10 @@ const CARDS = [
     key: '3'
   },
   {
-    text: '这胸真好听，哦，不对这琴真好看😊',
+    text: '这是表情包在开会吗？😊🐂',
     backgroundColor: 'white',
     type: 2,
-    img: 'https://www.gifjia5.com/wp-content/uploads/2018/07/15312235433978123.gif',
+    img: 'http://wx4.sinaimg.cn/large/006nnnEXly1fuudfmdahhg306007shdt.gif',
     key: '4'
   },
   {

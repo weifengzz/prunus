@@ -1,5 +1,7 @@
 ## Li prunus
 
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+
 > Look before you leap。Think first, Program later
 
 <p align="center">
